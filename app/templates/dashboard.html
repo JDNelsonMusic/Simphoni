@@ -1,0 +1,212 @@
+<!-- app/templates/dashboard.html -->
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container my-4">
+    <!-- Welcome Section -->
+    <div class="row mb-4">
+        <div class="col">
+            <h1 class="mb-3">Welcome, {{ current_user.username }}!</h1>
+            <p class="lead">Manage your configurations, custom models, and conversations all in one place.</p>
+        </div>
+    </div>
+
+    <!-- Statistics Cards -->
+    <div class="row mb-4">
+        <!-- Configurations Card -->
+        <div class="col-md-4">
+            <div class="card text-bg-primary mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Configurations</h5>
+                    <p class="card-text display-4">{{ configurations | length }}</p>
+                </div>
+            </div>
+        </div>
+        <!-- Custom Models Card -->
+        <div class="col-md-4">
+            <div class="card text-bg-success mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Custom Models</h5>
+                    <p class="card-text display-4">{{ custom_models | length }}</p>
+                </div>
+            </div>
+        </div>
+        <!-- Conversations Card -->
+        <div class="col-md-4">
+            <div class="card text-bg-warning mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Conversations</h5>
+                    <p class="card-text display-4">{{ conversations | length }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Configurations Management -->
+    <div class="row mb-5">
+        <div class="col">
+            <h3>Your Configurations</h3>
+            <a href="{{ url_for('main.setup') }}" class="btn btn-primary mb-3">Create New Configuration</a>
+            {% if configurations %}
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover align-middle">
+                        <thead class="table-dark">
+                            <tr>
+                                <th scope="col">Configuration Name</th>
+                                <th scope="col">Inference Count</th>
+                                <th scope="col">Created At</th>
+                                <th scope="col" class="text-center">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for config in configurations %}
+                                <tr>
+                                    <td>{{ config.name }}</td>
+                                    <td>{{ config.inference_count }}</td>
+                                    <td>{{ config.created_at.strftime('%Y-%m-%d %H:%M') }}</td>
+                                    <td class="text-center">
+                                        <a href="{{ url_for('main.view_configuration', config_id=config.id) }}" class="btn btn-sm btn-info me-1" title="View Configuration">
+                                            <i class="bi bi-eye"></i> View
+                                        </a>
+                                        <a href="{{ url_for('main.edit_configuration', config_id=config.id) }}" class="btn btn-sm btn-secondary me-1" title="Edit Configuration">
+                                            <i class="bi bi-pencil-square"></i> Edit
+                                        </a>
+                                        <form action="{{ url_for('main.delete_configuration', config_id=config.id) }}" method="POST" class="d-inline" onsubmit="return confirm('Are you sure you want to delete this configuration?');">
+                                            {{ csrf_token() }}
+                                            <button type="submit" class="btn btn-sm btn-danger" title="Delete Configuration">
+                                                <i class="bi bi-trash"></i> Delete
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% else %}
+                <div class="alert alert-info" role="alert">
+                    You have no configurations yet. <a href="{{ url_for('main.setup') }}" class="alert-link">Create one now.</a>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Custom Models Management -->
+    <div class="row mb-5">
+        <div class="col">
+            <h3>Your Custom Models</h3>
+            <a href="{{ url_for('main.upload_model') }}" class="btn btn-success mb-3">Upload New Custom Model</a>
+            {% if custom_models %}
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover align-middle">
+                        <thead class="table-dark">
+                            <tr>
+                                <th scope="col">Model Name</th>
+                                <th scope="col">Description</th>
+                                <th scope="col">Uploaded At</th>
+                                <th scope="col" class="text-center">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for model in custom_models %}
+                                <tr>
+                                    <td>{{ model.name }}</td>
+                                    <td>{{ model.description }}</td>
+                                    <td>{{ model.uploaded_at.strftime('%Y-%m-%d %H:%M') }}</td>
+                                    <td class="text-center">
+                                        <a href="{{ url_for('main.view_custom_model', model_id=model.id) }}" class="btn btn-sm btn-info me-1" title="View Custom Model">
+                                            <i class="bi bi-eye"></i> View
+                                        </a>
+                                        <form action="{{ url_for('main.delete_custom_model', model_id=model.id) }}" method="POST" class="d-inline" onsubmit="return confirm('Are you sure you want to delete this custom model?');">
+                                            {{ csrf_token() }}
+                                            <button type="submit" class="btn btn-sm btn-danger" title="Delete Custom Model">
+                                                <i class="bi bi-trash"></i> Delete
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% else %}
+                <div class="alert alert-info" role="alert">
+                    You have no custom models uploaded. <a href="{{ url_for('main.upload_model') }}" class="alert-link">Upload one now.</a>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Conversations Overview -->
+    <div class="row mb-5">
+        <div class="col">
+            <h3>Your Conversations</h3>
+            <a href="{{ url_for('conversation_bp.conversation') }}" class="btn btn-warning mb-3">Start New Conversation</a>
+            {% if conversations %}
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover align-middle">
+                        <thead class="table-dark">
+                            <tr>
+                                <th scope="col">Conversation Title</th>
+                                <th scope="col">Created At</th>
+                                <th scope="col">Last Updated</th>
+                                <th scope="col" class="text-center">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for convo in conversations %}
+                                <tr>
+                                    <td>{{ convo.title }}</td>
+                                    <td>{{ convo.created_at.strftime('%Y-%m-%d %H:%M') }}</td>
+                                    <td>{{ convo.updated_at.strftime('%Y-%m-%d %H:%M') }}</td>
+                                    <td class="text-center">
+                                        <a href="{{ url_for('conversation_bp.view_conversation', convo_id=convo.id) }}" class="btn btn-sm btn-info me-1" title="View Conversation">
+                                            <i class="bi bi-eye"></i> View
+                                        </a>
+                                        <form action="{{ url_for('conversation_bp.delete_conversation', convo_id=convo.id) }}" method="POST" class="d-inline" onsubmit="return confirm('Are you sure you want to delete this conversation?');">
+                                            {{ csrf_token() }}
+                                            <button type="submit" class="btn btn-sm btn-danger" title="Delete Conversation">
+                                                <i class="bi bi-trash"></i> Delete
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% else %}
+                <div class="alert alert-info" role="alert">
+                    You have no conversations yet. <a href="{{ url_for('conversation_bp.conversation') }}" class="alert-link">Start one now.</a>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Recent Activity or Notifications -->
+    <div class="row mb-5">
+        <div class="col">
+            <h3>Recent Activity</h3>
+            {% if recent_activity %}
+                <ul class="list-group">
+                    {% for activity in recent_activity %}
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <div>
+                                <strong>{{ activity.timestamp.strftime('%Y-%m-%d %H:%M') }}</strong>: {{ activity.message }}
+                            </div>
+                            <!-- Optional: Add icons or badges -->
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <div class="alert alert-info" role="alert">
+                    No recent activity to display.
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Optional: Charts or Graphs for Analytics -->
+    <!-- You can integrate chart libraries like Chart.js or Plotly for visual analytics -->
+</div>
+{% endblock %}

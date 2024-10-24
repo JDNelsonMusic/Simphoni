@@ -1,0 +1,26 @@
+<!-- app/templates/login.html -->
+{% extends "base.html" %}
+{% block content %}
+  <h2>Login</h2>
+  <form method="post" action="{{ url_for('auth.login') }}">
+    {{ form.hidden_tag() }}
+    <p>
+      {{ form.username.label }}<br>
+      {{ form.username(class="form-control", size=32) }}
+      {% for error in form.username.errors %}
+          <small class="text-danger">{{ error }}</small>
+      {% endfor %}
+    </p>
+    <p>
+      {{ form.password.label }}<br>
+      {{ form.password(class="form-control", size=32) }}
+      {% for error in form.password.errors %}
+          <small class="text-danger">{{ error }}</small>
+      {% endfor %}
+    </p>
+    <p>
+      {{ form.remember() }} {{ form.remember.label }}
+    </p>
+    <p><input type="submit" class="btn btn-primary" value="Login"></p>
+  </form>
+{% endblock %}

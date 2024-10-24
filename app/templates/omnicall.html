@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>OmniCall Input</h2>
+<form method="POST" action="{{ url_for('conversation_bp.conversation') }}">
+    <div class="mb-3">
+        <label for="user_input" class="form-label">Your Input:</label>
+        <textarea class="form-control" id="user_input" name="user_input" rows="3" placeholder="Enter your input here..." required></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit Input</button>
+</form>
+{% endblock %}
+

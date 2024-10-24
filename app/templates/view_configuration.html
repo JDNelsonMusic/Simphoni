@@ -1,0 +1,117 @@
+<!-- app/templates/view_configuration.html -->
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container my-4">
+    <!-- Breadcrumb Navigation -->
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ url_for('main.dashboard') }}">Dashboard</a></li>
+            <li class="breadcrumb-item active" aria-current="page">View Configuration</li>
+        </ol>
+    </nav>
+
+    <!-- Configuration Details Header -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Configuration Details</h2>
+        <div>
+            <a href="{{ url_for('main.edit_configuration', config_id=configuration.id) }}" class="btn btn-primary me-2" title="Edit Configuration">
+                <i class="bi bi-pencil-square"></i> Edit
+            </a>
+            <form action="{{ url_for('main.delete_configuration', config_id=configuration.id) }}" method="POST" class="d-inline" onsubmit="return confirm('Are you sure you want to delete this configuration?');">
+                {{ csrf_token() }}
+                <button type="submit" class="btn btn-danger" title="Delete Configuration">
+                    <i class="bi bi-trash"></i> Delete
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Configuration Details Card -->
+    <div class="card mb-4">
+        <div class="card-header bg-secondary text-white">
+            <h5 class="card-title mb-0">{{ configuration.name }}</h5>
+        </div>
+        <div class="card-body">
+            <p><strong>Inference Count:</strong> {{ configuration.inference_count }}</p>
+            <p><strong>Created At:</strong> {{ configuration.created_at.strftime('%Y-%m-%d %H:%M') }}</p>
+            <!-- Add more configuration attributes as needed -->
+            {% if configuration.description %}
+                <p><strong>Description:</strong> {{ configuration.description }}</p>
+            {% endif %}
+            <!-- Example of additional data -->
+            {% if configuration.additional_info %}
+                <p><strong>Additional Information:</strong> {{ configuration.additional_info }}</p>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Model Order Details -->
+    <div class="card mb-4">
+        <div class="card-header bg-info text-white">
+            <h5 class="card-title mb-0">Model Order</h5>
+        </div>
+        <div class="card-body">
+            {% if configuration.model_order %}
+                <ol>
+                    {% for idx, slot in enumerate(configuration.model_order | from_json, start=1) %}
+                        <li>{{ slot }}</li>
+                    {% endfor %}
+                </ol>
+            {% else %}
+                <p>No model order specified.</p>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Associated Models (Optional) -->
+    <div class="card mb-4">
+        <div class="card-header bg-success text-white">
+            <h5 class="card-title mb-0">Associated Models</h5>
+        </div>
+        <div class="card-body">
+            {% if configuration.associated_models %}
+                <ul class="list-group list-group-flush">
+                    {% for model in configuration.associated_models %}
+                        <li class="list-group-item">
+                            <strong>{{ model.name }}</strong>: {{ model.description }}
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No models associated with this configuration.</p>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Related Conversations (Optional) -->
+    <div class="card mb-4">
+        <div class="card-header bg-warning text-white">
+            <h5 class="card-title mb-0">Related Conversations</h5>
+        </div>
+        <div class="card-body">
+            {% if configuration.conversations %}
+                <ul class="list-group list-group-flush">
+                    {% for convo in configuration.conversations %}
+                        <li class="list-group-item">
+                            <a href="{{ url_for('conversation_bp.view_conversation', convo_id=convo.id) }}">{{ convo.title }}</a> - Last updated at {{ convo.updated_at.strftime('%Y-%m-%d %H:%M') }}
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No conversations related to this configuration.</p>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="d-flex justify-content-between">
+        <a href="{{ url_for('main.dashboard') }}" class="btn btn-secondary">
+            <i class="bi bi-arrow-left"></i> Back to Dashboard
+        </a>
+        <a href="{{ url_for('main.setup') }}" class="btn btn-primary">
+            <i class="bi bi-plus-circle"></i> Create New Configuration
+        </a>
+    </div>
+</div>
+{% endblock %}

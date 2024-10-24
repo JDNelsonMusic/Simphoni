@@ -1,0 +1,25 @@
+<!-- Example: app/templates/start_conversation.html -->
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container my-4">
+    <h2>Start New Conversation</h2>
+    <form method="POST" action="{{ url_for('conversation_bp.conversation') }}">
+        {{ form.hidden_tag() }}
+        <!-- Alternatively, if not using Flask-WTF forms -->
+        <!-- {{ csrf_token() }} -->
+        
+        <div class="mb-3">
+            <label for="title" class="form-label">Conversation Title</label>
+            <input type="text" class="form-control" id="title" name="title" required>
+        </div>
+        
+        <div class="mb-3">
+            <label for="message" class="form-label">Initial Message</label>
+            <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Start Conversation</button>
+    </form>
+</div>
+{% endblock %}

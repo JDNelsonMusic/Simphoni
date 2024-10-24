@@ -1,0 +1,34 @@
+<!-- app/templates/upload_model.html -->
+{% extends "base.html" %}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <h2>Upload Custom Model</h2>
+        <form method="POST" action="{{ url_for('main.upload_model') }}" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label for="model_name" class="form-label">Model Name:</label>
+                <input type="text" class="form-control" id="model_name" name="model_name" placeholder="Enter a name for your model" required>
+                {% for error in form.model_name.errors %}
+                    <small class="text-danger">{{ error }}</small>
+                {% endfor %}
+            </div>
+            <div class="mb-3">
+                <label for="model_description" class="form-label">Model Description:</label>
+                <textarea class="form-control" id="model_description" name="model_description" rows="3" placeholder="Enter a description for your model"></textarea>
+                {% for error in form.model_description.errors %}
+                    <small class="text-danger">{{ error }}</small>
+                {% endfor %}
+            </div>
+            <div class="mb-3">
+                <label for="model_file" class="form-label">Upload Model File:</label>
+                <input type="file" class="form-control" id="model_file" name="model_file" accept=".json,.yaml,.yml" required>
+                <div class="form-text">Allowed file types: json, yaml, yml.</div>
+                {% for error in form.model_file.errors %}
+                    <small class="text-danger">{{ error }}</small>
+                {% endfor %}
+            </div>
+            <button type="submit" class="btn btn-primary">Upload Model</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

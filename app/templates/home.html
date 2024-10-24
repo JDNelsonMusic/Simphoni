@@ -1,0 +1,15 @@
+<!-- app/templates/home.html -->
+{% extends "base.html" %}
+{% block content %}
+<div class="text-center">
+    <h1>Welcome to Symphoni</h1>
+    <p>Orchestrate multi-model conversations with ease.</p>
+    {% if not current_user.is_authenticated %}
+        <a href="{{ url_for('auth.login') }}" class="btn btn-primary">Login</a>
+        <a href="{{ url_for('auth.register') }}" class="btn btn-secondary">Register</a>
+    {% else %}
+        <a href="{{ url_for('main.setup') }}" class="btn btn-primary">Setup Conversation</a>
+        <a href="{{ url_for('conversation_bp.conversation') }}" class="btn btn-secondary">Start Conversation</a>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,255 @@
+<!-- app/templates/setup.html -->
+{% extends "base.html" %}
+{% block content %}
+<div class="container my-4">
+    <h2>Setup Your Conversation</h2>
+    <form method="POST" action="{{ url_for('main.setup') }}">
+        {{ form.hidden_tag() }} <!-- Renders hidden fields like CSRF token -->
+
+        <!-- Configuration Name -->
+        <div class="mb-3">
+            {{ form.config_name.label(class="form-label") }}
+            {{ form.config_name(class="form-control", placeholder="Enter a name for this configuration") }}
+            {% if form.config_name.errors %}
+                <div class="text-danger">
+                    {% for error in form.config_name.errors %}
+                        <small>{{ error }}</small>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+
+        <!-- Number of Inferences -->
+        <div class="mb-4">
+            {{ form.inference_count.label(class="form-label") }}
+            <div class="d-flex gap-3">
+                <!-- Adjust based on form field type -->
+                <input type="number" name="inference_count" class="form-control" min="1" max="100" value="{{ form.inference_count.data or 18 }}">
+                <!-- Alternatively, if using radio buttons, iterate through options -->
+            </div>
+            {% if form.inference_count.errors %}
+                <div class="text-danger">
+                    {% for error in form.inference_count.errors %}
+                        <small>{{ error }}</small>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+
+        <!-- Available Functions -->
+        <div class="mb-4">
+            <h4>Available Functions</h4>
+            <div id="available-functions" class="d-flex flex-wrap gap-2">
+                {% for slot_num in range(1,10) %}
+                    {% set slot_id = 'slot_' ~ slot_num|string %}
+                    <div class="available-function badge bg-secondary p-2 draggable" draggable="true" data-slot-id="{{ slot_id }}">
+                        {% if models_info.get(slot_id) and models_info[slot_id].get('nickname') %}
+                            {{ models_info[slot_id]['nickname'] }}
+                        {% else %}
+                            Slot{{ slot_num }}
+                        {% endif %}
+                    </div>
+                {% endfor %}
+                <!-- OmniCall Function -->
+                <div class="available-function badge bg-info p-2 draggable" draggable="true" data-function="omnicall">
+                    OmniCall
+                </div>
+            </div>
+        </div>
+
+        <!-- Arrange Model Sequence -->
+        <div class="mb-4">
+            <h4>Arrange Model Sequence:</h4>
+            <p>Drag and drop to arrange the order of model slots. You can insert OmniCall multiple times.</p>
+            <ul id="model-order" class="list-group mb-3">
+                {% if model_order and model_order|length > 0 %}
+                    {% for idx, slot in enumerate(model_order, start=1) %}
+                        <li class="list-group-item d-flex align-items-center" draggable="true">
+                            <span class="badge bg-primary me-2">{{ idx }}</span>
+                            <span class="flex-grow-1 slot-content">{{ slot }}</span>
+                            <button type="button" class="btn btn-sm btn-danger remove-slot">Remove</button>
+                        </li>
+                    {% endfor %}
+                {% else %}
+                    <!-- Default slots if no model_order is set -->
+                    {% for slot_num in range(1,19) %}
+                        <li class="list-group-item d-flex align-items-center" draggable="true">
+                            <span class="badge bg-primary me-2">{{ slot_num }}</span>
+                            <span class="flex-grow-1 slot-content"></span>
+                            <button type="button" class="btn btn-sm btn-danger remove-slot">Remove</button>
+                        </li>
+                    {% endfor %}
+                {% endif %}
+            </ul>
+            {{ form.model_order(id='model_order') }} <!-- Hidden input for model_order -->
+        </div>
+
+        <!-- Save Configuration Button -->
+        <button type="submit" class="btn btn-primary">{{ form.submit.label.text }}</button>
+    </form>
+</div>
+
+<!-- Drag-and-Drop Script -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const inferenceInput = document.querySelector('input[name="inference_count"]');
+        const modelOrderList = document.getElementById('model-order');
+        const modelOrderInput = document.getElementById('model_order'); // Ensure this matches the form field's id
+        const availableFunctions = document.getElementById('available-functions');
+
+        // Function to update the number of slots based on selected inferences
+        function updateSlots(count) {
+            modelOrderList.innerHTML = ''; // Clear existing slots
+            for (let i = 1; i <= count; i++) {
+                const li = document.createElement('li');
+                li.classList.add('list-group-item', 'd-flex', 'align-items-center');
+                li.setAttribute('draggable', 'true');
+
+                const badge = document.createElement('span');
+                badge.classList.add('badge', 'bg-primary', 'me-2');
+                badge.textContent = i;
+
+                const slotContent = document.createElement('span');
+                slotContent.classList.add('flex-grow-1', 'slot-content');
+                slotContent.textContent = ''; // Blank by default
+
+                const removeBtn = document.createElement('button');
+                removeBtn.type = 'button';
+                removeBtn.classList.add('btn', 'btn-sm', 'btn-danger', 'remove-slot');
+                removeBtn.textContent = 'Remove';
+
+                li.appendChild(badge);
+                li.appendChild(slotContent);
+                li.appendChild(removeBtn);
+
+                modelOrderList.appendChild(li);
+            }
+            addSlotEventListeners(); // Re-add event listeners
+            updateModelOrderInput(); // Update hidden input
+        }
+
+        // Function to handle inference count changes
+        inferenceInput.addEventListener('input', (e) => {
+            const selectedCount = parseInt(e.target.value);
+            if (selectedCount >= 1 && selectedCount <= 100) { // Adjust based on allowed range
+                updateSlots(selectedCount);
+            }
+        });
+
+        // Function to add event listeners to slots
+        function addSlotEventListeners() {
+            const slots = document.querySelectorAll('#model-order .list-group-item');
+            slots.forEach(slot => {
+                // Drag events
+                slot.addEventListener('dragstart', handleDragStart, false);
+                slot.addEventListener('dragover', handleDragOver, false);
+                slot.addEventListener('drop', handleDrop, false);
+                slot.addEventListener('dragend', handleDragEnd, false);
+
+                // Remove button event
+                const removeBtn = slot.querySelector('.remove-slot');
+                removeBtn.addEventListener('click', () => {
+                    slot.remove();
+                    updateModelOrderInput();
+                });
+            });
+        }
+
+        // Drag and Drop Handlers
+        let dragSrcEl = null;
+
+        function handleDragStart(e) {
+            dragSrcEl = this;
+            e.dataTransfer.effectAllowed = 'move';
+            e.dataTransfer.setData('text/plain', this.querySelector('.slot-content').textContent);
+            this.classList.add('dragging');
+        }
+
+        function handleDragOver(e) {
+            if (e.preventDefault) {
+                e.preventDefault(); // Necessary to allow drop
+            }
+            e.dataTransfer.dropEffect = 'move';
+            return false;
+        }
+
+        function handleDrop(e) {
+            if (e.stopPropagation) {
+                e.stopPropagation(); // Prevent default action
+            }
+
+            if (dragSrcEl !== this) {
+                const draggedData = e.dataTransfer.getData('text/plain');
+                const targetContent = this.querySelector('.slot-content');
+
+                // Swap the content
+                const temp = targetContent.textContent;
+                targetContent.textContent = draggedData;
+                dragSrcEl.querySelector('.slot-content').textContent = temp;
+
+                updateModelOrderInput();
+            }
+            return false;
+        }
+
+        function handleDragEnd(e) {
+            this.classList.remove('dragging');
+        }
+
+        // Handle dragging from Available Functions to Slots
+        availableFunctions.querySelectorAll('.draggable').forEach(func => {
+            func.addEventListener('dragstart', (e) => {
+                e.dataTransfer.setData('text/plain', func.dataset.slotId || func.dataset.function || '');
+                e.dataTransfer.effectAllowed = 'copyMove';
+            });
+        });
+
+        modelOrderList.addEventListener('dragover', (e) => {
+            e.preventDefault();
+        });
+
+        modelOrderList.addEventListener('drop', (e) => {
+            e.preventDefault();
+            const data = e.dataTransfer.getData('text/plain');
+            const target = e.target.closest('.list-group-item');
+            if (target) {
+                const slotContent = target.querySelector('.slot-content');
+                if (data.startsWith('slot_')) {
+                    // It's a model slot from Available Functions
+                    const funcElement = availableFunctions.querySelector(`.available-function[data-slot-id="${data}"]`);
+                    const funcName = funcElement ? funcElement.textContent.trim() : 'Unknown Function';
+                    slotContent.textContent = funcName;
+                } else if (data === 'omnicall') {
+                    // It's OmniCall
+                    slotContent.textContent = 'OmniCall';
+                }
+                updateModelOrderInput();
+            }
+        });
+
+        // Function to update the hidden input for model_order
+        function updateModelOrderInput() {
+            const slots = modelOrderList.querySelectorAll('.list-group-item .slot-content');
+            const order = Array.from(slots).map(slot => slot.textContent.trim()).filter(name => name !== '');
+            modelOrderInput.value = JSON.stringify(order);
+        }
+
+        // Add event listeners to nickname inputs to update Available Functions in real-time
+        const nicknameInputs = document.querySelectorAll('input[name^="nickname_slot_"]');
+        nicknameInputs.forEach(input => {
+            input.addEventListener('input', (e) => {
+                const slotId = e.target.name.split('_').pop(); // e.g., '1' from 'nickname_slot_1'
+                const availableFunc = availableFunctions.querySelector(`.available-function[data-slot-id="slot_${slotId}"]`);
+                if (availableFunc) {
+                    const newNickname = e.target.value.trim();
+                    availableFunc.textContent = newNickname !== '' ? newNickname : `Slot${slotId}`;
+                }
+            });
+        });
+
+        // Initial Setup based on existing model_order or default to selected inferences
+        const initialInference = parseInt(inferenceInput.value) || 18;
+        updateSlots(initialInference);
+    });
+</script>
+{% endblock %}

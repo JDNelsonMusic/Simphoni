@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Conversation Ended</h2>
+<div class="mb-3" style="max-height: 60vh; overflow-y: auto;">
+    <ul class="list-group">
+        {% for entry in conversation_history %}
+            <li class="list-group-item bg-dark border-secondary">
+                <strong>{{ entry.speaker }}</strong> <span class="text-muted">[{{ entry.timestamp }}]</span>: {{ entry.message }}
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+<form method="POST" action="{{ url_for('conversation_bp.end_conversation') }}">
+    <div class="mb-3">
+        <label for="file_name" class="form-label">Download Conversation As:</label>
+        <input type="text" class="form-control" id="file_name" name="file_name" placeholder="e.g., my_conversation.txt">
+    </div>
+    <button type="submit" class="btn btn-success">Download</button>
+</form>
+{% endblock %}
