@@ -106,9 +106,6 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-# Celery beat schedule file
-celerybeat-schedule
-
 # Logs
 logs/
 *.log
