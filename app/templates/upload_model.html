@@ -1,34 +1,62 @@
 <!-- app/templates/upload_model.html -->
 {% extends "base.html" %}
+
+{% block title %}Upload Custom Model{% endblock %}
+
 {% block content %}
 <div class="row justify-content-center">
-    <div class="col-md-6">
-        <h2>Upload Custom Model</h2>
+    <div class="col-md-8 col-lg-6">
+        <h2 class="mb-4 text-center">Upload a Custom Model</h2>
         <form method="POST" action="{{ url_for('main.upload_model') }}" enctype="multipart/form-data">
+            {{ form.hidden_tag() }} <!-- Renders hidden fields like CSRF token -->
+
+            <!-- Model Name Field -->
             <div class="mb-3">
-                <label for="model_name" class="form-label">Model Name:</label>
-                <input type="text" class="form-control" id="model_name" name="model_name" placeholder="Enter a name for your model" required>
-                {% for error in form.model_name.errors %}
-                    <small class="text-danger">{{ error }}</small>
-                {% endfor %}
+                {{ form.model_name.label(class="form-label") }}
+                {{ form.model_name(class="form-control", placeholder="Enter a name for your model", aria="model-name") }}
+                {% if form.model_name.errors %}
+                    <div class="text-danger">
+                        {% for error in form.model_name.errors %}
+                            <small>{{ error }}</small>
+                        {% endfor %}
+                    </div>
+                {% endif %}
             </div>
+
+            <!-- Model Description Field -->
             <div class="mb-3">
-                <label for="model_description" class="form-label">Model Description:</label>
-                <textarea class="form-control" id="model_description" name="model_description" rows="3" placeholder="Enter a description for your model"></textarea>
-                {% for error in form.model_description.errors %}
-                    <small class="text-danger">{{ error }}</small>
-                {% endfor %}
+                {{ form.model_description.label(class="form-label") }}
+                {{ form.model_description(class="form-control", placeholder="Enter a description for your model", rows="4", aria="model-description") }}
+                {% if form.model_description.errors %}
+                    <div class="text-danger">
+                        {% for error in form.model_description.errors %}
+                            <small>{{ error }}</small>
+                        {% endfor %}
+                    </div>
+                {% endif %}
             </div>
-            <div class="mb-3">
-                <label for="model_file" class="form-label">Upload Model File:</label>
-                <input type="file" class="form-control" id="model_file" name="model_file" accept=".json,.yaml,.yml" required>
-                <div class="form-text">Allowed file types: json, yaml, yml.</div>
-                {% for error in form.model_file.errors %}
-                    <small class="text-danger">{{ error }}</small>
-                {% endfor %}
+
+            <!-- Model File Upload Field -->
+            <div class="mb-4">
+                {{ form.model_file.label(class="form-label") }}
+                {{ form.model_file(class="form-control", accept=".json,.yaml,.yml", aria="model-file") }}
+                <div class="form-text">Allowed file types: <strong>.json</strong>, <strong>.yaml</strong>, <strong>.yml</strong>.</div>
+                {% if form.model_file.errors %}
+                    <div class="text-danger">
+                        {% for error in form.model_file.errors %}
+                            <small>{{ error }}</small>
+                        {% endfor %}
+                    </div>
+                {% endif %}
             </div>
-            <button type="submit" class="btn btn-primary">Upload Model</button>
+
+            <!-- Submit Button -->
+            <div class="d-grid">
+                {{ form.submit(class="btn btn-success btn-lg") }}
+            </div>
         </form>
+        <hr>
+        <p class="text-center">Back to <a href="{{ url_for('main.dashboard') }}">Dashboard</a>.</p>
     </div>
 </div>
 {% endblock %}

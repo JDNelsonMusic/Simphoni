@@ -1,37 +1,74 @@
 <!-- app/templates/register.html -->
 {% extends "base.html" %}
+
+{% block title %}Register{% endblock %}
+
 {% block content %}
-  <h2>Register</h2>
-  <form method="post" action="{{ url_for('auth.register') }}">
-    {{ form.hidden_tag() }}
-    <p>
-      {{ form.username.label }}<br>
-      {{ form.username(class="form-control", size=32) }}
-      {% for error in form.username.errors %}
-          <small class="text-danger">{{ error }}</small>
-      {% endfor %}
-    </p>
-    <p>
-      {{ form.email.label }}<br>
-      {{ form.email(class="form-control", size=32) }}
-      {% for error in form.email.errors %}
-          <small class="text-danger">{{ error }}</small>
-      {% endfor %}
-    </p>
-    <p>
-      {{ form.password.label }}<br>
-      {{ form.password(class="form-control", size=32) }}
-      {% for error in form.password.errors %}
-          <small class="text-danger">{{ error }}</small>
-      {% endfor %}
-    </p>
-    <p>
-      {{ form.confirm_password.label }}<br>
-      {{ form.confirm_password(class="form-control", size=32) }}
-      {% for error in form.confirm_password.errors %}
-          <small class="text-danger">{{ error }}</small>
-      {% endfor %}
-    </p>
-    <p><input type="submit" class="btn btn-primary" value="Register"></p>
-  </form>
+<div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+        <h2 class="mb-4 text-center">Create Your Symphoni Account</h2>
+        <form method="POST" action="{{ url_for('auth.register') }}">
+            {{ form.hidden_tag() }} <!-- Renders hidden fields like CSRF token -->
+
+            <!-- Username Field -->
+            <div class="mb-3">
+                {{ form.username.label(class="form-label") }}
+                {{ form.username(class="form-control", placeholder="Choose a username", aria="username") }}
+                {% if form.username.errors %}
+                    <div class="text-danger">
+                        {% for error in form.username.errors %}
+                            <small>{{ error }}</small>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+
+            <!-- Email Field -->
+            <div class="mb-3">
+                {{ form.email.label(class="form-label") }}
+                {{ form.email(class="form-control", placeholder="Enter your email address", aria="email") }}
+                {% if form.email.errors %}
+                    <div class="text-danger">
+                        {% for error in form.email.errors %}
+                            <small>{{ error }}</small>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+
+            <!-- Password Field -->
+            <div class="mb-3">
+                {{ form.password.label(class="form-label") }}
+                {{ form.password(class="form-control", placeholder="Create a password", aria="password") }}
+                {% if form.password.errors %}
+                    <div class="text-danger">
+                        {% for error in form.password.errors %}
+                            <small>{{ error }}</small>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+
+            <!-- Confirm Password Field -->
+            <div class="mb-4">
+                {{ form.confirm_password.label(class="form-label") }}
+                {{ form.confirm_password(class="form-control", placeholder="Confirm your password", aria="confirm-password") }}
+                {% if form.confirm_password.errors %}
+                    <div class="text-danger">
+                        {% for error in form.confirm_password.errors %}
+                            <small>{{ error }}</small>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+
+            <!-- Submit Button -->
+            <div class="d-grid">
+                {{ form.submit(class="btn btn-success btn-lg") }}
+            </div>
+        </form>
+        <hr>
+        <p class="text-center">Already have an account? <a href="{{ url_for('auth.login') }}">Login here</a>.</p>
+    </div>
+</div>
 {% endblock %}

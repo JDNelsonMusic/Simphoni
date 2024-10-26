@@ -1,8 +1,9 @@
 # app/__init__.py
+
 from flask import Flask
 from flask_wtf import CSRFProtect
-from .extensions import db, migrate, login_manager, session
-from .celery_app import make_celery, celery
+from .extensions import db, migrate, login_manager, session, make_celery, celery
+from .celery_app import make_celery  # Removed as Celery is now handled in extensions.py
 import os
 import logging
 from logging.handlers import RotatingFileHandler
@@ -19,7 +20,7 @@ def create_app():
     csrf = CSRFProtect(app)
 
     # Initialize Celery with app context
-    make_celery(app)  # This configures the celery instance
+    make_celery(app)  # Configures the celery instance from extensions.py
 
     # Register Blueprints
     from app.routes.main import main_bp

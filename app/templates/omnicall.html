@@ -1,12 +1,97 @@
+<!-- app/templates/omnicall.html -->
 {% extends "base.html" %}
-{% block content %}
-<h2>OmniCall Input</h2>
-<form method="POST" action="{{ url_for('conversation_bp.conversation') }}">
-    <div class="mb-3">
-        <label for="user_input" class="form-label">Your Input:</label>
-        <textarea class="form-control" id="user_input" name="user_input" rows="3" placeholder="Enter your input here..." required></textarea>
-    </div>
-    <button type="submit" class="btn btn-primary">Submit Input</button>
-</form>
-{% endblock %}
 
+{% block title %}OmniCall{% endblock %}
+
+{% block content %}
+<div class="container my-4">
+    <!-- Breadcrumb Navigation -->
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ url_for('main.dashboard') }}">Dashboard</a></li>
+            <li class="breadcrumb-item active" aria-current="page">OmniCall</li>
+        </ol>
+    </nav>
+
+    <!-- OmniCall Header -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>OmniCall Operations</h2>
+        <div>
+            <a href="{{ url_for('main.dashboard') }}" class="btn btn-secondary" title="Back to Dashboard">
+                <i class="bi bi-arrow-left"></i> Dashboard
+            </a>
+        </div>
+    </div>
+
+    <!-- OmniCall Command Form -->
+    <div class="card mb-4">
+        <div class="card-body">
+            <form method="POST" action="{{ url_for('omnicall_bp.execute_command') }}">
+                {{ form.hidden_tag() }} <!-- Renders hidden fields like CSRF token -->
+
+                <!-- Command Input Field -->
+                <div class="mb-3">
+                    {{ form.command.label(class="form-label") }}
+                    {{ form.command(class="form-control", placeholder="Enter OmniCall command...", aria="command-input") }}
+                    {% if form.command.errors %}
+                        <div class="text-danger">
+                            {% for error in form.command.errors %}
+                                <small>{{ error }}</small>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+
+                <!-- Execute Button -->
+                <div class="d-grid">
+                    {{ form.submit(class="btn btn-primary btn-lg") }}
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- OmniCall Response Section -->
+    <div class="card">
+        <div class="card-header bg-info text-white">
+            <h5 class="card-title mb-0">OmniCall Response</h5>
+        </div>
+        <div class="card-body" id="omnicall-response">
+            {% if response %}
+                <p>{{ response }}</p>
+            {% else %}
+                <p>No OmniCall commands executed yet.</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<!-- Optional: JavaScript for Real-Time Updates -->
+<script>
+    // Implement AJAX calls for executing OmniCall commands without page reload
+    document.querySelector('form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const form = e.target;
+        const formData = new FormData(form);
+
+        fetch(form.action, {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest'
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            const responseContainer = document.getElementById('omnicall-response');
+            if(data.success){
+                responseContainer.innerHTML = `<p>${data.response}</p>`;
+            } else {
+                responseContainer.innerHTML = `<p class="text-danger">${data.error}</p>`;
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    });
+</script>
+{% endblock %}

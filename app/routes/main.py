@@ -2,9 +2,9 @@
 
 from flask import Blueprint, render_template, redirect, url_for, flash, request, session
 from flask_login import login_required, current_user
-from app import db
-from app.models import Configuration, CustomModel
-from app.forms import SetupForm
+from app.extensions import db
+from app.models import Configuration, CustomModel, Conversation, Message
+from app.forms import SetupForm, ConversationForm
 import json
 from werkzeug.utils import secure_filename
 import os
@@ -31,7 +31,7 @@ def dashboard():
     """User dashboard route."""
     configurations = Configuration.query.filter_by(owner=current_user).all()
     custom_models = CustomModel.query.filter_by(owner=current_user).all()
-    conversations = current_user.conversations  # Assuming relationship is set
+    conversations = Conversation.query.filter_by(owner=current_user).all()
     recent_activity = []  # Implement if needed
     return render_template('dashboard.html', configurations=configurations, custom_models=custom_models, conversations=conversations, recent_activity=recent_activity)
 
@@ -52,7 +52,7 @@ def upload_model():
             return redirect(request.url)
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
-            upload_folder = os.path.join('app', 'uploaded_models')
+            upload_folder = os.path.join(current_app.root_path, 'uploaded_models')
             os.makedirs(upload_folder, exist_ok=True)
             file_path = os.path.join(upload_folder, filename)
             file.save(file_path)
@@ -225,20 +225,40 @@ def setup():
 def view_configuration(config_id):
     """
     Route to view a specific configuration based on config_id.
+    Parses the model_order JSON and passes it to the template.
     """
     configuration = Configuration.query.filter_by(id=config_id, owner=current_user).first()
     if not configuration:
         flash('Configuration not found.', 'warning')
         return redirect(url_for('main.dashboard'))
     
-    # Assuming you have a template named 'view_configuration.html'
-    return render_template('view_configuration.html', configuration=configuration)
+    # Parse the model_order JSON string
+    try:
+        model_order = json.loads(configuration.model_order)
+    except json.JSONDecodeError:
+        model_order = []
+        flash('Invalid model order format.', 'warning')
+    
+    associated_models = []  # Optionally, fetch associated models based on model_order
+    # Example: Extract model names from model_order and fetch CustomModel instances
+    for model_key in model_order:
+        if model_key.startswith('slot_'):
+            model_name = models_info.get(model_key, {}).get('model_name', '')
+            if model_name:
+                model = CustomModel.query.filter_by(name=model_name, owner=current_user).first()
+                if model:
+                    associated_models.append(model)
+    
+    conversations = Conversation.query.filter_by(configuration=configuration, owner=current_user).all()
+    
+    return render_template('view_configuration.html', configuration=configuration, model_order=model_order, associated_models=associated_models, conversations=conversations)
 
 @main_bp.route('/configuration/edit/<int:config_id>', methods=['GET', 'POST'])
 @login_required
 def edit_configuration(config_id):
     """
     Route to edit a specific configuration based on config_id.
+    Utilizes SetupForm to handle updates.
     """
     configuration = Configuration.query.filter_by(id=config_id, owner=current_user).first()
     if not configuration:
@@ -255,7 +275,7 @@ def edit_configuration(config_id):
         try:
             db.session.commit()
             flash('Configuration updated successfully.', 'success')
-            return redirect(url_for('main.dashboard'))
+            return redirect(url_for('main.view_configuration', config_id=configuration.id))
         except Exception as e:
             db.session.rollback()
             flash('An error occurred while updating the configuration. Please try again.', 'danger')
@@ -267,7 +287,21 @@ def edit_configuration(config_id):
     form.inference_count.data = configuration.inference_count
     form.model_order.data = configuration.model_order
 
-    return render_template('edit_configuration.html', form=form, configuration=configuration)
+    # Prepare models_info for the template
+    models_info = {}
+    model_order = json.loads(configuration.model_order) if configuration.model_order else []
+    for slot_num in range(1, 10):
+        slot_id = f'slot_{slot_num}'
+        models_info[slot_id] = {
+            'nickname': '',
+            'role': '',
+            'model_name': '',
+            'instruct': '',
+            'context_window': 2048,
+            'options': {}
+        }
+
+    return render_template('edit_configuration.html', form=form, configuration=configuration, models_info=models_info, model_order=model_order)
 
 @main_bp.route('/configuration/delete/<int:config_id>', methods=['POST'])
 @login_required

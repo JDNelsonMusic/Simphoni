@@ -1,6 +1,8 @@
 <!-- app/templates/dashboard.html -->
 {% extends "base.html" %}
 
+{% block title %}Dashboard{% endblock %}
+
 {% block content %}
 <div class="container my-4">
     <!-- Welcome Section -->
@@ -15,27 +17,30 @@
     <div class="row mb-4">
         <!-- Configurations Card -->
         <div class="col-md-4">
-            <div class="card text-bg-primary mb-3">
-                <div class="card-body">
-                    <h5 class="card-title">Configurations</h5>
+            <div class="card text-bg-primary mb-3 h-100">
+                <div class="card-body d-flex flex-column justify-content-center align-items-center">
+                    <i class="bi bi-gear-wide-connected display-4"></i>
+                    <h5 class="card-title mt-3">Configurations</h5>
                     <p class="card-text display-4">{{ configurations | length }}</p>
                 </div>
             </div>
         </div>
         <!-- Custom Models Card -->
         <div class="col-md-4">
-            <div class="card text-bg-success mb-3">
-                <div class="card-body">
-                    <h5 class="card-title">Custom Models</h5>
+            <div class="card text-bg-success mb-3 h-100">
+                <div class="card-body d-flex flex-column justify-content-center align-items-center">
+                    <i class="bi bi-robot display-4"></i>
+                    <h5 class="card-title mt-3">Custom Models</h5>
                     <p class="card-text display-4">{{ custom_models | length }}</p>
                 </div>
             </div>
         </div>
         <!-- Conversations Card -->
         <div class="col-md-4">
-            <div class="card text-bg-warning mb-3">
-                <div class="card-body">
-                    <h5 class="card-title">Conversations</h5>
+            <div class="card text-bg-warning mb-3 h-100">
+                <div class="card-body d-flex flex-column justify-content-center align-items-center">
+                    <i class="bi bi-chat-dots display-4"></i>
+                    <h5 class="card-title mt-3">Conversations</h5>
                     <p class="card-text display-4">{{ conversations | length }}</p>
                 </div>
             </div>
@@ -46,7 +51,9 @@
     <div class="row mb-5">
         <div class="col">
             <h3>Your Configurations</h3>
-            <a href="{{ url_for('main.setup') }}" class="btn btn-primary mb-3">Create New Configuration</a>
+            <a href="{{ url_for('main.setup') }}" class="btn btn-primary mb-3">
+                <i class="bi bi-plus-circle"></i> Create New Configuration
+            </a>
             {% if configurations %}
                 <div class="table-responsive">
                     <table class="table table-striped table-hover align-middle">
@@ -95,7 +102,9 @@
     <div class="row mb-5">
         <div class="col">
             <h3>Your Custom Models</h3>
-            <a href="{{ url_for('main.upload_model') }}" class="btn btn-success mb-3">Upload New Custom Model</a>
+            <a href="{{ url_for('main.upload_model') }}" class="btn btn-success mb-3">
+                <i class="bi bi-upload"></i> Upload New Custom Model
+            </a>
             {% if custom_models %}
                 <div class="table-responsive">
                     <table class="table table-striped table-hover align-middle">
@@ -141,7 +150,9 @@
     <div class="row mb-5">
         <div class="col">
             <h3>Your Conversations</h3>
-            <a href="{{ url_for('conversation_bp.conversation') }}" class="btn btn-warning mb-3">Start New Conversation</a>
+            <a href="{{ url_for('conversation_bp.start_conversation') }}" class="btn btn-warning mb-3">
+                <i class="bi bi-chat-dots-fill"></i> Start New Conversation
+            </a>
             {% if conversations %}
                 <div class="table-responsive">
                     <table class="table table-striped table-hover align-middle">
@@ -177,7 +188,7 @@
                 </div>
             {% else %}
                 <div class="alert alert-info" role="alert">
-                    You have no conversations yet. <a href="{{ url_for('conversation_bp.conversation') }}" class="alert-link">Start one now.</a>
+                    You have no conversations yet. <a href="{{ url_for('conversation_bp.start_conversation') }}" class="alert-link">Start one now.</a>
                 </div>
             {% endif %}
         </div>
@@ -190,7 +201,7 @@
             {% if recent_activity %}
                 <ul class="list-group">
                     {% for activity in recent_activity %}
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <li class="list-group-item d-flex justify-content-between align-items-center bg-dark border-secondary">
                             <div>
                                 <strong>{{ activity.timestamp.strftime('%Y-%m-%d %H:%M') }}</strong>: {{ activity.message }}
                             </div>

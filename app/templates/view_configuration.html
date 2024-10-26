@@ -1,6 +1,8 @@
 <!-- app/templates/view_configuration.html -->
 {% extends "base.html" %}
 
+{% block title %}View Configuration{% endblock %}
+
 {% block content %}
 <div class="container my-4">
     <!-- Breadcrumb Navigation -->
@@ -52,9 +54,9 @@
             <h5 class="card-title mb-0">Model Order</h5>
         </div>
         <div class="card-body">
-            {% if configuration.model_order %}
+            {% if model_order %}
                 <ol>
-                    {% for idx, slot in enumerate(configuration.model_order | from_json, start=1) %}
+                    {% for idx, slot in enumerate(model_order, start=1) %}
                         <li>{{ slot }}</li>
                     {% endfor %}
                 </ol>
@@ -70,10 +72,10 @@
             <h5 class="card-title mb-0">Associated Models</h5>
         </div>
         <div class="card-body">
-            {% if configuration.associated_models %}
+            {% if associated_models %}
                 <ul class="list-group list-group-flush">
-                    {% for model in configuration.associated_models %}
-                        <li class="list-group-item">
+                    {% for model in associated_models %}
+                        <li class="list-group-item bg-dark border-secondary">
                             <strong>{{ model.name }}</strong>: {{ model.description }}
                         </li>
                     {% endfor %}
@@ -90,11 +92,13 @@
             <h5 class="card-title mb-0">Related Conversations</h5>
         </div>
         <div class="card-body">
-            {% if configuration.conversations %}
+            {% if conversations %}
                 <ul class="list-group list-group-flush">
-                    {% for convo in configuration.conversations %}
-                        <li class="list-group-item">
-                            <a href="{{ url_for('conversation_bp.view_conversation', convo_id=convo.id) }}">{{ convo.title }}</a> - Last updated at {{ convo.updated_at.strftime('%Y-%m-%d %H:%M') }}
+                    {% for convo in conversations %}
+                        <li class="list-group-item bg-dark border-secondary">
+                            <a href="{{ url_for('conversation_bp.view_conversation', convo_id=convo.id) }}" class="text-decoration-none text-light">
+                                {{ convo.title }}
+                            </a> - Last updated at {{ convo.updated_at.strftime('%Y-%m-%d %H:%M') }}
                         </li>
                     {% endfor %}
                 </ul>

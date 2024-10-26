@@ -4,6 +4,7 @@
 body {
     background-color: #121212;
     color: #ffffff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 /* Purple header styling */
@@ -11,15 +12,32 @@ body {
     background-color: #6a0dad !important;
 }
 
+/* Link colors */
 a {
     color: #bb86fc;
+    text-decoration: none;
 }
 
 a:hover {
     color: #ffffff;
+    text-decoration: underline;
 }
 
 /* Scrollbar styling for conversation display */
+#conversation-messages::-webkit-scrollbar {
+    width: 12px;
+}
+
+#conversation-messages::-webkit-scrollbar-track {
+    background: #1e1e1e;
+}
+
+#conversation-messages::-webkit-scrollbar-thumb {
+    background-color: #bb86fc;
+    border-radius: 6px;
+    border: 3px solid #1e1e1e;
+}
+
 .list-group-item {
     background-color: #1e1e1e;
     color: #ffffff;
@@ -32,6 +50,108 @@ a:hover {
 /* Dragging styles */
 .list-group-item.dragging {
     opacity: 0.5;
+    border: 2px dashed #bb86fc;
+}
+
+/* Available Functions and Model Order styling */
+.available-function {
+    cursor: grab;
+}
+
+.available-function:active {
+    cursor: grabbing;
+}
+
+#model-order .list-group-item {
+    cursor: move;
+}
+
+/* Form controls */
+.form-control {
+    background-color: #2c2c2c;
+    color: #ffffff;
+    border: 1px solid #444444;
+}
+
+.form-control:focus {
+    background-color: #3a3a3a;
+    color: #ffffff;
+    border-color: #bb86fc;
+    box-shadow: none;
+}
+
+/* Buttons */
+.btn-primary {
+    background-color: #bb86fc;
+    border-color: #bb86fc;
+}
+
+.btn-primary:hover {
+    background-color: #a776e6;
+    border-color: #a776e6;
+}
+
+.btn-success {
+    background-color: #03dac6;
+    border-color: #03dac6;
+}
+
+.btn-success:hover {
+    background-color: #02b3b0;
+    border-color: #02b3b0;
+}
+
+.btn-warning {
+    background-color: #f9a825;
+    border-color: #f9a825;
+}
+
+.btn-warning:hover {
+    background-color: #c17900;
+    border-color: #c17900;
+}
+
+.btn-danger {
+    background-color: #cf6679;
+    border-color: #cf6679;
+}
+
+.btn-danger:hover {
+    background-color: #b55f70;
+    border-color: #b55f70;
+}
+
+/* Alerts */
+.alert-primary {
+    background-color: #6a0dad;
+    border-color: #6a0dad;
+}
+
+.alert-success {
+    background-color: #03dac6;
+    border-color: #03dac6;
+}
+
+.alert-info {
+    background-color: #2196f3;
+    border-color: #2196f3;
+}
+
+.alert-warning {
+    background-color: #ff9800;
+    border-color: #ff9800;
+}
+
+.alert-danger {
+    background-color: #cf6679;
+    border-color: #cf6679;
+}
+
+/* Footer */
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
 
 /* Additional custom styles can be added here */

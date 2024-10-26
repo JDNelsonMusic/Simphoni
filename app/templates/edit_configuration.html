@@ -1,7 +1,7 @@
-<!-- app/templates/setup.html -->
+<!-- app/templates/edit_configuration.html -->
 {% extends "base.html" %}
 
-{% block title %}Setup Configuration{% endblock %}
+{% block title %}Edit Configuration{% endblock %}
 
 {% block content %}
 <div class="container my-4">
@@ -9,19 +9,20 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ url_for('main.dashboard') }}">Dashboard</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Setup Configuration</li>
+            <li class="breadcrumb-item"><a href="{{ url_for('main.view_configuration', config_id=configuration.id) }}">View Configuration</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Edit Configuration</li>
         </ol>
     </nav>
 
-    <!-- Setup Configuration Form -->
-    <h2>Setup Your Configuration</h2>
-    <form method="POST" action="{{ url_for('main.setup') }}">
+    <!-- Edit Configuration Form -->
+    <h2>Edit Configuration</h2>
+    <form method="POST" action="{{ url_for('main.edit_configuration', config_id=configuration.id) }}">
         {{ form.hidden_tag() }} <!-- Renders hidden fields like CSRF token -->
 
         <!-- Configuration Name -->
         <div class="mb-3">
             {{ form.config_name.label(class="form-label") }}
-            {{ form.config_name(class="form-control", placeholder="Enter configuration name", aria="config-name") }}
+            {{ form.config_name(class="form-control", placeholder="Enter a name for this configuration") }}
             {% if form.config_name.errors %}
                 <div class="text-danger">
                     {% for error in form.config_name.errors %}
@@ -31,10 +32,13 @@
             {% endif %}
         </div>
 
-        <!-- Inference Count -->
+        <!-- Number of Inferences -->
         <div class="mb-4">
             {{ form.inference_count.label(class="form-label") }}
-            {{ form.inference_count(class="form-control", min="1", max="100", aria="inference-count") }}
+            <div class="d-flex gap-3">
+                {{ form.inference_count(class="form-control", min="1", max="100") }}
+                <!-- Alternatively, use radio buttons or a dropdown if preferred -->
+            </div>
             {% if form.inference_count.errors %}
                 <div class="text-danger">
                     {% for error in form.inference_count.errors %}
@@ -98,9 +102,9 @@
 
         <!-- Save Configuration Button -->
         <button type="submit" class="btn btn-primary">
-            <i class="bi bi-save"></i> Save Configuration
+            <i class="bi bi-save"></i> Save Changes
         </button>
-        <a href="{{ url_for('main.dashboard') }}" class="btn btn-secondary ms-2">
+        <a href="{{ url_for('main.view_configuration', config_id=configuration.id) }}" class="btn btn-secondary ms-2">
             <i class="bi bi-arrow-left"></i> Cancel
         </a>
     </form>
