@@ -1,0 +1,67 @@
+<!-- app/templates/edit_configuration.html -->
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container my-4">
+    <h2>Edit Configuration</h2>
+    <form method="POST" action="{{ url_for('main.edit_configuration', config_id=configuration.id) }}">
+        {{ form.hidden_tag() }} <!-- CSRF token and hidden fields -->
+
+        <!-- Configuration Name -->
+        <div class="mb-3">
+            {{ form.config_name.label(class="form-label") }}
+            {{ form.config_name(class="form-control", placeholder="Enter configuration name") }}
+            {% if form.config_name.errors %}
+                <div class="text-danger">
+                    {% for error in form.config_name.errors %}
+                        <small>{{ error }}</small>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+
+        <!-- Number of Inferences -->
+        <div class="mb-4">
+            {{ form.inference_count.label(class="form-label") }}
+            {{ form.inference_count(class="form-control", min="1", max="100") }}
+            {% if form.inference_count.errors %}
+                <div class="text-danger">
+                    {% for error in form.inference_count.errors %}
+                        <small>{{ error }}</small>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+
+        <!-- Model Order -->
+        <div class="mb-4">
+            {{ form.model_order.label(class="form-label") }}
+            {{ form.model_order(class="form-control", placeholder='Enter model order as JSON') }}
+            <div class="form-text">Provide the model order in JSON format, e.g., ["slot_1", "slot_2", "OmniCall"].</div>
+            {% if form.model_order.errors %}
+                <div class="text-danger">
+                    {% for error in form.model_order.errors %}
+                        <small>{{ error }}</small>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+
+        <!-- Example Usage of models_info -->
+        <h4>Model Slots</h4>
+        <div class="mb-3">
+            {% for slot_id in ['slot_1', 'slot_2', 'slot_3'] %}  <!-- Adjust slot range as needed -->
+                <div class="mb-2">
+                    <label for="{{ slot_id }}" class="form-label">{{ slot_id|capitalize }}</label>
+                    <input type="text" class="form-control" id="{{ slot_id }}" name="{{ slot_id }}" value="{{ models_info.get(slot_id, {}).get('nickname', '') }}" placeholder="Enter nickname for {{ slot_id }}">
+                </div>
+            {% endfor %}
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn btn-primary">{{ form.submit.label.text }}</button>
+        <a href="{{ url_for('main.dashboard') }}" class="btn btn-secondary ms-2">Cancel</a>
+    </form>
+</div>
+{% endblock %}
+s

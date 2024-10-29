@@ -1,4 +1,5 @@
 # app/__init__.py
+
 from flask import Flask
 from flask_wtf import CSRFProtect
 from .extensions import db, migrate, login_manager, session
@@ -6,6 +7,7 @@ from .celery_app import make_celery, celery
 import os
 import logging
 from logging.handlers import RotatingFileHandler
+import json  # Import json module
 
 def create_app():
     app = Flask(__name__)
@@ -39,6 +41,15 @@ def create_app():
     def load_user(user_id):
         from .models import User  # Import inside function to prevent circular import
         return User.query.get(int(user_id))
+
+    # Define the 'from_json' filter
+    @app.template_filter('from_json')
+    def from_json_filter(s):
+        try:
+            return json.loads(s)
+        except json.JSONDecodeError:
+            app.logger.error(f"Invalid JSON data: {s}")
+            return {}
 
     # Set up logging
     if not app.debug and not app.testing:
