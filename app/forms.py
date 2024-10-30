@@ -1,8 +1,23 @@
 # app/forms.py
 
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField, BooleanField, IntegerField, TextAreaField
-from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError, NumberRange
+from wtforms import (
+    StringField,
+    PasswordField,
+    SubmitField,
+    BooleanField,
+    IntegerField,
+    TextAreaField,
+    FileField  # Imported FileField
+)
+from wtforms.validators import (
+    DataRequired,
+    Length,
+    Email,
+    EqualTo,
+    ValidationError,
+    NumberRange
+)
 import json
 
 class RegistrationForm(FlaskForm):
@@ -24,3 +39,11 @@ class SetupForm(FlaskForm):
     inference_count = IntegerField('Number of Inferences', validators=[DataRequired(), NumberRange(min=1, max=100)])
     model_order = StringField('Model Order', validators=[DataRequired()])  # Stored as JSON string
     submit = SubmitField('Save Configuration')
+
+class TriviaForm(FlaskForm):
+    answer = StringField('Your Answer', validators=[DataRequired()])
+    submit = SubmitField('Submit Answer')
+
+class UploadToolForm(FlaskForm):
+    tool_file = FileField('Upload Python Tool', validators=[DataRequired()])  # Added FileField
+    submit = SubmitField('Upload Tool')

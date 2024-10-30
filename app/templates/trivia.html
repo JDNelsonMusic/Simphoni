@@ -1,0 +1,38 @@
+<!-- app/templates/main/trivia.html -->
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container my-4">
+    <h2>AI Trivia Game</h2>
+    <p>Test your knowledge about Artificial Intelligence!</p>
+    
+    <div class="card mt-4">
+        <div class="card-body">
+            <form method="POST" action="{{ url_for('main.trivia') }}">
+                <div class="mb-3">
+                    <label for="question" class="form-label"><strong>Question:</strong></label>
+                    <p id="question">{{ question }}</p>
+                </div>
+                <div class="mb-3">
+                    <label for="answer" class="form-label">Your Answer:</label>
+                    <input type="text" class="form-control" id="answer" name="answer" placeholder="Enter your answer here" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit Answer</button>
+            </form>
+        </div>
+    </div>
+    
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="mt-4">
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+</div>
+{% endblock %}

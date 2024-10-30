@@ -1,0 +1,30 @@
+<!-- app/templates/main/run_tool.html -->
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container my-4">
+    <h2>Running Tool: {{ tool_name }}</h2>
+    
+    <div class="card mt-3">
+        <div class="card-header">
+            Output:
+        </div>
+        <div class="card-body">
+            <pre>{{ output }}</pre>
+        </div>
+    </div>
+    
+    {% if error %}
+        <div class="card mt-3">
+            <div class="card-header text-danger">
+                Errors:
+            </div>
+            <div class="card-body">
+                <pre>{{ error }}</pre>
+            </div>
+        </div>
+    {% endif %}
+    
+    <a href="{{ url_for('main.tools') }}" class="btn btn-secondary mt-3">Back to Tools</a>
+</div>
+{% endblock %}

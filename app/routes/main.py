@@ -3,12 +3,16 @@
 from flask import Blueprint, render_template, redirect, url_for, flash, request, session
 from flask_login import login_required, current_user
 from app import db
-from app.models import Configuration, CustomModel
-from app.forms import SetupForm
+from app.models import Configuration, CustomModel, Conversation
+from app.forms import SetupForm, TriviaForm, UploadToolForm
 import json
 from werkzeug.utils import secure_filename
 import os
 import logging
+from sqlalchemy import func
+from datetime import datetime
+import subprocess  # Ensure this line is present
+import sys         # <-- Add this line
 
 main_bp = Blueprint('main', __name__)
 
@@ -290,3 +294,169 @@ def delete_configuration(config_id):
         logging.error(f"Error deleting configuration: {e}")
     
     return redirect(url_for('main.dashboard'))
+
+@main_bp.route('/analytics')
+@login_required
+def analytics():
+    """Route to display analytics on the dashboard."""
+    
+    # Configurations Over Time
+    config_data = db.session.query(
+        func.date(Configuration.created_at).label('date'),
+        func.count(Configuration.id).label('count')
+    ).filter_by(owner=current_user).group_by(func.date(Configuration.created_at)).order_by(func.date(Configuration.created_at)).all()
+    
+    config_dates = [record.date.strftime('%Y-%m-%d') for record in config_data]
+    config_counts = [record.count for record in config_data]
+    
+    # Custom Models Distribution
+    model_data = db.session.query(
+        CustomModel.name,
+        func.count(CustomModel.id).label('count')
+    ).filter_by(owner=current_user).group_by(CustomModel.name).all()
+    
+    model_names = [record.name for record in model_data]
+    model_counts = [record.count for record in model_data]
+    
+    # Conversations Over Time
+    convo_data = db.session.query(
+        func.date(Conversation.created_at).label('date'),
+        func.count(Conversation.id).label('count')
+    ).filter_by(owner=current_user).group_by(func.date(Conversation.created_at)).order_by(func.date(Conversation.created_at)).all()
+    
+    convo_dates = [record.date.strftime('%Y-%m-%d') for record in convo_data]
+    convo_counts = [record.count for record in convo_data]
+    
+    return render_template(
+        'main/analytics.html',
+        config_dates=config_dates,
+        config_counts=config_counts,
+        model_names=model_names,
+        model_counts=model_counts,
+        convo_dates=convo_dates,
+        convo_counts=convo_counts
+    )
+
+@main_bp.route('/trivia', methods=['GET', 'POST'])
+@login_required
+def trivia():
+    """
+    Route to display the AI Trivia Game.
+    Utilizes Flask-WTF's TriviaForm for secure form handling and CSRF protection.
+    """
+    form = TriviaForm()
+    if form.validate_on_submit():
+        user_answer = form.answer.data.strip().lower()
+        correct_answer = session.get('correct_answer', '').lower()
+        
+        if user_answer == correct_answer:
+            flash('Correct! Well done.', 'success')
+        else:
+            flash(f'Incorrect. The correct answer was: {session.get("correct_answer")}', 'danger')
+        
+        # Redirect to get a new question
+        return redirect(url_for('main.trivia'))
+    
+    # Generate a trivia question
+    question, answer = generate_trivia_question()
+    session['correct_answer'] = answer  # Store the correct answer in session
+    
+    return render_template('main/trivia.html', form=form, question=question)
+
+def generate_trivia_question():
+    """
+    Generates a simple trivia question.
+    Returns a tuple of (question, answer).
+    """
+    # For simplicity, we'll use a predefined list of questions.
+    trivia_questions = [
+        ("What does AI stand for?", "Artificial Intelligence"),
+        ("Who is known as the father of computers?", "Charles Babbage"),
+        ("What programming language is primarily used for web development?", "JavaScript"),
+        ("In which year was the Python programming language released?", "1991"),
+        ("What does HTTP stand for?", "HyperText Transfer Protocol"),
+    ]
+    
+    import random
+    question, answer = random.choice(trivia_questions)
+    return question, answer
+
+@main_bp.route('/tools')
+@login_required
+def tools():
+    """
+    Route to display the list of available Python tools.
+    """
+    tools_directory = os.path.join(os.getcwd(), 'pygame_py_files')
+    if not os.path.exists(tools_directory):
+        os.makedirs(tools_directory)
+    
+    # List all .py files in the tools_directory
+    tool_files = [f for f in os.listdir(tools_directory) if f.endswith('.py')]
+    
+    # Remove the .py extension for display purposes
+    tool_names = [os.path.splitext(f)[0] for f in tool_files]
+    
+    return render_template('tools.html', tools=tool_names)
+
+@main_bp.route('/run_tool/<tool_name>')
+@login_required
+def run_tool(tool_name):
+    """
+    Route to execute the selected Python tool and display its output.
+    """
+    tools_directory = os.path.join(os.getcwd(), 'pygame_py_files')
+    tool_file = f"{tool_name}.py"
+    tool_path = os.path.join(tools_directory, tool_file)
+    
+    if not os.path.exists(tool_path):
+        flash('Tool not found.', 'danger')
+        return redirect(url_for('main.tools'))
+    
+    try:
+        # Execute the Python script using the current Python interpreter
+        result = subprocess.run([sys.executable, tool_path], capture_output=True, text=True, timeout=30)
+        output = result.stdout
+        error = result.stderr
+    except subprocess.TimeoutExpired:
+        flash('The tool took too long to execute and was terminated.', 'danger')
+        return redirect(url_for('main.tools'))
+    except Exception as e:
+        flash(f'An error occurred while running the tool: {e}', 'danger')
+        logging.error(f"Error running tool {tool_name}: {e}")
+        return redirect(url_for('main.tools'))
+    
+    if result.returncode != 0:
+        flash(f'Error running tool:\n{error}', 'danger')
+    else:
+        flash('Tool ran successfully!', 'success')
+    
+    return render_template('run_tool.html', tool_name=tool_name, output=output, error=error)
+
+@main_bp.route('/tools/upload', methods=['GET', 'POST'])
+@login_required
+def upload_tool():
+    """
+    Route to handle uploading of new Python tools.
+    """
+    form = UploadToolForm()
+    if form.validate_on_submit():
+        file = form.tool_file.data
+        filename = secure_filename(file.filename)
+        
+        if not filename.endswith('.py'):
+            flash('Only .py files are allowed.', 'warning')
+            return redirect(url_for('main.upload_tool'))
+        
+        tools_directory = os.path.join(os.getcwd(), 'pygame_py_files')
+        if not os.path.exists(tools_directory):
+            os.makedirs(tools_directory)
+        
+        file_path = os.path.join(tools_directory, filename)
+        file.save(file_path)
+        
+        flash('Tool uploaded successfully!', 'success')
+        return redirect(url_for('main.tools'))
+    
+    return render_template('upload_tool.html', form=form)
+

@@ -1,0 +1,147 @@
+<!-- app/templates/main/analytics.html -->
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container my-4">
+    <h2>Dashboard Analytics</h2>
+    
+    <!-- Configurations Over Time -->
+    <div class="card mb-4">
+        <div class="card-header bg-primary text-white">
+            <h5 class="card-title mb-0">Configurations Created Over Time</h5>
+        </div>
+        <div class="card-body">
+            <canvas id="configurationsChart"></canvas>
+        </div>
+    </div>
+    
+    <!-- Custom Models Distribution -->
+    <div class="card mb-4">
+        <div class="card-header bg-success text-white">
+            <h5 class="card-title mb-0">Custom Models Distribution</h5>
+        </div>
+        <div class="card-body">
+            <canvas id="customModelsChart"></canvas>
+        </div>
+    </div>
+    
+    <!-- Conversations Over Time -->
+    <div class="card mb-4">
+        <div class="card-header bg-warning text-white">
+            <h5 class="card-title mb-0">Conversations Initiated Over Time</h5>
+        </div>
+        <div class="card-body">
+            <canvas id="conversationsChart"></canvas>
+        </div>
+    </div>
+</div>
+
+<!-- Chart.js Library -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    // Configurations Over Time Chart
+    const configurationsCtx = document.getElementById('configurationsChart').getContext('2d');
+    const configurationsChart = new Chart(configurationsCtx, {
+        type: 'line',
+        data: {
+            labels: {{ config_dates | safe }},
+            datasets: [{
+                label: '# of Configurations',
+                data: {{ config_counts | safe }},
+                fill: false,
+                borderColor: 'rgba(54, 162, 235, 1)',
+                tension: 0.1
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'top',
+                },
+                title: {
+                    display: true,
+                    text: 'Configurations Created Over Time'
+                }
+            }
+        },
+    });
+
+    // Custom Models Distribution Chart
+    const customModelsCtx = document.getElementById('customModelsChart').getContext('2d');
+    const customModelsChart = new Chart(customModelsCtx, {
+        type: 'pie',
+        data: {
+            labels: {{ model_names | safe }},
+            datasets: [{
+                label: '# of Models',
+                data: {{ model_counts | safe }},
+                backgroundColor: [
+                    'rgba(75, 192, 192, 0.6)',
+                    'rgba(255, 99, 132, 0.6)',
+                    'rgba(255, 206, 86, 0.6)',
+                    'rgba(153, 102, 255, 0.6)',
+                    'rgba(255, 159, 64, 0.6)',
+                    // Add more colors if needed
+                ],
+                borderColor: [
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)',
+                    // Add more border colors if needed
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'right',
+                },
+                title: {
+                    display: true,
+                    text: 'Distribution of Custom Models'
+                }
+            }
+        },
+    });
+
+    // Conversations Over Time Chart
+    const conversationsCtx = document.getElementById('conversationsChart').getContext('2d');
+    const conversationsChart = new Chart(conversationsCtx, {
+        type: 'bar',
+        data: {
+            labels: {{ convo_dates | safe }},
+            datasets: [{
+                label: '# of Conversations',
+                data: {{ convo_counts | safe }},
+                backgroundColor: 'rgba(255, 206, 86, 0.6)',
+                borderColor: 'rgba(255, 206, 86, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    display: false,
+                },
+                title: {
+                    display: true,
+                    text: 'Conversations Initiated Over Time'
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    precision:0
+                }
+            }
+        },
+    });
+</script>
+{% endblock %}
