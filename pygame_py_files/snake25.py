@@ -7,7 +7,7 @@ import math
 pygame.init()
 
 # Double the resolution (Higher resolution)
-WIDTH, HEIGHT = 1800, 1000  # Double the original width and height
+WIDTH, HEIGHT = 1440, 800  # Double the original width and height
 CELL_SIZE = 3  # Keeping the small grid size, but doubling the snake's visual size
 
 # Colors
