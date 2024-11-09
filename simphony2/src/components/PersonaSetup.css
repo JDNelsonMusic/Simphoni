@@ -1,11 +1,65 @@
-/* PersonaSetup.css */
+/* src/components/PersonaSetup.css */
+
+.persona-setup {
+  padding: 20px;
+}
+
+.persona-array-name {
+  margin: 20px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.array-name-input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.save-load-buttons {
+  margin-bottom: 20px;
+  display: flex;
+  gap: 10px;
+}
+
+.save-button,
+.load-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.save-button {
+  background-color: #28a745; /* Green */
+  color: #fff;
+}
+
+.save-button:hover {
+  background-color: #218838;
+}
+
+.load-button {
+  background-color: #007bff; /* Blue */
+  color: #fff;
+}
+
+.load-button:hover {
+  background-color: #0069d9;
+}
+
 .model-modules {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  margin: 20px 30px;
+  gap: 10px;
+  margin-bottom: 20px;
 }
 
 .persona-lines {
-  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+  background-color: #1E002E; /* purpllle. */
 }

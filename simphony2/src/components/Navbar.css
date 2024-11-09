@@ -3,7 +3,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 30px;
+  padding: 40px 40px;
   background-color: #2A0036;
 }
 
@@ -20,17 +20,17 @@
 }
 
 .logo-image {
-  height: 50px;
-  margin-right: 10px;
+  height: 120px;
+  margin-right: 40px;
 }
 
 .app-title {
-  font-size: 24px;
+  font-size: 48px;
   font-weight: bold;
 }
 
 .navbar-center .nav-item {
-  font-size: 18px;
+  font-size: 24px;
   margin: 0 15px;
   cursor: pointer;
   text-decoration: none;
@@ -43,14 +43,14 @@
 
 .profile-icon {
   color: #8A2BE2;
-  margin-right: 10px;
+  margin-right: 50px;
 }
 
 .logout-button {
   background-color: #FF007C;
   border: none;
   color: #FFFFFF;
-  padding: 8px 12px;
+  padding: 15px 30px;
   border-radius: 5px;
   cursor: pointer;
 }

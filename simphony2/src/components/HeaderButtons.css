@@ -1,43 +1,44 @@
 /* src/components/HeaderButtons.css */
+
 .header-buttons {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 30px;
+  margin-bottom: 20px;
 }
 
 .header-left {
   display: flex;
-  flex-direction: column;
+  gap: 10px;
 }
 
 .main-button {
-  background-color: transparent;
-  border: 2px solid #FF007C; /* Pink color for "START SEQUENCE" */
-  color: #FF007C;
   padding: 10px 20px;
-  cursor: pointer;
-  font-size: 22px;
-  margin-bottom: 10px;
+  color: #fff;
+  border: none;
   border-radius: 5px;
+  cursor: pointer;
 }
 
 .secondary-button {
-  background-color: transparent;
-  border: 2px solid #8A2BE2;
-  color: #8A2BE2;
-  padding: 8px 16px;
-  cursor: pointer;
-  font-size: 16px;
+  padding: 10px 20px;
+  background-color: #6c757d; /* Gray */
+  color: #fff;
+  border: none;
   border-radius: 5px;
+  cursor: pointer;
+}
+
+.secondary-button:hover {
+  background-color: #5a6268;
 }
 
 .page-title {
-  font-size: 32px; /* Adjusted from 64px to make it more consistent */
-  font-weight: bold;
+  flex-grow: 1;
+  text-align: center;
 }
 
-.header-right .settings-icon {
-  color: #8A2BE2;
-  cursor: pointer;
+.header-right {
+  display: flex;
+  align-items: center;
 }
