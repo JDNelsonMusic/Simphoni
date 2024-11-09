@@ -11,31 +11,42 @@ import './ISSetup.css';
 function ISSetup() {
   const { currentUser } = useAuth();
   const navigate = useNavigate();
-  // Removed: const history = useHistory(true);
   const [instructLines, setInstructLines] = useState([]);
   const [loading, setLoading] = useState(true);
 
   // Fetch user's persona arrays for assigning
-  const [personaArrays, setPersonaArrays] = useState([]);
+  const [personaArray, setPersonaArray] = useState([]);
 
   useEffect(() => {
-    const unsubscribe = firestore.collection('personaArrays')
-      .where('owner', '==', currentUser.uid)
-      .onSnapshot(snapshot => {
-        const arrays = [];
-        snapshot.forEach(doc => {
-          arrays.push({ id: doc.id, ...doc.data() });
-        });
-        setPersonaArrays(arrays);
+    const fetchPersonaArray = async () => {
+      try {
+        const querySnapshot = await firestore.collection('personaArrays')
+          .where('owner', '==', currentUser.uid)
+          .get();
+
+        if (querySnapshot.empty) {
+          alert('No Persona Array found. Please set up your personas first.');
+          navigate('/persona-setup'); // Redirect to PersonaSetup
+          return;
+        }
+
+        const doc = querySnapshot.docs[0];
+        const data = doc.data();
+
+        setPersonaArray(data.personas || []);
         setLoading(false);
-      });
+      } catch (error) {
+        console.error('Error fetching personaArray:', error);
+        setLoading(false);
+      }
+    };
 
-    return unsubscribe;
-  }, [currentUser]);
+    fetchPersonaArray();
+  }, [currentUser, navigate]);
 
   useEffect(() => {
-    // Initialize with 6 instruct lines
-    const initialInstructLines = Array(6).fill().map((_, index) => ({
+    // Initialize instructLines with nine instruct lines
+    const initialInstructLines = Array.from({ length: 9 }, (_, index) => ({
       id: index,
       instructText: '',
       persona: null,
@@ -47,7 +58,7 @@ function ISSetup() {
 
   const handleNumLinesChange = (e) => {
     const newNum = parseInt(e.target.value, 10) || 0;
-    const updatedInstructLines = Array(newNum).fill().map((_, index) => ({
+    const updatedInstructLines = Array.from({ length: newNum }, (_, index) => ({
       id: index,
       instructText: '',
       persona: null,
@@ -112,7 +123,7 @@ function ISSetup() {
   };
 
   const startSequence = () => {
-    // Implement the actual sequence execution logic here
+    // Navigate to '/is-thread'
     navigate('/is-thread');
   };
 
@@ -127,8 +138,8 @@ function ISSetup() {
         mainButtonColor="#FF007C"
         secondaryButtonLabel="SAVE NEW INSTRUCT SEQUENCE"
         savePersonaArray={saveInstructSequence}
-        setCurrentPage={startSequence} // Updated to call startSequence
-        nextPage="/is-thread" // This prop may not be necessary now
+        setCurrentPage={startSequence} // Navigates to '/is-thread'
+        nextPage="/is-thread" // Optional, can be removed if not used
         pageTitle="Instruct Sequence Setup"
       />
       <div className="num-lines-input">
@@ -138,9 +149,10 @@ function ISSetup() {
           value={instructLines.length}
           onChange={handleNumLinesChange}
           min="1"
+          max="20" // Set a reasonable max limit
         />
       </div>
-      <ActivePersonas personas={personaArrays} />
+      <ActivePersonas personas={personaArray} />
       <div className="instruct-lines">
         {instructLines.map((line, index) => (
           <InstructLine

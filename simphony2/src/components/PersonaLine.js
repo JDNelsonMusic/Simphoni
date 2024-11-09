@@ -11,7 +11,7 @@ function PersonaLine({ index, persona, updatePersona, removePersona }) {
   const [definePersona, setDefinePersona] = useState(persona.definePersona || '');
 
   const [{ isOver }, drop] = useDrop(() => ({
-    accept: 'MODEL', // Ensure this matches the type used in ModelModule
+    accept: 'MODEL',
     drop: (item) => setModel(item.model.name),
     collect: (monitor) => ({
       isOver: !!monitor.isOver(),
@@ -20,7 +20,7 @@ function PersonaLine({ index, persona, updatePersona, removePersona }) {
 
   const savePersona = () => {
     updatePersona(index, {
-      id: persona.id,
+      id: persona.id, // keep the id
       nickname,
       creativity,
       model,
@@ -30,7 +30,11 @@ function PersonaLine({ index, persona, updatePersona, removePersona }) {
   };
 
   return (
-    <div className="persona-line" ref={drop} style={{ backgroundColor: isOver ? '#4A0078' : '#2A0036' }}>
+    <div
+      className="persona-line"
+      ref={drop}
+      style={{ backgroundColor: isOver ? '#4A0078' : '#2A0036' }}
+    >
       <input
         type="text"
         value={nickname}

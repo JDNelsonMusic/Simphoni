@@ -20,31 +20,26 @@ function HeaderButtons({
     }
   };
 
-  return (
-    <div className="header-buttons">
-      <div className="header-left">
-        <button
-          className="main-button"
-          onClick={handleMainButtonClick}
-          style={{ color: mainButtonColor, borderColor: mainButtonColor }}
-        >
-          {mainButtonLabel}
-        </button>
-        {secondaryButtonLabel && (
+    return (
+      <div className="header-buttons">
+        <div className="header-left">
           <button
-            className="secondary-button"
-            onClick={savePersonaArray}
+            className="main-button"
+            style={{ backgroundColor: mainButtonColor }}
+            onClick={setCurrentPage}
           >
+            {mainButtonLabel}
+          </button>
+          <button className="secondary-button" onClick={savePersonaArray}>
             {secondaryButtonLabel}
           </button>
-        )}
+        </div>
+        <h2 className="page-title">{pageTitle}</h2>
+        <div className="header-right">
+          <FaCog size={24} className="settings-icon" />
+        </div>
       </div>
-      <h2 className="page-title">{pageTitle}</h2>
-      <div className="header-right">
-        <FaCog size={24} className="settings-icon" onClick={() => alert('Open Settings')} />
-      </div>
-    </div>
-  );
-}
+    );
+  }
 
-export default HeaderButtons;
+  export default HeaderButtons;
