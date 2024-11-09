@@ -1,12 +1,27 @@
-/* ISSetup.css */
+/* src/components/ISSetup.css */
 .is-setup {
-  padding: 20px;
+  padding: 20px 40px;
+  background-color: #1E002E;
+  color: #FFFFFF;
+  min-height: calc(100vh - 70px); /* Adjust based on Navbar height */
 }
 
 .num-lines-input {
   margin: 20px 0;
+  display: flex;
+  align-items: center;
 }
 
-.instruct-lines {
-  margin-top: 20px;
+.num-lines-input label {
+  margin-right: 10px;
+  font-size: 18px;
+}
+
+.num-lines-input input {
+  width: 60px;
+  padding: 8px;
+  border: 1px solid #8A2BE2;
+  border-radius: 5px;
+  background-color: #3D004F;
+  color: #FFFFFF;
 }

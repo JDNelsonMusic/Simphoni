@@ -4,14 +4,14 @@ import { useDrop } from 'react-dnd';
 import { FaSave } from 'react-icons/fa';
 import './PersonaLine.css';
 
-function PersonaLine({ index, persona, updatePersona }) {
-  const [nickname, setNickname] = useState(persona.nickname);
-  const [creativity, setCreativity] = useState(persona.creativity);
-  const [model, setModel] = useState(persona.model);
-  const [definePersona, setDefinePersona] = useState(persona.definePersona);
+function PersonaLine({ index, persona, updatePersona, removePersona }) {
+  const [nickname, setNickname] = useState(persona.nickname || '');
+  const [creativity, setCreativity] = useState(persona.creativity || 5);
+  const [model, setModel] = useState(persona.model || '');
+  const [definePersona, setDefinePersona] = useState(persona.definePersona || '');
 
   const [{ isOver }, drop] = useDrop(() => ({
-    accept: 'model',
+    accept: 'MODEL', // Ensure this matches the type used in ModelModule
     drop: (item) => setModel(item.model.name),
     collect: (monitor) => ({
       isOver: !!monitor.isOver(),
@@ -20,6 +20,7 @@ function PersonaLine({ index, persona, updatePersona }) {
 
   const savePersona = () => {
     updatePersona(index, {
+      id: persona.id,
       nickname,
       creativity,
       model,
@@ -38,7 +39,7 @@ function PersonaLine({ index, persona, updatePersona }) {
         className="nickname-input"
       />
       <div className="model-display">
-        {model}
+        {model || 'Drag a model here'}
       </div>
       <div className="creativity-slider">
         <label>Creativity:</label>
@@ -59,6 +60,9 @@ function PersonaLine({ index, persona, updatePersona }) {
         className="define-persona-input"
       />
       <FaSave className="save-icon" onClick={savePersona} />
+      <button className="remove-persona-button" onClick={removePersona}>
+        Remove
+      </button>
     </div>
   );
 }

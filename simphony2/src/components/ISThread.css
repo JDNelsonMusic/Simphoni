@@ -1,0 +1,133 @@
+/* src/components/ISThread.css */
+.is-thread-container {
+  padding: 20px 40px;
+  background-color: #1E002E;
+  color: #FFFFFF;
+  min-height: calc(100vh - 70px); /* Adjust based on Navbar height */
+}
+
+.is-thread-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+}
+
+.pause-button, .save-thread-button {
+  background-color: #FF007C;
+  border: none;
+  color: #FFFFFF;
+  padding: 10px 15px;
+  margin-right: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.pause-button:hover, .save-thread-button:hover {
+  background-color: #e6006c;
+}
+
+.page-title {
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.header-right .settings-icon {
+  color: #8A2BE2;
+  cursor: pointer;
+}
+
+.conductor-selector {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.conductor-selector label {
+  margin-right: 10px;
+  font-size: 18px;
+}
+
+.conductor-selector select {
+  padding: 8px;
+  border: 1px solid #8A2BE2;
+  border-radius: 5px;
+  background-color: #3D004F;
+  color: #FFFFFF;
+}
+
+.thread-content {
+  display: flex;
+}
+
+.left-section, .right-section {
+  padding: 10px;
+}
+
+.left-section {
+  width: 30%;
+  background-color: #3D004F;
+  margin-right: 10px;
+  border-radius: 5px;
+  position: relative;
+}
+
+.simphony-logo {
+  width: 100%;
+  border-bottom: 2px solid #8A2BE2;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+
+.conductor-output {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.conductor-entry {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+
+.toggle-button {
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.conductor-text {
+  background-color: #2A0036;
+  padding: 8px;
+  border-radius: 5px;
+  flex-grow: 1;
+}
+
+.right-section {
+  width: 70%;
+  background-color: #2A0036;
+  border-radius: 5px;
+  padding: 15px;
+}
+
+.output-entry {
+  background-color: #3D004F;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+.persona-header {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.output-text {
+  font-size: 14px;
+  line-height: 1.5;
+}

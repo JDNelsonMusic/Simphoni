@@ -15,23 +15,26 @@
 .logo {
   display: flex;
   align-items: center;
-  cursor: pointer;
+  text-decoration: none;
+  color: #FFFFFF;
 }
 
 .logo-image {
-  height: 80px;
-  margin-right: 20px;
+  height: 50px;
+  margin-right: 10px;
 }
 
 .app-title {
-  font-size: 42px;
+  font-size: 24px;
   font-weight: bold;
 }
 
 .navbar-center .nav-item {
-  font-size: 22px;
-  margin: 0 20px;
+  font-size: 18px;
+  margin: 0 15px;
   cursor: pointer;
+  text-decoration: none;
+  color: #FFFFFF;
 }
 
 .navbar-center .nav-item:hover {
@@ -39,5 +42,30 @@
 }
 
 .profile-icon {
+  color: #8A2BE2;
+  margin-right: 10px;
+}
+
+.logout-button {
+  background-color: #FF007C;
+  border: none;
+  color: #FFFFFF;
+  padding: 8px 12px;
+  border-radius: 5px;
   cursor: pointer;
+}
+
+.logout-button:hover {
+  background-color: #e6006c;
+}
+
+.auth-link {
+  margin: 0 10px;
+  color: #FFFFFF;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.auth-link:hover {
+  color: #FF007C;
 }

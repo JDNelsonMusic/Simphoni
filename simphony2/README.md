@@ -1,3 +1,42 @@
+Complete List of Updated and New Files
+Below is a summary of all the files you need to update or create. Replace your existing files with these versions and add the new ones as specified.
+
+src/firebase.js - Firebase configuration and initialization.
+src/App.js - Updated with React Router and AuthProvider.
+src/components/AuthProvider.js - Context for authentication state.
+src/components/Login.js - Login component.
+src/components/Signup.js - Signup component with Firestore user addition.
+src/components/Auth.css - Styling for authentication components.
+src/components/Navbar.js - Updated Navbar with authentication links.
+src/components/Navbar.css - Styling for Navbar.
+src/components/HeaderButtons.js - Updated HeaderButtons component.
+src/components/HeaderButtons.css - Styling for HeaderButtons.
+src/components/PersonaSetup.js - Updated PersonaSetup with Firestore integration.
+src/components/PersonaSetup.css - Styling for PersonaSetup.
+src/components/MyArrays.js - New MyArrays page.
+src/components/MyArrays.css - Styling for MyArrays.
+src/components/InstructSchemas.js - New InstructSchemas page.
+src/components/InstructSchemas.css - Styling for InstructSchemas.
+src/components/ISSetup.js - Updated ISSetup with Firestore integration.
+src/components/ISSetup.css - Styling for ISSetup.
+src/components/ISThread.js - New ISThread page.
+src/components/ISThread.css - Styling for ISThread.
+src/components/PersonaLine.js - Updated PersonaLine if needed.
+src/components/PersonaLine.css - Styling for PersonaLine.
+src/components/ActivePersonas.js - Ensure ActivePersonas is correctly receiving persona arrays.
+src/components/ActivePersonas.css - Styling for ActivePersonas.
+src/components/ModelModule.js - Ensure ModelModule is correctly using useDrag.
+src/components/ModelModule.css - Styling for ModelModule.
+src/index.js - Ensure it renders <App /> correctly.
+
+
+
+
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

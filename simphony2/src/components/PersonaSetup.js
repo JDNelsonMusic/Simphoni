@@ -1,8 +1,12 @@
 // src/components/PersonaSetup.js
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import ModelModule from './ModelModule';
 import PersonaLine from './PersonaLine';
 import HeaderButtons from './HeaderButtons';
+import { firestore } from '../firebase';
+import { useAuth } from './AuthProvider';
+import { DndProvider } from 'react-dnd';
+import { HTML5Backend } from 'react-dnd-html5-backend';
 import './PersonaSetup.css';
 
 const available_models = [
@@ -25,46 +29,95 @@ const available_models = [
   { 'name': 'smolm2:1.7b', 'display': 'smolm2:1.7b' }
 ];
 
-function PersonaSetup({ setCurrentPage, personas, setPersonas }) {
+function PersonaSetup() {
+  const { currentUser } = useAuth();
+  const [personas, setPersonas] = useState([]);
+
   const updatePersona = (index, updatedPersona) => {
     const newPersonas = [...personas];
     newPersonas[index] = updatedPersona;
     setPersonas(newPersonas);
   };
 
-  const savePersonaArray = () => {
-    console.log("Persona array saved", personas);
-    alert("Persona array saved successfully!");
-    // Implement saving logic here (e.g., save to local storage or backend)
+  const addPersona = () => {
+    const newPersona = {
+      id: Date.now(), // Unique ID based on timestamp
+      nickname: '',
+      model: '',
+      creativity: 0.5,
+      definePersona: '',
+    };
+    setPersonas([...personas, newPersona]);
+  };
+
+  const removePersona = (index) => {
+    const newPersonas = personas.filter((_, i) => i !== index);
+    setPersonas(newPersonas);
+  };
+
+  const savePersonaArray = async () => {
+    const arrayName = prompt('Enter a name for this Persona Array:');
+    if (!arrayName) {
+      alert('Array name is required.');
+      return;
+    }
+
+    const newArray = {
+      name: arrayName,
+      owner: currentUser.uid,
+      access: 'Private', // Default access level
+      allowedUsers: [],
+      personas: personas.map((p) => ({
+        nickname: p.nickname,
+        model: p.model,
+        creativity: p.creativity,
+        definePersona: p.definePersona,
+      })),
+      timestamp: new Date(),
+    };
+
+    try {
+      await firestore.collection('personaArrays').add(newArray);
+      alert('Persona Array saved successfully!');
+    } catch (error) {
+      console.error('Error saving Persona Array: ', error);
+      alert('Failed to save Persona Array.');
+    }
   };
 
   return (
-    <div className="persona-setup">
-      <HeaderButtons
-        mainButtonLabel="CONTINUE TO INSTRUCT SETUP"
-        mainButtonColor="#1E90FF"
-        secondaryButtonLabel="SAVE PERSONA ARRAY"
-        savePersonaArray={savePersonaArray}
-        setCurrentPage={setCurrentPage}
-        nextPage="ISSetup"
-        pageTitle="Persona Array"
-      />
-      <div className="model-modules">
-        {available_models.map((model, index) => (
-          <ModelModule key={index} model={model} />
-        ))}
+    <DndProvider backend={HTML5Backend}>
+      <div className="persona-setup">
+        <HeaderButtons
+          mainButtonLabel="CONTINUE TO INSTRUCT SETUP"
+          mainButtonColor="#1E90FF"
+          secondaryButtonLabel="SAVE PERSONA ARRAY"
+          savePersonaArray={savePersonaArray}
+          setCurrentPage={() => {}}
+          nextPage="/is-setup"
+          pageTitle="Persona Array"
+        />
+        <div className="model-modules">
+          {available_models.map((model, index) => (
+            <ModelModule key={index} model={model} />
+          ))}
+        </div>
+        <button className="add-persona-button" onClick={addPersona}>
+          Add Persona
+        </button>
+        <div className="persona-lines">
+          {personas.map((persona, index) => (
+            <PersonaLine
+              key={persona.id}
+              index={index}
+              persona={persona}
+              updatePersona={updatePersona}
+              removePersona={() => removePersona(index)}
+            />
+          ))}
+        </div>
       </div>
-      <div className="persona-lines">
-        {personas.map((persona, index) => (
-          <PersonaLine
-            key={index}
-            index={index}
-            persona={persona}
-            updatePersona={updatePersona}
-          />
-        ))}
-      </div>
-    </div>
+    </DndProvider>
   );
 }
 
