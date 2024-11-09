@@ -1,0 +1,18 @@
+.persona-setup {
+  text-align: center;
+  color: #FFFFFF;
+}
+
+.model-modules {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.persona-lines {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}

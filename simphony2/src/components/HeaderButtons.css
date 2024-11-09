@@ -1,0 +1,43 @@
+/* src/components/HeaderButtons.css */
+.header-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 30px;
+}
+
+.header-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.main-button {
+  background-color: transparent;
+  border: 2px solid #FF007C; /* Pink color for "START SEQUENCE" */
+  color: #FF007C;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 22px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+.secondary-button {
+  background-color: transparent;
+  border: 2px solid #8A2BE2;
+  color: #8A2BE2;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+.page-title {
+  font-size: 32px; /* Adjusted from 64px to make it more consistent */
+  font-weight: bold;
+}
+
+.header-right .settings-icon {
+  color: #8A2BE2;
+  cursor: pointer;
+}

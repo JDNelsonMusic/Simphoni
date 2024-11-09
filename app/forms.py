@@ -5,6 +5,7 @@ from wtforms import (
     StringField,
     PasswordField,
     SubmitField,
+    SelectField,
     BooleanField,
     IntegerField,
     TextAreaField,
@@ -39,6 +40,10 @@ class SetupForm(FlaskForm):
     inference_count = IntegerField('Number of Inferences', validators=[DataRequired(), NumberRange(min=1, max=100)])
     model_order = StringField('Model Order', validators=[DataRequired()])  # Stored as JSON string
     submit = SubmitField('Save Configuration')
+    
+class PersonaSetupForm(FlaskForm):
+    # Since we have dynamic fields, we can handle them in the route
+    submit = SubmitField('Save Persona Array')
 
 class TriviaForm(FlaskForm):
     answer = StringField('Your Answer', validators=[DataRequired()])

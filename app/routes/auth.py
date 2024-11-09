@@ -5,7 +5,7 @@ from app.forms import RegistrationForm, LoginForm
 from app.models import User
 from app import db
 from werkzeug.security import generate_password_hash, check_password_hash
-from flask_login import login_user, logout_user, login_required
+from flask_login import login_user, logout_user, login_required, current_user
 
 auth_bp = Blueprint('auth', __name__)
 
@@ -51,3 +51,9 @@ def logout():
     logout_user()
     flash('You have been logged out.', 'info')
     return redirect(url_for('main.home'))
+
+@auth_bp.route('/profile')
+@login_required
+def profile():
+    """User Profile Page."""
+    return render_template('profile.html', user=current_user)

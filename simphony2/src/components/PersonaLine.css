@@ -1,0 +1,63 @@
+/* PersonaLine.css */
+.persona-line {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  margin: 10px 30px;
+  background-color: #2A0036;
+  border: 1px solid #8A2BE2;
+  border-radius: 8px;
+}
+
+.nickname-input {
+  width: 150px;
+  padding: 8px;
+  margin-right: 10px;
+  background-color: #3D004F;
+  border: 1px solid #8A2BE2;
+  color: #FFFFFF;
+  border-radius: 5px;
+}
+
+.define-persona-input {
+  width: 1500px;
+  padding: 8px;
+  margin-right: 10px;
+  background-color: #3D004F;
+  border: 1px solid #8A2BE2;
+  color: #FFFFFF;
+  border-radius: 5px;
+}
+
+.model-display {
+  width: 150px;
+  text-align: center;
+  margin-right: 10px;
+  background-color: #3D004F;
+  padding: 8px;
+  border: 1px solid #8A2BE2;
+  border-radius: 5px;
+}
+
+.creativity-slider {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.creativity-slider label {
+  margin-right: 5px;
+}
+
+.creativity-slider input[type="range"] {
+  margin-right: 5px;
+}
+
+.save-icon {
+  cursor: pointer;
+  color: #FFFFFF;
+}
+
+.save-icon:hover {
+  color: #FF007C;
+}

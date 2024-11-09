@@ -1,0 +1,17 @@
+.persona-line {
+  display: flex;
+  align-items: center;
+  background-color: #2A0036;
+  color: #FFFFFF;
+  padding: 8px;
+  border-radius: 6px;
+  margin-bottom: 8px;
+}
+
+.save-persona-btn {
+  background: none;
+  border: none;
+  color: #FFFFFF;
+  cursor: pointer;
+  font-size: 18px;
+}

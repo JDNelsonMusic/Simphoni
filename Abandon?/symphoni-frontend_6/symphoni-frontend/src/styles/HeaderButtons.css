@@ -1,0 +1,24 @@
+.header-buttons {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.continue-btn, .save-array-btn {
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.continue-btn {
+  color: #1E90FF;
+}
+
+.save-array-btn {
+  color: #8A2BE2;
+}
+
+.settings-icon {
+  font-size: 24px;
+  color: #8A2BE2;
+}

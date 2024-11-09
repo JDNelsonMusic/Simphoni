@@ -1,4 +1,5 @@
 # app/__init__.py
+
 from flask import Flask
 from flask_wtf import CSRFProtect
 from .extensions import db, migrate, login_manager, session
@@ -21,13 +22,13 @@ def create_app():
     # Initialize Celery with app context
     make_celery(app)  # This configures the celery instance
 
-    # Register Blueprints
+    # Register Blueprints with URL prefixes
     from app.routes.main import main_bp
     from app.routes.auth import auth_bp
     from app.routes.conversation import conversation_bp
 
     app.register_blueprint(main_bp)
-    app.register_blueprint(auth_bp)
+    app.register_blueprint(auth_bp, url_prefix='/auth')  # Added URL prefix
     app.register_blueprint(conversation_bp)
 
     # Import models to ensure they are registered

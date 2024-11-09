@@ -3,16 +3,14 @@
 from flask import Blueprint, render_template, redirect, url_for, flash, request, session
 from flask_login import login_required, current_user
 from app import db
-from app.models import Configuration, CustomModel, Conversation
-from app.forms import SetupForm, TriviaForm, UploadToolForm
+from app.models import Configuration, CustomModel, Persona
+from app.forms import SetupForm, PersonaSetupForm
 import json
 from werkzeug.utils import secure_filename
 import os
 import logging
 from sqlalchemy import func
 from datetime import datetime
-import subprocess  # Ensure this line is present
-import sys         # <-- Add this line
 
 main_bp = Blueprint('main', __name__)
 
@@ -181,47 +179,30 @@ def setup():
 
     # List of available models with exact Ollama names
     available_models = [
-        {
-            'name': 'llama3.2:1b',
-            'nickname': 'The Speedster',
-            'size': '1 billion parameters',
-            'description': 'Ideal for tasks that require quick responses without sacrificing too much accuracy. Great for day-to-day text summarization, quick instructions, or short dialogues.'
-        },
-        {
-            'name': 'llama3.2:3b',
-            'nickname': 'The Balanced One',
-            'size': '3 billion parameters',
-            'description': 'A well-rounded model for text generation, summarization, and dialogue, providing a balance between speed and complexity.'
-        },
-        {
-            'name': 'falcon-7b',
-            'nickname': 'The Broad Thinker',
-            'size': '7 billion parameters',
-            'description': 'Versatile and can be applied to a wide range of language tasks, from creative writing to technical assistance.'
-        },
-        {
-            'name': 'mike/mistral',
-            'nickname': 'The Contextual Genius',
-            'size': '12 billion parameters, 128K context window',
-            'description': 'Excels in large-context tasks, such as analyzing long documents or holding extended conversations.'
-        },
-        {
-            'name': 'Solar-Pro',
-            'nickname': 'The Tech Guru',
-            'size': '22 billion parameters',
-            'description': 'Exceptional performance in generating code, technical documents, and complex instructions.'
-        },
-        # Add more models as needed
+        {'name': 'llama3.2:1b', 'display': 'llama3.2:1b'},
+        {'name': 'llama3.2:3b', 'display': 'llama3.2:3b'},
+        {'name': 'mistral:7b', 'display': 'mistral:7b'},
+        {'name': 'mistral-nemo', 'display': 'mistral-nemo'},
+        {'name': 'solar-pro', 'display': 'solar-pro'},
+        {'name': 'stable-code', 'display': 'stable-code'},
+        {'name': 'nous-hermes:34b', 'display': 'nous-hermes:34b'},
+        {'name': 'Stable-Diffusion:3.5b', 'display': 'Stable-Diffusion:3.5b'},
+        {'name': 'phi3:14b-medium-128k-instruct-fp16', 'display': 'phi3:14b-medium-128k-instruct-fp16'},
+        {'name': 'llama3.1:70b', 'display': 'llama3.1:70b'},
+        {'name': 'orca-mini:70b', 'display': 'orca-mini:70b'},
+        {'name': 'nemotron:70b', 'display': 'nemotron:70b'},
+        {'name': 'phi3:medium-128k', 'display': 'phi3:medium-128k'},
+        {'name': 'falcon:7b', 'display': 'falcon:7b'},
+        {'name': 'wizard-vicuna-uncensored:30b', 'display': 'wizard-vicuna-uncensored:30b'},
+        {'name': 'smolm2:135m', 'display': 'smolm2:135m'},
+        {'name': 'smolm2:1.7b', 'display': 'smolm2:1.7b'}
     ]
 
     return render_template(
-        'setup.html',
+        'persona_setup.html',
         form=form,
-        models_info=models_info,
-        model_order=model_order,
-        available_models=available_models,
-        custom_models=custom_models
-        # Removed enumerate=enumerate since it's now available via context processor
+        personas=personas_data,
+        available_models=available_models
     )
 
 @main_bp.route('/configuration/view/<int:config_id>', methods=['GET'])
@@ -295,168 +276,134 @@ def delete_configuration(config_id):
     
     return redirect(url_for('main.dashboard'))
 
-@main_bp.route('/analytics')
+@main_bp.route('/persona_setup', methods=['GET', 'POST'])
 @login_required
-def analytics():
-    """Route to display analytics on the dashboard."""
+def persona_setup():
+    """
+    Route to handle the Persona Setup page.
+    Handles both GET (rendering the persona setup form) and POST (processing form submissions).
+    """
+    form = PersonaSetupForm()
+    if request.method == 'POST':
+        if form.validate_on_submit():
+            personas = []
+            for i in range(1, 10):
+                nickname = request.form.get(f'nickname_{i}', '').strip()
+                creativity = request.form.get(f'creativity_{i}', '5').strip()
+                model_name = request.form.get(f'model_name_{i}', 'llama3.2:3b').strip()
+                
+                # Validate creativity value
+                try:
+                    creativity = int(creativity)
+                    if creativity < 1 or creativity > 9:
+                        raise ValueError
+                except ValueError:
+                    flash(f'Creativity value for Persona {i} must be between 1 and 9.', 'warning')
+                    return redirect(request.url)
+                
+                # Save individual persona
+                persona = Persona(
+                    nickname=nickname,
+                    creativity=creativity,
+                    model_name=model_name,
+                    owner=current_user
+                )
+                personas.append(persona)
+            
+            try:
+                # Clear existing personas
+                Persona.query.filter_by(owner=current_user).delete()
+                # Add new personas
+                db.session.add_all(personas)
+                db.session.commit()
+                flash('Persona Array saved successfully.', 'success')
+                return redirect(url_for('main.dashboard'))
+            except Exception as e:
+                db.session.rollback()
+                flash('An error occurred while saving your personas. Please try again.', 'danger')
+                logging.error(f"Error saving personas: {e}")
+                return redirect(request.url)
+        else:
+            flash('Please correct the errors in the form.', 'danger')
     
-    # Configurations Over Time
-    config_data = db.session.query(
-        func.date(Configuration.created_at).label('date'),
-        func.count(Configuration.id).label('count')
-    ).filter_by(owner=current_user).group_by(func.date(Configuration.created_at)).order_by(func.date(Configuration.created_at)).all()
+    # Fetch existing personas or initialize defaults
+    existing_personas = Persona.query.filter_by(owner=current_user).order_by(Persona.id).all()
+    personas_data = []
+    for i in range(1, 10):
+        if i-1 < len(existing_personas):
+            persona = existing_personas[i-1]
+            personas_data.append({
+                'nickname': persona.nickname,
+                'creativity': persona.creativity,
+                'model_name': persona.model_name
+            })
+        else:
+            # Defaults: model_name='llama3.2:3b', creativity=5, nickname=''
+            personas_data.append({
+                'nickname': '',
+                'creativity': 5,
+                'model_name': 'llama3.2:3b'
+            })
     
-    config_dates = [record.date.strftime('%Y-%m-%d') for record in config_data]
-    config_counts = [record.count for record in config_data]
-    
-    # Custom Models Distribution
-    model_data = db.session.query(
-        CustomModel.name,
-        func.count(CustomModel.id).label('count')
-    ).filter_by(owner=current_user).group_by(CustomModel.name).all()
-    
-    model_names = [record.name for record in model_data]
-    model_counts = [record.count for record in model_data]
-    
-    # Conversations Over Time
-    convo_data = db.session.query(
-        func.date(Conversation.created_at).label('date'),
-        func.count(Conversation.id).label('count')
-    ).filter_by(owner=current_user).group_by(func.date(Conversation.created_at)).order_by(func.date(Conversation.created_at)).all()
-    
-    convo_dates = [record.date.strftime('%Y-%m-%d') for record in convo_data]
-    convo_counts = [record.count for record in convo_data]
-    
+    # List of available models from Ollama (17 models)
+    available_models = [
+        {'name': 'llama3.2:1b', 'display': 'llama3.2:1b'},
+        {'name': 'llama3.2:3b', 'display': 'llama3.2:3b'},
+        {'name': 'mistral:7b', 'display': 'mistral:7b'},
+        {'name': 'mistral-nemo', 'display': 'mistral-nemo'},
+        {'name': 'solar-pro', 'display': 'solar-pro'},
+        {'name': 'stable-code', 'display': 'stable-code'},
+        {'name': 'nous-hermes:34b', 'display': 'nous-hermes:34b'},
+        {'name': 'Stable-Diffusion:3.5b', 'display': 'Stable-Diffusion:3.5b'},
+        {'name': 'phi3:14b-medium-128k-instruct-fp16', 'display': 'phi3:14b-medium-128k-instruct-fp16'},
+        {'name': 'llama3.1:70b', 'display': 'llama3.1:70b'},
+        {'name': 'orca-mini:70b', 'display': 'orca-mini:70b'},
+        {'name': 'nemotron:70b', 'display': 'nemotron:70b'},
+        {'name': 'phi3:medium-128k', 'display': 'phi3:medium-128k'},
+        {'name': 'falcon:7b', 'display': 'falcon:7b'},
+        {'name': 'wizard-vicuna-uncensored:30b', 'display': 'wizard-vicuna-uncensored:30b'},
+        {'name': 'smolm2:135m', 'display': 'smolm2:135m'},
+        {'name': 'smolm2:1.7b', 'display': 'smolm2:1.7b'}
+    ]
+
     return render_template(
-        'main/analytics.html',
-        config_dates=config_dates,
-        config_counts=config_counts,
-        model_names=model_names,
-        model_counts=model_counts,
-        convo_dates=convo_dates,
-        convo_counts=convo_counts
+        'persona_setup.html',
+        form=form,
+        personas=personas_data,
+        available_models=available_models
     )
 
-@main_bp.route('/trivia', methods=['GET', 'POST'])
+@main_bp.route('/my_arrays')
 @login_required
-def trivia():
-    """
-    Route to display the AI Trivia Game.
-    Utilizes Flask-WTF's TriviaForm for secure form handling and CSRF protection.
-    """
-    form = TriviaForm()
-    if form.validate_on_submit():
-        user_answer = form.answer.data.strip().lower()
-        correct_answer = session.get('correct_answer', '').lower()
-        
-        if user_answer == correct_answer:
-            flash('Correct! Well done.', 'success')
-        else:
-            flash(f'Incorrect. The correct answer was: {session.get("correct_answer")}', 'danger')
-        
-        # Redirect to get a new question
-        return redirect(url_for('main.trivia'))
-    
-    # Generate a trivia question
-    question, answer = generate_trivia_question()
-    session['correct_answer'] = answer  # Store the correct answer in session
-    
-    return render_template('main/trivia.html', form=form, question=question)
+def my_arrays():
+    """Route for My Arrays page."""
+    # Implement the logic for My Arrays
+    return render_template('my_arrays.html')
 
-def generate_trivia_question():
-    """
-    Generates a simple trivia question.
-    Returns a tuple of (question, answer).
-    """
-    # For simplicity, we'll use a predefined list of questions.
-    trivia_questions = [
-        ("What does AI stand for?", "Artificial Intelligence"),
-        ("Who is known as the father of computers?", "Charles Babbage"),
-        ("What programming language is primarily used for web development?", "JavaScript"),
-        ("In which year was the Python programming language released?", "1991"),
-        ("What does HTTP stand for?", "HyperText Transfer Protocol"),
-    ]
-    
-    import random
-    question, answer = random.choice(trivia_questions)
-    return question, answer
+@main_bp.route('/past_is_threads')
+@login_required
+def past_is_threads():
+    """Route for Past IS-Threads page."""
+    # Implement the logic for Past IS-Threads
+    return render_template('past_is_threads.html')
+
+@main_bp.route('/is_setup')
+@login_required
+def is_setup():
+    """Route for IS-Setup page."""
+    # Implement the logic for IS-Setup
+    return render_template('is_setup.html')
 
 @main_bp.route('/tools')
 @login_required
 def tools():
-    """
-    Route to display the list of available Python tools.
-    """
-    tools_directory = os.path.join(os.getcwd(), 'pygame_py_files')
-    if not os.path.exists(tools_directory):
-        os.makedirs(tools_directory)
-    
-    # List all .py files in the tools_directory
-    tool_files = [f for f in os.listdir(tools_directory) if f.endswith('.py')]
-    
-    # Remove the .py extension for display purposes
-    tool_names = [os.path.splitext(f)[0] for f in tool_files]
-    
-    return render_template('tools.html', tools=tool_names)
+    """Route for Tools page."""
+    # Implement the logic for Tools
+    return render_template('tools.html')
 
-@main_bp.route('/run_tool/<tool_name>')
+@main_bp.route('/settings')
 @login_required
-def run_tool(tool_name):
-    """
-    Route to execute the selected Python tool and display its output.
-    """
-    tools_directory = os.path.join(os.getcwd(), 'pygame_py_files')
-    tool_file = f"{tool_name}.py"
-    tool_path = os.path.join(tools_directory, tool_file)
-    
-    if not os.path.exists(tool_path):
-        flash('Tool not found.', 'danger')
-        return redirect(url_for('main.tools'))
-    
-    try:
-        # Execute the Python script using the current Python interpreter
-        result = subprocess.run([sys.executable, tool_path], capture_output=True, text=True, timeout=30)
-        output = result.stdout
-        error = result.stderr
-    except subprocess.TimeoutExpired:
-        flash('The tool took too long to execute and was terminated.', 'danger')
-        return redirect(url_for('main.tools'))
-    except Exception as e:
-        flash(f'An error occurred while running the tool: {e}', 'danger')
-        logging.error(f"Error running tool {tool_name}: {e}")
-        return redirect(url_for('main.tools'))
-    
-    if result.returncode != 0:
-        flash(f'Error running tool:\n{error}', 'danger')
-    else:
-        flash('Tool ran successfully!', 'success')
-    
-    return render_template('run_tool.html', tool_name=tool_name, output=output, error=error)
-
-@main_bp.route('/tools/upload', methods=['GET', 'POST'])
-@login_required
-def upload_tool():
-    """
-    Route to handle uploading of new Python tools.
-    """
-    form = UploadToolForm()
-    if form.validate_on_submit():
-        file = form.tool_file.data
-        filename = secure_filename(file.filename)
-        
-        if not filename.endswith('.py'):
-            flash('Only .py files are allowed.', 'warning')
-            return redirect(url_for('main.upload_tool'))
-        
-        tools_directory = os.path.join(os.getcwd(), 'pygame_py_files')
-        if not os.path.exists(tools_directory):
-            os.makedirs(tools_directory)
-        
-        file_path = os.path.join(tools_directory, filename)
-        file.save(file_path)
-        
-        flash('Tool uploaded successfully!', 'success')
-        return redirect(url_for('main.tools'))
-    
-    return render_template('upload_tool.html', form=form)
-
+def settings():
+    """Route for Settings page."""
+    # Implement the logic for Settings
+    return render_template('settings.html')

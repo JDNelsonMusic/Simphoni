@@ -1,0 +1,15 @@
+/* PersonaModule.css */
+.persona-module {
+  padding: 10px 15px;
+  margin: 5px;
+  background-color: #3D004F;
+  color: #FFFFFF;
+  border: 1px solid #8A2BE2;
+  border-radius: 8px;
+  cursor: grab;
+  text-align: center;
+}
+
+.persona-module:hover {
+  background-color: #4A0078;
+}

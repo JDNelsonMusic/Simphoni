@@ -1,0 +1,124 @@
+<!-- app/templates/persona_setup.html -->
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container my-4">
+    <!-- Header Section -->
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <!-- Continue to Instruct Setup Button -->
+        <a href="{{ url_for('main.is_setup') }}" class="btn btn-primary fs-5">
+            <i class="bi bi-arrow-right-circle-fill me-2"></i>CONTINUE TO INSTRUCT SETUP
+        </a>
+        <!-- Page Title -->
+        <h2 class="text-center flex-grow-1">Persona Array</h2>
+        <!-- Settings Gear Icon -->
+        <a href="{{ url_for('main.settings') }}" class="btn btn-secondary fs-4">
+            <i class="bi bi-gear-fill"></i>
+        </a>
+    </div>
+
+    <!-- Save Persona Array Button -->
+    <div class="d-flex justify-content-end mb-4">
+        <button type="submit" form="personaForm" class="btn btn-success fs-6">
+            <i class="bi bi-save-fill me-2"></i>SAVE PERSONA ARRAY
+        </button>
+    </div>
+
+    <!-- Drag-and-Drop Models Section -->
+    <div class="mb-4">
+        <h4>Available Models</h4>
+        <div id="available-models" class="d-flex flex-wrap gap-2">
+            {% for model in available_models %}
+                <div class="available-model badge bg-info p-2 draggable" draggable="true" data-model-name="{{ model.name }}">
+                    {{ model.display }}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Persona Setup Form -->
+    <form id="personaForm" method="POST" action="{{ url_for('main.persona_setup') }}">
+        {{ form.hidden_tag() }}
+
+        {% for i in range(1, 10) %}
+            <div class="card mb-3">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <h5 class="card-title">Persona {{ i }}</h5>
+                        <!-- Save Individual Persona Button -->
+                        <button type="button" class="btn btn-sm btn-outline-success save-persona" data-persona-index="{{ i }}">
+                            <i class="bi bi-save"></i>
+                        </button>
+                    </div>
+                    <div class="row">
+                        <!-- Nickname Field -->
+                        <div class="col-md-4 mb-3">
+                            <label for="nickname_{{ i }}" class="form-label">Nickname</label>
+                            <input type="text" class="form-control" id="nickname_{{ i }}" name="nickname_{{ i }}" placeholder="Enter nickname" value="{{ personas[i-1].nickname }}">
+                        </div>
+                        <!-- Model Selection -->
+                        <div class="col-md-4 mb-3">
+                            <label for="model_name_{{ i }}" class="form-label">Model</label>
+                            <select class="form-select" id="model_name_{{ i }}" name="model_name_{{ i }}">
+                                {% for model in available_models %}
+                                    <option value="{{ model.name }}" {% if model.name == personas[i-1].model_name %}selected{% endif %}>{{ model.display }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <!-- Creativity Slider -->
+                        <div class="col-md-4 mb-3">
+                            <label for="creativity_{{ i }}" class="form-label">Creativity</label>
+                            <div class="d-flex align-items-center">
+                                <input type="range" class="form-range me-2" min="1" max="9" id="creativity_{{ i }}" name="creativity_{{ i }}" value="{{ personas[i-1].creativity }}" oninput="this.nextElementSibling.value = this.value">
+                                <output>{{ personas[i-1].creativity }}</output>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </form>
+</div>
+
+<!-- Drag-and-Drop Script -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const availableModels = document.querySelectorAll('.available-model');
+        const personaCards = document.querySelectorAll('.card-body');
+
+        availableModels.forEach(model => {
+            model.addEventListener('dragstart', (e) => {
+                e.dataTransfer.setData('text/plain', model.dataset.modelName);
+            });
+        });
+
+        personaCards.forEach(card => {
+            card.addEventListener('dragover', (e) => {
+                e.preventDefault();
+            });
+
+            card.addEventListener('drop', (e) => {
+                e.preventDefault();
+                const modelName = e.dataTransfer.getData('text/plain');
+                const selectElement = card.querySelector('select');
+                selectElement.value = modelName;
+            });
+        });
+
+        // Save Individual Persona Button Functionality
+        const saveButtons = document.querySelectorAll('.save-persona');
+        saveButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const index = button.dataset.personaIndex;
+                const nickname = document.getElementById(`nickname_${index}`).value;
+                const modelName = document.getElementById(`model_name_${index}`).value;
+                const creativity = document.getElementById(`creativity_${index}`).value;
+
+                // You can implement AJAX call here to save individual persona without submitting the entire form
+                // For simplicity, we'll trigger the form submission
+                document.getElementById('personaForm').submit();
+            });
+        });
+    });
+</script>
+{% endblock %}
