@@ -19,7 +19,7 @@ if not OPENAI_API_KEY:
 # Define request models
 class ChatRequest(BaseModel):
     prompt: str
-    model: Optional[str] = "gpt-4o"
+    model: Optional[str] = "gpt-4o-txt"  # Default to KEE1:txt
 
 class OllamaRequest(BaseModel):
     model: str
@@ -27,6 +27,17 @@ class OllamaRequest(BaseModel):
 
 class StableDiffusionRequest(BaseModel):
     prompt: str
+
+# CORS Configuration (Adjust origins as needed)
+from fastapi.middleware.cors import CORSMiddleware
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:3000"],  # React app URL
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # ChatGPT endpoint
 @app.post("/chat")
@@ -37,7 +48,7 @@ async def chat(request: ChatRequest):
         "Content-Type": "application/json",
     }
     data = {
-        "model": "gpt-4",  # Adjust model as needed
+        "model": "gpt-4",  # Use "gpt-4o" or your custom model if available
         "messages": [
             {"role": "user", "content": request.prompt}
         ]

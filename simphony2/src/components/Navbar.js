@@ -1,6 +1,6 @@
 // src/components/Navbar.js
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { useAuth } from './AuthProvider';
 import './Navbar.css';
 import { FaUserCircle } from 'react-icons/fa';
@@ -21,19 +21,49 @@ function Navbar() {
   return (
     <div className="navbar">
       <div className="navbar-left">
-        <Link to="/" className="logo">
+        <NavLink to="/" className="logo">
           <img src="/logo192.png" alt="Symphoni Logo" className="logo-image" />
           <span className="app-title">Symphoni</span>
-        </Link>
+        </NavLink>
       </div>
       {currentUser && (
         <div className="navbar-center">
-          <Link className="nav-item" to="/instruct-schemas">Instruct Schemas</Link>
-          <Link className="nav-item" to="/my-arrays">My Arrays</Link>
-          <Link className="nav-item" to="/past-is-threads">Past IS-Threads</Link>
-          <Link className="nav-item" to="/is-setup">IS-Setup</Link>
-          <Link className="nav-item" to="/">Persona-Setup</Link>
-          <Link className="nav-item" to="/tools">Tools</Link>
+          <NavLink
+            to="/persona-setup"
+            className={({ isActive }) => (isActive ? 'nav-item active-nav-item' : 'nav-item')}
+          >
+            Persona Setup
+          </NavLink>
+          <NavLink
+            to="/is-setup"
+            className={({ isActive }) => (isActive ? 'nav-item active-nav-item' : 'nav-item')}
+          >
+            IS Setup
+          </NavLink>
+          <NavLink
+            to="/instruct-schemas"
+            className={({ isActive }) => (isActive ? 'nav-item' : 'nav-item')}
+          >
+            Instruct Schemas
+          </NavLink>
+          <NavLink
+            to="/my-arrays"
+            className={({ isActive }) => (isActive ? 'nav-item' : 'nav-item')}
+          >
+            My Arrays
+          </NavLink>
+          <NavLink
+            to="/past-is-threads"
+            className={({ isActive }) => (isActive ? 'nav-item' : 'nav-item')}
+          >
+            Past IS-Threads
+          </NavLink>
+          <NavLink
+            to="/tools"
+            className={({ isActive }) => (isActive ? 'nav-item' : 'nav-item')}
+          >
+            Tools
+          </NavLink>
         </div>
       )}
       <div className="navbar-right">
@@ -44,8 +74,8 @@ function Navbar() {
           </>
         ) : (
           <>
-            <Link to="/login" className="auth-link">Login</Link>
-            <Link to="/signup" className="auth-link">Sign Up</Link>
+            <NavLink to="/login" className="auth-link">Login</NavLink>
+            <NavLink to="/signup" className="auth-link">Sign Up</NavLink>
           </>
         )}
       </div>

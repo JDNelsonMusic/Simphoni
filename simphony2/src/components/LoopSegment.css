@@ -1,0 +1,41 @@
+/* src/components/LoopSegment.css */
+
+.loop-segment {
+  border: 2px solid #ffa500; /* Orange */
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  background-color: #fff8dc; /* Cornsilk */
+}
+
+.loop-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.loop-iteration-input {
+  width: 60px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.loop-instruct-lines {
+  margin-left: 20px;
+}
+
+.add-loop-line-button {
+  padding: 8px 15px;
+  background-color: #32CD32; /* Lime Green */
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.add-loop-line-button:hover {
+  background-color: #28a745;
+}

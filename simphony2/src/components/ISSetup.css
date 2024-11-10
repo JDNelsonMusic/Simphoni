@@ -1,27 +1,81 @@
 /* src/components/ISSetup.css */
 
 .is-setup {
-  padding: 20px;
+  padding: 60px;
+  max-width: 2600px;
+  margin: 0 auto;
+  background-color: #1E001A;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.num-lines-input {
-  margin: 20px 0;
+.load-schema-buttons {
   display: flex;
-  align-items: center;
-  gap: 10px;
+  justify-content: flex-end;
+  margin-bottom: 10px;
 }
 
-.num-lines-input input {
-  width: 60px;
-  padding: 5px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+.load-schema-button {
+  padding: 10px 20px;
+  background-color: #FFA500; /* Orange */
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.load-schema-button:hover {
+  background-color: #e69500;
+}
+
+.model-modules {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.model-module {
+  padding: 10px;
+  background-color: #1e90ff;
+  color: #fff;
+  border-radius: 5px;
+  cursor: grab;
+  user-select: none;
+}
+
+.model-module:active {
+  cursor: grabbing;
 }
 
 .instruct-lines {
+  border: 24px dashed #1E003F;
+  padding: 10px;
+  min-height: 300px;
+  border-radius: 8px;
+}
+
+.add-buttons {
   display: flex;
-  flex-direction: column;
   gap: 10px;
-  padding: 20px;
-  background-color: #1E002E; /* Light background for visibility */
+  margin-top: 20px;
+}
+
+.add-button {
+  padding: 10px 20px;
+  background-color: #32CD32; /* Lime Green */
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.add-button:hover {
+  background-color: #28a745;
+}
+
+.loading {
+  text-align: center;
+  font-size: 1.5em;
+  margin-top: 50px;
 }

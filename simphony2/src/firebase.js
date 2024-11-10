@@ -1,4 +1,25 @@
 // src/firebase.js
+// import { initializeApp } from 'firebase/app';
+// import { getFirestore } from 'firebase/firestore';
+
+
+// Initialize Firebase
+// const app = initializeApp(firebaseConfig);
+// const db = getFirestore(app);
+
+// export { db };
+
+
+
+
+
+
+
+
+
+// src/firebase.js
+import { initializeApp } from 'firebase/app';
+import { getFirestore } from 'firebase/firestore';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
