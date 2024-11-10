@@ -59,6 +59,7 @@ function ISSetup() {
     const newInstructLines = [...instructLines];
     newInstructLines[index] = { ...newInstructLines[index], ...data };
     setInstructLines(newInstructLines);
+    console.log(`Updated instruct line ${index + 1}:`, newInstructLines[index]);
   };
 
   // Function to save instruct schema as JSON file
@@ -97,6 +98,7 @@ function ISSetup() {
   const startSequence = () => {
     // Implement navigation to ISThread or execution logic
     navigate('/is-thread');
+    console.log('Navigated to ISThread.');
   };
 
   if (loading) {

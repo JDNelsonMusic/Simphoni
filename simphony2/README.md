@@ -1,3 +1,32 @@
+Next Simphony Update Needs
+
+Need to make the IS:Setup page look better and it needs to include a “LOAD SCHEMA” button similar to the persona array page’s “LOAD PERSONA ARRAY” button. 
+
+Need to check to see if there are any llama callout function in the thread page that are supposed to be running… 
+
+Need to build in an “IF” condition for StableDiffusion model text callouts and also setup image API callouts. 
+
+I should integrate my GPT-4o API Key. Maybe I can have it be a slightly custom GPT and call is KEE1:txt and also build in KEE1:web, KEE1:img, KEE1:vid, KEE1:code, etc
+
+Need to determine what features / options to build into the setting options.   Need to decide what I want the folders to be called that will contain a user’s saved persona-arrays or instruct-schemas. 
+
+Need to figure out how to ensure that Firebase is working properly.
+
+In the nav-bar, I should consider making Persona-Setup and IS-Setup bold and brighter than the other options, and I should build. 
+
+Need to ensure that user can view the IS:Setup page without needing to go there from the Persona-Setup page. 
+
+Need to implement the loop-features within the sequence that the user can setup on the IS:Setup page. 
+
+
+
+
+
+==================================================
+
+
+
+
 Complete List of Updated and New Files
 Below is a summary of all the files you need to update or create. Replace your existing files with these versions and add the new ones as specified.
 
