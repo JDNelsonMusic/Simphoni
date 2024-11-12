@@ -1,0 +1,134 @@
+{
+  "schemaName": "TwoWizards_Test1",
+  "instructLines": [
+    {
+      "id": 0,
+      "instructText": "",
+      "persona": "",
+      "tool": "",
+      "file": null
+    },
+    {
+      "id": 1,
+      "instructText": "",
+      "persona": "",
+      "tool": "",
+      "file": null
+    },
+    {
+      "id": 2,
+      "instructText": "",
+      "persona": "",
+      "tool": "",
+      "file": null
+    },
+    {
+      "id": 3,
+      "instructText": "",
+      "persona": "",
+      "tool": "",
+      "file": null
+    },
+    {
+      "id": 4,
+      "instructText": "",
+      "persona": "",
+      "tool": "",
+      "file": null
+    },
+    {
+      "id": 5,
+      "instructText": "",
+      "persona": "",
+      "tool": "",
+      "file": null
+    },
+    {
+      "id": 6,
+      "instructText": "",
+      "persona": "",
+      "tool": "",
+      "file": null
+    },
+    {
+      "id": 7,
+      "instructText": "",
+      "persona": "",
+      "tool": "",
+      "file": null
+    },
+    {
+      "id": 8,
+      "instructText": "",
+      "persona": "",
+      "tool": "",
+      "file": null
+    }
+  ],
+  "arrayName": "TeamWizard",
+  "personas": [
+    {
+      "id": "1731159932816_0",
+      "nickname": "wiz1",
+      "model": "llama3.2:3b",
+      "creativity": 5,
+      "definePersona": "You're a wizard"
+    },
+    {
+      "id": "1731159932816_1",
+      "nickname": "wiz2",
+      "model": "llama3.2:3b",
+      "creativity": 5,
+      "definePersona": "You're a wizard"
+    },
+    {
+      "id": "1731159932816_2",
+      "nickname": "wiz3",
+      "model": "llama3.2:3b",
+      "creativity": 5,
+      "definePersona": "You're a wizard"
+    },
+    {
+      "id": "1731159932816_3",
+      "nickname": "wiz4",
+      "model": "llama3.2:3b",
+      "creativity": 5,
+      "definePersona": "You're a wizard"
+    },
+    {
+      "id": "1731159932816_4",
+      "nickname": "wiz5",
+      "model": "llama3.2:3b",
+      "creativity": 5,
+      "definePersona": "You're a wizard"
+    },
+    {
+      "id": "1731159932816_5",
+      "nickname": "wiz6",
+      "model": "llama3.2:3b",
+      "creativity": 5,
+      "definePersona": "You're a wizard"
+    },
+    {
+      "id": "1731159932816_6",
+      "nickname": "wiz7",
+      "model": "llama3.2:3b",
+      "creativity": 5,
+      "definePersona": "You're a wizard"
+    },
+    {
+      "id": "1731159932816_7",
+      "nickname": "wiz8",
+      "model": "llama3.2:3b",
+      "creativity": 5,
+      "definePersona": "You're a wizard"
+    },
+    {
+      "id": "1731159932816_8",
+      "nickname": "wiz9",
+      "model": "llama3.2:3b",
+      "creativity": 5,
+      "definePersona": "You're a wizard"
+    }
+  ]
+}
