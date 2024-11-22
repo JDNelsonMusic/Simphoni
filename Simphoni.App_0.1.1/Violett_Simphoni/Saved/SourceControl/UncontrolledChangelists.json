@@ -1,0 +1,13 @@
+{
+	"version": 1,
+	"changelists": [
+		{
+			"guid": "00000000000000000000000000000000",
+			"description": "Default Uncontrolled Changelist",
+			"files": [
+				"/Users/JDNelson/AI_Dev/Simphoni/Simphoni.App_0.1.1/Violett_Simphoni/Content/StarterContent/Props/SM_PillarFrame.uasset",
+				"/Users/JDNelson/AI_Dev/Simphoni/Simphoni.App_0.1.1/Violett_Simphoni/Content/M_Violett.uasset"
+			]
+		}
+	]
+}

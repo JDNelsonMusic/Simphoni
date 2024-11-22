@@ -1,0 +1,14 @@
+{
+	"Targets": [
+		{
+			"Name": "Violett_Simphoni",
+			"Path": "../Source/Violett_Simphoni.Target.cs",
+			"Type": "Game"
+		},
+		{
+			"Name": "Violett_SimphoniEditor",
+			"Path": "../Source/Violett_SimphoniEditor.Target.cs",
+			"Type": "Editor"
+		}
+	]
+}
