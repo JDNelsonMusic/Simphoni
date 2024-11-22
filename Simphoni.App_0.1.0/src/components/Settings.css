@@ -1,0 +1,68 @@
+/* src/components/Settings.css */
+
+.settings-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(30, 0, 46, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.settings-content {
+  background-color: #2A0036;
+  padding: 20px;
+  border-radius: 10px;
+  color: #FFFFFF;
+  width: 300px;
+  position: relative;
+}
+
+.settings-content h3 {
+  margin-top: 0;
+  text-align: center;
+}
+
+.settings-content label {
+  display: block;
+  margin: 10px 0;
+}
+
+.settings-content select {
+  width: 100%;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #6c757d;
+  background-color: #3D004F;
+  color: #FFFFFF;
+}
+
+.settings-content button {
+  margin-top: 10px;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  background-color: #FF007C;
+  color: #FFFFFF;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 100%;
+}
+
+.settings-content button:hover {
+  background-color: #FF49A4;
+}
+
+.close-btn {
+  background-color: #C2A3E0;
+  margin-top: 10px;
+}
+
+.close-btn:hover {
+  background-color: #FFFFFF;
+  color: #1E002E;
+}

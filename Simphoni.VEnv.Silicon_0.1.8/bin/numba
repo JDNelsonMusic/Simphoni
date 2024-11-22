@@ -1,0 +1,8 @@
+#!/Users/JDNelson/AI_Dev/symphoni_0.1.7/bin/python3.12
+# -*- coding: UTF-8 -*-
+from __future__ import print_function, division, absolute_import
+
+from numba.misc.numba_entry import main
+
+if __name__ == "__main__":
+    main()
