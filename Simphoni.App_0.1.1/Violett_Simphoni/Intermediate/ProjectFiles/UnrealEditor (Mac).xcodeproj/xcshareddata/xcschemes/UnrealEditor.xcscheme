@@ -14,7 +14,7 @@
                <EnvironmentBuildable>
                   <BuildableReference
                      BuildableIdentifier = "primary"
-                     BlueprintIdentifier = "16DF68EE4DDD254F07A2C991"
+                     BlueprintIdentifier = "89D24A7A65CC1BD2B74F9BDD"
                      BuildableName = "UnrealEditor.app"
                      BlueprintName = "UnrealEditor"
                      ReferencedContainer = "container:UnrealEditor (Mac).xcodeproj">
@@ -32,7 +32,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "16DF68EE4DDD254F07A2C991"
+               BlueprintIdentifier = "89D24A7A65CC1BD2B74F9BDD"
                BuildableName = "UnrealEditor.app"
                BlueprintName = "UnrealEditor"
                ReferencedContainer = "container:UnrealEditor (Mac).xcodeproj">
@@ -48,7 +48,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "16DF68EE4DDD254F07A2C991"
+            BlueprintIdentifier = "89D24A7A65CC1BD2B74F9BDD"
             BuildableName = "UnrealEditor.app"
             BlueprintName = "UnrealEditor"
             ReferencedContainer = "container:UnrealEditor (Mac).xcodeproj">
@@ -71,7 +71,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "16DF68EE4DDD254F07A2C991"
+            BlueprintIdentifier = "89D24A7A65CC1BD2B74F9BDD"
             BuildableName = "UnrealEditor.app"
             BlueprintName = "UnrealEditor"
             ReferencedContainer = "container:UnrealEditor (Mac).xcodeproj">
@@ -94,7 +94,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "16DF68EE4DDD254F07A2C991"
+            BlueprintIdentifier = "89D24A7A65CC1BD2B74F9BDD"
             BuildableName = "UnrealEditor.app"
             BlueprintName = "UnrealEditor"
             ReferencedContainer = "container:UnrealEditor (Mac).xcodeproj">

@@ -1,0 +1,14 @@
+{
+	"Targets": [
+		{
+			"Name": "ViolettFresh",
+			"Path": "../Source/ViolettFresh.Target.cs",
+			"Type": "Game"
+		},
+		{
+			"Name": "ViolettFreshEditor",
+			"Path": "../Source/ViolettFreshEditor.Target.cs",
+			"Type": "Editor"
+		}
+	]
+}

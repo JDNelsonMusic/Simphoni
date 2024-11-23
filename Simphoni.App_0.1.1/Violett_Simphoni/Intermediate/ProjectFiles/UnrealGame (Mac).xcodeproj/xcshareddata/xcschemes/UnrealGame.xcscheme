@@ -14,7 +14,7 @@
                <EnvironmentBuildable>
                   <BuildableReference
                      BuildableIdentifier = "primary"
-                     BlueprintIdentifier = "42FD17F09818B7EA78B504B4"
+                     BlueprintIdentifier = "F729B953551612B1AC7550F8"
                      BuildableName = "UnrealGame.app"
                      BlueprintName = "UnrealGame"
                      ReferencedContainer = "container:UnrealGame (Mac).xcodeproj">
@@ -32,7 +32,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "42FD17F09818B7EA78B504B4"
+               BlueprintIdentifier = "F729B953551612B1AC7550F8"
                BuildableName = "UnrealGame.app"
                BlueprintName = "UnrealGame"
                ReferencedContainer = "container:UnrealGame (Mac).xcodeproj">
@@ -48,7 +48,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "42FD17F09818B7EA78B504B4"
+            BlueprintIdentifier = "F729B953551612B1AC7550F8"
             BuildableName = "UnrealGame.app"
             BlueprintName = "UnrealGame"
             ReferencedContainer = "container:UnrealGame (Mac).xcodeproj">
@@ -71,7 +71,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "42FD17F09818B7EA78B504B4"
+            BlueprintIdentifier = "F729B953551612B1AC7550F8"
             BuildableName = "UnrealGame.app"
             BlueprintName = "UnrealGame"
             ReferencedContainer = "container:UnrealGame (Mac).xcodeproj">
@@ -88,7 +88,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "42FD17F09818B7EA78B504B4"
+            BlueprintIdentifier = "F729B953551612B1AC7550F8"
             BuildableName = "UnrealGame.app"
             BlueprintName = "UnrealGame"
             ReferencedContainer = "container:UnrealGame (Mac).xcodeproj">

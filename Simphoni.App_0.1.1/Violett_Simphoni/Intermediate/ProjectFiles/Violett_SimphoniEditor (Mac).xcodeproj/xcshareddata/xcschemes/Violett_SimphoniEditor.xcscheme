@@ -14,7 +14,7 @@
                <EnvironmentBuildable>
                   <BuildableReference
                      BuildableIdentifier = "primary"
-                     BlueprintIdentifier = "31FE46D916B384556E237CFF"
+                     BlueprintIdentifier = "46AC66DDC219A73C056364CF"
                      BuildableName = "UnrealEditor.app"
                      BlueprintName = "Violett_SimphoniEditor"
                      ReferencedContainer = "container:Violett_SimphoniEditor (Mac).xcodeproj">
@@ -32,7 +32,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "31FE46D916B384556E237CFF"
+               BlueprintIdentifier = "46AC66DDC219A73C056364CF"
                BuildableName = "UnrealEditor.app"
                BlueprintName = "Violett_SimphoniEditor"
                ReferencedContainer = "container:Violett_SimphoniEditor (Mac).xcodeproj">
@@ -48,7 +48,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "31FE46D916B384556E237CFF"
+            BlueprintIdentifier = "46AC66DDC219A73C056364CF"
             BuildableName = "UnrealEditor.app"
             BlueprintName = "Violett_SimphoniEditor"
             ReferencedContainer = "container:Violett_SimphoniEditor (Mac).xcodeproj">
@@ -71,7 +71,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "31FE46D916B384556E237CFF"
+            BlueprintIdentifier = "46AC66DDC219A73C056364CF"
             BuildableName = "UnrealEditor.app"
             BlueprintName = "Violett_SimphoniEditor"
             ReferencedContainer = "container:Violett_SimphoniEditor (Mac).xcodeproj">
@@ -94,7 +94,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "31FE46D916B384556E237CFF"
+            BlueprintIdentifier = "46AC66DDC219A73C056364CF"
             BuildableName = "UnrealEditor.app"
             BlueprintName = "Violett_SimphoniEditor"
             ReferencedContainer = "container:Violett_SimphoniEditor (Mac).xcodeproj">

@@ -1,0 +1,420 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+/* Begin PBXBuildFile section */
+		F2BB2150A1413456EDEF34EF = {isa = PBXBuildFile; fileRef = DE559463C900220FBC9A0050; settings = {COMPILER_FLAGS = "@/Users/JDNelson/AI_Dev/Simphoni/Simphoni.App_0.1.1/ViolettFresh/Intermediate/ProjectFiles/ResponseFiles/Mac/ViolettFresh1.response"; }; }; /* ViolettFresh.cpp */
+		6BE6CEDB4A769DDF61C13C34 = {isa = PBXBuildFile; fileRef = C17814F8F889952F0D47435D; settings = {COMPILER_FLAGS = "@/Users/JDNelson/AI_Dev/Simphoni/Simphoni.App_0.1.1/ViolettFresh/Intermediate/ProjectFiles/ResponseFiles/Mac/ViolettFresh1.response"; }; }; /* ViolettFreshCharacter.cpp */
+		08E0348FAC4EA2E150AC9C07 = {isa = PBXBuildFile; fileRef = C465AF2226BF9C17FB04D6BC; settings = {COMPILER_FLAGS = "@/Users/JDNelson/AI_Dev/Simphoni/Simphoni.App_0.1.1/ViolettFresh/Intermediate/ProjectFiles/ResponseFiles/Mac/ViolettFresh1.response"; }; }; /* ViolettFreshGameMode.cpp */
+		9ED5704A4B4A16FFE9FE5CAD = {isa = PBXBuildFile; fileRef = 72841C13814F843B9A0189B5; }; /* Assets.xcassets */
+		70EFF6E83367C3050F70946E = {isa = PBXBuildFile; fileRef = E647904C34130FA32413EB06; }; /* LaunchScreen.storyboardc */
+		F9739D39DB9D7D297688118E = {isa = PBXBuildFile; fileRef = 8C3CE05B81E23A0F4B3B4C0E; }; /* UEMetadata */
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		7451D3F36FE827DF64027CFE = {isa = PBXFileReference; explicitFileType = file.txt; name = "DefaultEditor.ini"; path = "../../Config/DefaultEditor.ini"; sourceTree = SOURCE_ROOT; };
+		4E6FC01DBECF6EAFE3EBE34A = {isa = PBXFileReference; explicitFileType = file.txt; name = "DefaultEditorPerProjectUserSettings.ini"; path = "../../Config/DefaultEditorPerProjectUserSettings.ini"; sourceTree = SOURCE_ROOT; };
+		CEDBC2E8B849B360A801E011 = {isa = PBXFileReference; explicitFileType = file.txt; name = "DefaultEngine.ini"; path = "../../Config/DefaultEngine.ini"; sourceTree = SOURCE_ROOT; };
+		5873D72E80F5FC38B15BAE4B = {isa = PBXFileReference; explicitFileType = file.txt; name = "DefaultGame.ini"; path = "../../Config/DefaultGame.ini"; sourceTree = SOURCE_ROOT; };
+		6BB943E2C40AE476452D4EE3 = {isa = PBXFileReference; explicitFileType = file.txt; name = "DefaultInput.ini"; path = "../../Config/DefaultInput.ini"; sourceTree = SOURCE_ROOT; };
+		CF746C0FF4BEC24D1E04EB4B = {isa = PBXFileReference; explicitFileType = file.txt; name = "ViolettFresh.Target.cs"; path = "../../Source/ViolettFresh.Target.cs"; sourceTree = SOURCE_ROOT; };
+		855D82623BB30EE9895C84A5 = {isa = PBXFileReference; explicitFileType = file.txt; name = "ViolettFresh.Build.cs"; path = "../../Source/ViolettFresh/ViolettFresh.Build.cs"; sourceTree = SOURCE_ROOT; };
+		DE559463C900220FBC9A0050 = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; name = "ViolettFresh.cpp"; path = "../../Source/ViolettFresh/ViolettFresh.cpp"; sourceTree = SOURCE_ROOT; };
+		394405D496D7C3F1D5E1DD6C = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; name = "ViolettFresh.h"; path = "../../Source/ViolettFresh/ViolettFresh.h"; sourceTree = SOURCE_ROOT; };
+		C17814F8F889952F0D47435D = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; name = "ViolettFreshCharacter.cpp"; path = "../../Source/ViolettFresh/ViolettFreshCharacter.cpp"; sourceTree = SOURCE_ROOT; };
+		7FC697D90EBCA602287A61AD = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; name = "ViolettFreshCharacter.h"; path = "../../Source/ViolettFresh/ViolettFreshCharacter.h"; sourceTree = SOURCE_ROOT; };
+		C465AF2226BF9C17FB04D6BC = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; name = "ViolettFreshGameMode.cpp"; path = "../../Source/ViolettFresh/ViolettFreshGameMode.cpp"; sourceTree = SOURCE_ROOT; };
+		D9BD4C63FA382A48544E7832 = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; name = "ViolettFreshGameMode.h"; path = "../../Source/ViolettFresh/ViolettFreshGameMode.h"; sourceTree = SOURCE_ROOT; };
+		F519DBC82B7C343B37F88500 = {isa = PBXFileReference; explicitFileType = file.txt; name = "ViolettFresh.uproject"; path = "../../ViolettFresh.uproject"; sourceTree = SOURCE_ROOT; };
+		4389CCF56161D0928C943890 = {isa = PBXFileReference; explicitFileType = wrapper.application; name = "ViolettFresh"; path = "ViolettFresh"; sourceTree = BUILT_PRODUCTS_DIR; };
+		72841C13814F843B9A0189B5 = {isa = PBXFileReference; explicitFileType = folder.assetcatalog; name = "Assets.xcassets"; path = "/Users/Shared/Epic Games/UE_5.5/Engine/Build/Mac/Resources/Assets.xcassets"; sourceTree = "<absolute>"; };
+		E647904C34130FA32413EB06 = {isa = PBXFileReference; explicitFileType = wrapper.storyboardc; name = "LaunchScreen.storyboardc"; path = "/Users/Shared/Epic Games/UE_5.5/Engine/Build/IOS/Resources/Interface/LaunchScreen.storyboardc"; sourceTree = "<absolute>"; };
+		8C3CE05B81E23A0F4B3B4C0E = {isa = PBXFileReference; explicitFileType = file.txt; name = "UEMetadata"; path = "/Users/Shared/Epic Games/UE_5.5/Engine/Build/Mac/Resources/UEMetadata"; sourceTree = "<absolute>"; };
+		C899647B9A872D7FAA97AB87 = {isa = PBXFileReference; explicitFileType = test.xcconfig; name = "ViolettFresh.xcconfig"; path = "XcconfigsMac/ViolettFresh.xcconfig"; sourceTree = "<group>"; };
+		31F2C5C42D2DE7BA28C7D6A9 = {isa = PBXFileReference; explicitFileType = test.xcconfig; name = "ViolettFresh_DebugGame.xcconfig"; path = "XcconfigsMac/ViolettFresh_DebugGame.xcconfig"; sourceTree = "<group>"; };
+		9013AA529FE13BB8333976EA = {isa = PBXFileReference; explicitFileType = test.xcconfig; name = "ViolettFresh_Development.xcconfig"; path = "XcconfigsMac/ViolettFresh_Development.xcconfig"; sourceTree = "<group>"; };
+		ED52061A83905D37B9949D63 = {isa = PBXFileReference; explicitFileType = test.xcconfig; name = "ViolettFresh_Shipping.xcconfig"; path = "XcconfigsMac/ViolettFresh_Shipping.xcconfig"; sourceTree = "<group>"; };
+		74D36B57E71D237556BB28AB = {isa = PBXFileReference; explicitFileType = test.xcconfig; name = "ViolettFresh_Index.xcconfig"; path = "XcconfigsMac/ViolettFresh_Index.xcconfig"; sourceTree = "<group>"; };
+		CD9C4D834CA155DA21CE1985 = {isa = PBXFileReference; explicitFileType = text.plist; name = "Info-Editor.Template.plist"; path = "../../../../../../../Shared/Epic Games/UE_5.5/Engine/Intermediate/Build/Mac/Resources/Info-Editor.Template.plist"; sourceTree = "<group>"; };
+		C17CE053E11D083E7A520FA3 = {isa = PBXFileReference; explicitFileType = text.plist; name = "Info.Template.plist"; path = "../../Build/Mac/Resources/Info.Template.plist"; sourceTree = "<group>"; };
+		206D1E9ADB543A167E4F8EFE = {isa = PBXFileReference; explicitFileType = text.plist; name = "Sandbox.Server.entitlements"; path = "../../Build/Mac/Resources/Sandbox.Server.entitlements"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		E40FFA3B5B54C545E5B980DF = {
+			isa = PBXGroup;
+			children = (
+				B6ADDB1F47DC0CD90616EF21 /* Config */,
+				7952FA875FD6C9B21E56C285 /* Source */,
+				F519DBC82B7C343B37F88500 /* ViolettFresh.uproject */,
+				F9CBF0B8F3E74F67CEC5123E /* Products */,
+				335D00EB4CCF79213F34A404 /* Resources */,
+				2C9823C89B52C3ECF6240E40 /* Xcconfigs */,
+				9AA7D79282B0781F5EE165BD /* Metadata */,
+			);
+			sourceTree = "<group>";
+		};
+		B6ADDB1F47DC0CD90616EF21 = {
+			isa = PBXGroup;
+			children = (
+				7451D3F36FE827DF64027CFE /* DefaultEditor.ini */,
+				4E6FC01DBECF6EAFE3EBE34A /* DefaultEditorPerProjectUserSettings.ini */,
+				CEDBC2E8B849B360A801E011 /* DefaultEngine.ini */,
+				5873D72E80F5FC38B15BAE4B /* DefaultGame.ini */,
+				6BB943E2C40AE476452D4EE3 /* DefaultInput.ini */,
+			);
+			name = "Config";
+			path = "/Users/JDNelson/AI_Dev/Simphoni/Simphoni.App_0.1.1/ViolettFresh/Config";
+			sourceTree = "<absolute>";
+		};
+		7952FA875FD6C9B21E56C285 = {
+			isa = PBXGroup;
+			children = (
+				7508DE85793ABC13632AF77A /* ViolettFresh */,
+				CF746C0FF4BEC24D1E04EB4B /* ViolettFresh.Target.cs */,
+			);
+			name = "Source";
+			path = "/Users/JDNelson/AI_Dev/Simphoni/Simphoni.App_0.1.1/ViolettFresh/Source";
+			sourceTree = "<absolute>";
+		};
+		7508DE85793ABC13632AF77A = {
+			isa = PBXGroup;
+			children = (
+				855D82623BB30EE9895C84A5 /* ViolettFresh.Build.cs */,
+				DE559463C900220FBC9A0050 /* ViolettFresh.cpp */,
+				394405D496D7C3F1D5E1DD6C /* ViolettFresh.h */,
+				C17814F8F889952F0D47435D /* ViolettFreshCharacter.cpp */,
+				7FC697D90EBCA602287A61AD /* ViolettFreshCharacter.h */,
+				C465AF2226BF9C17FB04D6BC /* ViolettFreshGameMode.cpp */,
+				D9BD4C63FA382A48544E7832 /* ViolettFreshGameMode.h */,
+			);
+			name = "ViolettFresh";
+			path = "/Users/JDNelson/AI_Dev/Simphoni/Simphoni.App_0.1.1/ViolettFresh/Source/ViolettFresh";
+			sourceTree = "<absolute>";
+		};
+		F9CBF0B8F3E74F67CEC5123E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4389CCF56161D0928C943890 /* ViolettFresh */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		335D00EB4CCF79213F34A404 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				72841C13814F843B9A0189B5 /* Assets.xcassets */,
+				E647904C34130FA32413EB06 /* LaunchScreen.storyboardc */,
+				8C3CE05B81E23A0F4B3B4C0E /* UEMetadata */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		2C9823C89B52C3ECF6240E40 /* Xcconfigs */ = {
+			isa = PBXGroup;
+			children = (
+				C899647B9A872D7FAA97AB87 /* ViolettFresh.xcconfig */,
+				31F2C5C42D2DE7BA28C7D6A9 /* ViolettFresh_DebugGame.xcconfig */,
+				9013AA529FE13BB8333976EA /* ViolettFresh_Development.xcconfig */,
+				ED52061A83905D37B9949D63 /* ViolettFresh_Shipping.xcconfig */,
+				74D36B57E71D237556BB28AB /* ViolettFresh_Index.xcconfig */,
+			);
+			name = Xcconfigs;
+			sourceTree = "<group>";
+		};
+		9AA7D79282B0781F5EE165BD /* Metadata */ = {
+			isa = PBXGroup;
+			children = (
+				CD9C4D834CA155DA21CE1985 /* Info-Editor.Template.plist */,
+				C17CE053E11D083E7A520FA3 /* Info.Template.plist */,
+				206D1E9ADB543A167E4F8EFE /* Sandbox.Server.entitlements */,
+			);
+			name = Metadata;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+/* Begin PBXProject section */
+		7F2182D426539A81469008EC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 2000;
+				ORGANIZATIONNAME = "Epic Games, Inc.";
+				TargetAttributes = {
+					EF0071398ABE37F9DAC89D8A = {
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 038B5A0F67485E40AF7ECB90 /* Build configuration list for PBXProject "ViolettFresh" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en
+			);
+			mainGroup = E40FFA3B5B54C545E5B980DF;
+			productRefGroup = F9CBF0B8F3E74F67CEC5123E;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EF0071398ABE37F9DAC89D8A /* ViolettFresh */,
+				C4BAD72770A901705405E0F1 /* ViolettFresh_Index */,
+				629AA496F7469055EAC78AF1 /* ViolettFresh_Build */,
+			);
+		};
+/* End PBXProject section */
+/* Begin Run_App section */
+		EF0071398ABE37F9DAC89D8A /* ViolettFresh */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D9D03E4FBB67318DCAEC623B /* Build configuration list for PBXNativeTarget "ViolettFresh" */;
+			buildPhases = (
+				DF89711BC4A44A2874CEFD9A /* Resources */,
+				15FE8E0A9B4C8F6FF44846E3 /* Copy Executable and Staged Data into .app */,
+				D458B72C60785B2D10CC276E /* Generate dsym for archive, and strip */,
+			);
+			dependencies = (
+				2AE95D9E7E36C2D94729B01B /* ViolettFresh_Build */,
+			);
+			name = "ViolettFresh";
+			passBuildSettingsInEnvironment = 1;
+			productType = "com.apple.product-type.application";
+			productReference = 4389CCF56161D0928C943890;
+			productName = "ViolettFresh";
+		};
+/* End Run_App section */
+		D9D03E4FBB67318DCAEC623B /* Build configuration list for target ViolettFresh */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A9EA5635C0B6ADD4C68AA7E8 /* DebugGame */,
+				5F036E659D12F97BEC421B91 /* Development */,
+				2381D62463ABC5029E368F9F /* Shipping */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = "Development";
+		};
+		A9EA5635C0B6ADD4C68AA7E8 /* DebugGame */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 31F2C5C42D2DE7BA28C7D6A9 /* ViolettFresh_DebugGame.xcconfig */;
+			buildSettings = {
+			};
+			name = "DebugGame";
+		};
+		5F036E659D12F97BEC421B91 /* Development */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9013AA529FE13BB8333976EA /* ViolettFresh_Development.xcconfig */;
+			buildSettings = {
+			};
+			name = "Development";
+		};
+		2381D62463ABC5029E368F9F /* Shipping */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = ED52061A83905D37B9949D63 /* ViolettFresh_Shipping.xcconfig */;
+			buildSettings = {
+			};
+			name = "Shipping";
+		};
+/* Begin PBXResourcesBuildPhase section */
+		DF89711BC4A44A2874CEFD9A = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9ED5704A4B4A16FFE9FE5CAD /* Assets.xcassets in Resources */,
+				70EFF6E83367C3050F70946E /* LaunchScreen.storyboardc in Resources */,
+				F9739D39DB9D7D297688118E /* UEMetadata in Resources */,
+			);
+		};
+/* End PBXResourcesBuildPhase section */
+/* Begin PBXShellScriptBuildPhase section */
+		15FE8E0A9B4C8F6FF44846E3 = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			name = "Copy Executable and Staged Data into .app";
+			inputPaths = (
+			);
+			outputPaths = (
+				"/dev/null"
+			);
+			shellPath = /bin/sh;
+			shellScript = "set -eo pipefail\nSRC_EXE=\"${UE_BINARIES_DIR}/${UE_UBT_BINARY_SUBPATH}\"\nDEST_EXE=\"${CONFIGURATION_BUILD_DIR}/${EXECUTABLE_PATH}\"\nDEST_EXE_DIR=`dirname \"${DEST_EXE}\"`\n\necho Copying executable and any standalone dylibs into ${DEST_EXE_DIR} but do not overwrite unless src is newer\nmkdir -p \"${DEST_EXE_DIR}\"\nrsync -au \"${SRC_EXE}\" \"${DEST_EXE}\"\n\n# Skip syncing if desired\nif [[ ${UE_SKIP_STAGEDDATA_SYNC} -eq 1 ]]; then exit 0; fi\n\n# When building engine projects, like UnrealGame, we don't have data to stage unless something has specified UE_OVERRIDE_STAGE_DIR\nif [[ -z ${UE_OVERRIDE_STAGE_DIR} ]]; then \nSTAGED_DIR=\"${UE_PROJECT_DIR}/Saved/StagedBuilds/${UE_TARGET_PLATFORM_NAME}\"\nelse\n  STAGED_DIR=\"${UE_OVERRIDE_STAGE_DIR}\"\nfi\nif [[ -z ${STAGED_DIR} ]]; then exit 0; fi\n# Make sure the staged directory exists and has files in it\nif [[ ! -e \"${STAGED_DIR}\" || ! $(ls -A \"${STAGED_DIR}\") ]]; then \n  echo =========================================================================================\n  echo \"WARNING: To run, you must have a valid staged build directory. The Staged location is:\"\n  echo \"  ${STAGED_DIR}\"\n  echo \"Use the editor's Platforms menu, or run a command like::\"\n  echo \"./RunUAT.sh BuildCookRun -platform=Mac -project=<project> -build -cook -stage -pak\"\n  echo =========================================================================================\n  exit -0 \nfi\n\necho \"Syncing ${STAGED_DIR} to ${CONFIGURATION_BUILD_DIR}/${CONTENTS_FOLDER_PATH}/UE\"\nif [[ -e  \"${STAGED_DIR}\" ]]; then\nrsync -a --delete --exclude=\"/Info.plist\" --exclude=\"/Manifest_*\" --exclude=\"/*.app\" \"${STAGED_DIR}/\" \"${CONFIGURATION_BUILD_DIR}/${CONTENTS_FOLDER_PATH}/UE\"\nelse\n  echo =========================================================================================\n  echo \"WARNING: To run, you must have a valid staged sync source directory. The Staged SyncSource location is:\"\n  echo \"${STAGED_DIR}\"\n  echo \"Use the editor's Platforms menu, or run a command like::\"\n  echo \"./RunUAT.sh BuildCookRun -platform=Mac -project=<project> -build -cook -stage -pak\"\n  echo =========================================================================================\n  exit -0 \nfi";
+		};
+/* End PBXShellScriptBuildPhase section */
+/* Begin PBXShellScriptBuildPhase section */
+		D458B72C60785B2D10CC276E = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			name = "Generate dsym for archive, and strip";
+			inputPaths = (
+				"\"$(CONFIGURATION_BUILD_DIR)/$(EXECUTABLE_PATH)\""
+			);
+			outputPaths = (
+				"\"$(DWARF_DSYM_FOLDER_PATH)/$(DWARF_DSYM_FILE_NAME)\""
+			);
+			shellPath = /bin/sh;
+			shellScript = "set -e\n\n# Run the wrapper dsym generator\n\"${UE_ENGINE_DIR}/Build/BatchFiles/Mac/GenerateUniversalDSYM.sh\" \"${CONFIGURATION_BUILD_DIR}/${EXECUTABLE_PATH}\" \"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}\"\nstrip -no_code_signature_warning -D \"${CONFIGURATION_BUILD_DIR}/${EXECUTABLE_PATH}\"\n\n# Remove any unused architectures from dylibs in the .app (param1) that don't match the executable (param2). Also error if a dylib is missing arches\n\"${UE_ENGINE_DIR}/Build/BatchFiles/Mac/ThinApp.sh\" \"${CONFIGURATION_BUILD_DIR}/${CONTENTS_FOLDER_PATH}\" \"${CONFIGURATION_BUILD_DIR}/${EXECUTABLE_PATH}\"";
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXShellScriptBuildPhase section */
+/* Begin PBXContainerItemProxy section */
+		16FAE500569114BE50C9D26D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7F2182D426539A81469008EC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 629AA496F7469055EAC78AF1;
+			remoteInfo = "ViolettFresh_Build";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXTargetDependency section */
+		2AE95D9E7E36C2D94729B01B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 629AA496F7469055EAC78AF1 /* ViolettFresh_Build */;
+			targetProxy = 16FAE500569114BE50C9D26D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+/* Begin Build section */
+		629AA496F7469055EAC78AF1 /* ViolettFresh_Build */ = {
+			isa = PBXLegacyTarget;
+			buildConfigurationList = 8BECE99B66AFA636AF6A76CF /* Build configuration list for PBXLegacyTarget "ViolettFresh_Build" */;
+			buildArgumentsString = "$(ACTION) ViolettFresh $(PLATFORM_NAME) $(CONFIGURATION) /Users/JDNelson/AI_Dev/Simphoni/Simphoni.App_0.1.1/ViolettFresh/ViolettFresh.uproject";
+			buildToolPath = "/Users/Shared/Epic Games/UE_5.5/Engine/Build/BatchFiles/Mac/XcodeBuild.sh";
+			buildWorkingDirectory = "/Users/Shared/Epic Games/UE_5.5";
+			buildPhases = (
+			);
+			dependencies = (
+			);
+			name = "ViolettFresh_Build";
+			passBuildSettingsInEnvironment = 1;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End Build section */
+		8BECE99B66AFA636AF6A76CF /* Build configuration list for target ViolettFresh_Build */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8A23020789F4662820F95F55 /* DebugGame */,
+				62D6C0A5C576E0B79791483A /* Development */,
+				69FF1A96E9D13DF824D50CD3 /* Shipping */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = "Development";
+		};
+		8A23020789F4662820F95F55 /* DebugGame */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = "DebugGame";
+		};
+		62D6C0A5C576E0B79791483A /* Development */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = "Development";
+		};
+		69FF1A96E9D13DF824D50CD3 /* Shipping */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = "Shipping";
+		};
+		038B5A0F67485E40AF7ECB90 /* Build configuration list for target ViolettFresh */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				13D884A368880D218FA582D3 /* DebugGame */,
+				3EC96FD781F27CFBD75D0300 /* Development */,
+				422560B3EC619F85B57BFC8E /* Shipping */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = "Development";
+		};
+		13D884A368880D218FA582D3 /* DebugGame */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				SUPPORTED_PLATFORMS = "macosx iphonesimulator iphoneos appletvsimulator appletvos xros xrsimulator";
+				ONLY_ACTIVE_ARCH = YES;
+				"VALID_ARCHS[sdk=macos*]" = "arm64 x86_64";
+			};
+			name = "DebugGame";
+		};
+		3EC96FD781F27CFBD75D0300 /* Development */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				SUPPORTED_PLATFORMS = "macosx iphonesimulator iphoneos appletvsimulator appletvos xros xrsimulator";
+				ONLY_ACTIVE_ARCH = YES;
+				"VALID_ARCHS[sdk=macos*]" = "arm64 x86_64";
+			};
+			name = "Development";
+		};
+		422560B3EC619F85B57BFC8E /* Shipping */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				SUPPORTED_PLATFORMS = "macosx iphonesimulator iphoneos appletvsimulator appletvos xros xrsimulator";
+				ONLY_ACTIVE_ARCH = YES;
+				"VALID_ARCHS[sdk=macos*]" = "arm64 x86_64";
+			};
+			name = "Shipping";
+		};
+/* Begin Index section */
+		C4BAD72770A901705405E0F1 /* ViolettFresh_Index */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 566A824301DA07B5D5846143 /* Build configuration list for PBXNativeTarget "ViolettFresh_Index" */;
+			buildPhases = (
+				7843508728D36E865675B989 /* Sources */,
+			);
+			dependencies = (
+			);
+			name = "ViolettFresh_Index";
+			passBuildSettingsInEnvironment = 1;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End Index section */
+		566A824301DA07B5D5846143 /* Build configuration list for target ViolettFresh_Index */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				285A342D05FC1EC3CDE113C7 /* DebugGame */,
+				1B558B2D5C93AB3C446E5C81 /* Development */,
+				DF5C84DA7346B9405894FF15 /* Shipping */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = "Development";
+		};
+		285A342D05FC1EC3CDE113C7 /* DebugGame */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 74D36B57E71D237556BB28AB /* ViolettFresh_Index.xcconfig */;
+			buildSettings = {
+			};
+			name = "DebugGame";
+		};
+		1B558B2D5C93AB3C446E5C81 /* Development */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 74D36B57E71D237556BB28AB /* ViolettFresh_Index.xcconfig */;
+			buildSettings = {
+			};
+			name = "Development";
+		};
+		DF5C84DA7346B9405894FF15 /* Shipping */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 74D36B57E71D237556BB28AB /* ViolettFresh_Index.xcconfig */;
+			buildSettings = {
+			};
+			name = "Shipping";
+		};
+/* Begin PBXSourcesBuildPhase section */
+		7843508728D36E865675B989 = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F2BB2150A1413456EDEF34EF /* ViolettFresh.cpp in Sources */,
+				6BE6CEDB4A769DDF61C13C34 /* ViolettFreshCharacter.cpp in Sources */,
+				08E0348FAC4EA2E150AC9C07 /* ViolettFreshGameMode.cpp in Sources */,
+			);
+		};
+/* End PBXSourcesBuildPhase section */
+	};
+	rootObject = 7F2182D426539A81469008EC /* Project object */;
+}

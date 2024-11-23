@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 public class Violett_SimphoniEditorTarget : TargetRules
 {
-	public Violett_SimphoniEditorTarget( TargetInfo Target) : base(Target)
+	public Violett_SimphoniEditorTarget(TargetInfo Target) : base(Target)
 	{
 		Type = TargetType.Editor;
 		DefaultBuildSettings = BuildSettingsVersion.V5;

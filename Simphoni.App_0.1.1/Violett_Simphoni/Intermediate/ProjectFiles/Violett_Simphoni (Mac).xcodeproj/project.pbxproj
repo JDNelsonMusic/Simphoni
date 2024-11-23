@@ -6,240 +6,252 @@
 	objectVersion = 46;
 	objects = {
 /* Begin PBXBuildFile section */
-		ABA41F726FA6AE23A3700AFC = {isa = PBXBuildFile; fileRef = D9BD4C63FA382A48544E7832; settings = {COMPILER_FLAGS = "@/Users/JDNelson/AI_Dev/Simphoni/Simphoni.App_0.1.1/Violett_Simphoni/Intermediate/ProjectFiles/ResponseFiles/Mac/Violett_Simphoni1.response"; }; }; /* Simphoni_MVP_Avatar.cpp */
-		1077844414F508C0469B6BE5 = {isa = PBXBuildFile; fileRef = DBAA4F07C28070C49F3015C2; settings = {COMPILER_FLAGS = "@/Users/JDNelson/AI_Dev/Simphoni/Simphoni.App_0.1.1/Violett_Simphoni/Intermediate/ProjectFiles/ResponseFiles/Mac/Violett_Simphoni1.response"; }; }; /* Violett_Simphoni.cpp */
-		797F9090676930357A3DF636 = {isa = PBXBuildFile; fileRef = AF4EDA402DF85FCCA052221C; }; /* Assets.xcassets */
-		076886E35C8AA0043379E20A = {isa = PBXBuildFile; fileRef = D46C8F9BFCB8CAE437ABDC2A; }; /* LaunchScreen.storyboardc */
-		86ACF4ADB1FC1571D7DA9E00 = {isa = PBXBuildFile; fileRef = D9DC62B5C53480122FA1D1D4; }; /* UEMetadata */
+		AE3952B19992D0C2E812D56C = {isa = PBXBuildFile; fileRef = 956DCCA308CB9FD8F77B3B91; settings = {COMPILER_FLAGS = "@/Users/JDNelson/AI_Dev/Simphoni/Simphoni.App_0.1.1/Violett_Simphoni/Intermediate/ProjectFiles/ResponseFiles/Mac/Violett_Simphoni1.response"; }; }; /* Violetta.cpp */
+		ABA41F726FA6AE23A3700AFC = {isa = PBXBuildFile; fileRef = D9BD4C63FA382A48544E7832; settings = {COMPILER_FLAGS = "@/Users/JDNelson/AI_Dev/Simphoni/Simphoni.App_0.1.1/Violett_Simphoni/Intermediate/ProjectFiles/ResponseFiles/Mac/Violett_Simphoni1.response"; }; }; /* Violett_Simphoni.cpp */
+		6BE6CEDB4A769DDF61C13C34 = {isa = PBXBuildFile; fileRef = C17814F8F889952F0D47435D; settings = {COMPILER_FLAGS = "@/Users/JDNelson/AI_Dev/Simphoni/Simphoni.App_0.1.1/Violett_Simphoni/Intermediate/ProjectFiles/ResponseFiles/Mac/Violett_Simphoni1.response"; }; }; /* Violett_SimphoniCharacter.cpp */
+		08E0348FAC4EA2E150AC9C07 = {isa = PBXBuildFile; fileRef = C465AF2226BF9C17FB04D6BC; settings = {COMPILER_FLAGS = "@/Users/JDNelson/AI_Dev/Simphoni/Simphoni.App_0.1.1/Violett_Simphoni/Intermediate/ProjectFiles/ResponseFiles/Mac/Violett_Simphoni1.response"; }; }; /* Violett_SimphoniGameMode.cpp */
+		1F2B5F9FC51BB5196999B7BD = {isa = PBXBuildFile; fileRef = BE3C364B68ADC05B49CAB982; }; /* Assets.xcassets */
+		1660A1581052795572DCC055 = {isa = PBXBuildFile; fileRef = 70AC9F05044CF78DE945DD88; }; /* LaunchScreen.storyboardc */
+		C23B5B73B7FD7E9120115CD7 = {isa = PBXBuildFile; fileRef = 07BBFAFA482645D18319111C; }; /* UEMetadata */
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		6BB943E2C40AE476452D4EE3 = {isa = PBXFileReference; explicitFileType = file.txt; name = "DefaultEditor.ini"; path = "../../Config/DefaultEditor.ini"; sourceTree = SOURCE_ROOT; };
-		4E6FC01DBECF6EAFE3EBE34A = {isa = PBXFileReference; explicitFileType = file.txt; name = "DefaultEngine.ini"; path = "../../Config/DefaultEngine.ini"; sourceTree = SOURCE_ROOT; };
+		7451D3F36FE827DF64027CFE = {isa = PBXFileReference; explicitFileType = file.txt; name = "DefaultEditor.ini"; path = "../../Config/DefaultEditor.ini"; sourceTree = SOURCE_ROOT; };
+		4E6FC01DBECF6EAFE3EBE34A = {isa = PBXFileReference; explicitFileType = file.txt; name = "DefaultEditorPerProjectUserSettings.ini"; path = "../../Config/DefaultEditorPerProjectUserSettings.ini"; sourceTree = SOURCE_ROOT; };
+		CEDBC2E8B849B360A801E011 = {isa = PBXFileReference; explicitFileType = file.txt; name = "DefaultEngine.ini"; path = "../../Config/DefaultEngine.ini"; sourceTree = SOURCE_ROOT; };
 		5873D72E80F5FC38B15BAE4B = {isa = PBXFileReference; explicitFileType = file.txt; name = "DefaultGame.ini"; path = "../../Config/DefaultGame.ini"; sourceTree = SOURCE_ROOT; };
-		CEDBC2E8B849B360A801E011 = {isa = PBXFileReference; explicitFileType = file.txt; name = "DefaultInput.ini"; path = "../../Config/DefaultInput.ini"; sourceTree = SOURCE_ROOT; };
+		6BB943E2C40AE476452D4EE3 = {isa = PBXFileReference; explicitFileType = file.txt; name = "DefaultInput.ini"; path = "../../Config/DefaultInput.ini"; sourceTree = SOURCE_ROOT; };
 		CF746C0FF4BEC24D1E04EB4B = {isa = PBXFileReference; explicitFileType = file.txt; name = "Violett_Simphoni.Target.cs"; path = "../../Source/Violett_Simphoni.Target.cs"; sourceTree = SOURCE_ROOT; };
-		D9BD4C63FA382A48544E7832 = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; name = "Simphoni_MVP_Avatar.cpp"; path = "../../Source/Violett_Simphoni/Private/Simphoni_MVP_Avatar.cpp"; sourceTree = SOURCE_ROOT; };
-		7FC697D90EBCA602287A61AD = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; name = "Simphoni_MVP_Avatar.h"; path = "../../Source/Violett_Simphoni/Public/Simphoni_MVP_Avatar.h"; sourceTree = SOURCE_ROOT; };
-		C465AF2226BF9C17FB04D6BC = {isa = PBXFileReference; explicitFileType = file.txt; name = "Violett_Simphoni.Build.cs"; path = "../../Source/Violett_Simphoni/Violett_Simphoni.Build.cs"; sourceTree = SOURCE_ROOT; };
-		DBAA4F07C28070C49F3015C2 = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; name = "Violett_Simphoni.cpp"; path = "../../Source/Violett_Simphoni/Violett_Simphoni.cpp"; sourceTree = SOURCE_ROOT; };
-		C17814F8F889952F0D47435D = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; name = "Violett_Simphoni.h"; path = "../../Source/Violett_Simphoni/Violett_Simphoni.h"; sourceTree = SOURCE_ROOT; };
+		956DCCA308CB9FD8F77B3B91 = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; name = "Violetta.cpp"; path = "../../Source/Violett_Simphoni/Private/Violetta.cpp"; sourceTree = SOURCE_ROOT; };
+		990530C27727F9B57D2428F7 = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; name = "Violetta.h"; path = "../../Source/Violett_Simphoni/Public/Violetta.h"; sourceTree = SOURCE_ROOT; };
+		855D82623BB30EE9895C84A5 = {isa = PBXFileReference; explicitFileType = file.txt; name = "Violett_Simphoni.Build.cs"; path = "../../Source/Violett_Simphoni/Violett_Simphoni.Build.cs"; sourceTree = SOURCE_ROOT; };
+		D9BD4C63FA382A48544E7832 = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; name = "Violett_Simphoni.cpp"; path = "../../Source/Violett_Simphoni/Violett_Simphoni.cpp"; sourceTree = SOURCE_ROOT; };
+		394405D496D7C3F1D5E1DD6C = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; name = "Violett_Simphoni.h"; path = "../../Source/Violett_Simphoni/Violett_Simphoni.h"; sourceTree = SOURCE_ROOT; };
+		C17814F8F889952F0D47435D = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; name = "Violett_SimphoniCharacter.cpp"; path = "../../Source/Violett_Simphoni/Violett_SimphoniCharacter.cpp"; sourceTree = SOURCE_ROOT; };
+		7FC697D90EBCA602287A61AD = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; name = "Violett_SimphoniCharacter.h"; path = "../../Source/Violett_Simphoni/Violett_SimphoniCharacter.h"; sourceTree = SOURCE_ROOT; };
+		C465AF2226BF9C17FB04D6BC = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; name = "Violett_SimphoniGameMode.cpp"; path = "../../Source/Violett_Simphoni/Violett_SimphoniGameMode.cpp"; sourceTree = SOURCE_ROOT; };
+		DE559463C900220FBC9A0050 = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; name = "Violett_SimphoniGameMode.h"; path = "../../Source/Violett_Simphoni/Violett_SimphoniGameMode.h"; sourceTree = SOURCE_ROOT; };
 		F519DBC82B7C343B37F88500 = {isa = PBXFileReference; explicitFileType = file.txt; name = "Violett_Simphoni.uproject"; path = "../../Violett_Simphoni.uproject"; sourceTree = SOURCE_ROOT; };
-		AF488FF325DDB0303487848F = {isa = PBXFileReference; explicitFileType = wrapper.application; name = "Violett_Simphoni"; path = "Violett_Simphoni"; sourceTree = BUILT_PRODUCTS_DIR; };
-		AF4EDA402DF85FCCA052221C = {isa = PBXFileReference; explicitFileType = folder.assetcatalog; name = "Assets.xcassets"; path = "/Users/Shared/Epic Games/UE_5.5/Engine/Build/Mac/Resources/Assets.xcassets"; sourceTree = "<absolute>"; };
-		D46C8F9BFCB8CAE437ABDC2A = {isa = PBXFileReference; explicitFileType = wrapper.storyboardc; name = "LaunchScreen.storyboardc"; path = "/Users/Shared/Epic Games/UE_5.5/Engine/Build/IOS/Resources/Interface/LaunchScreen.storyboardc"; sourceTree = "<absolute>"; };
-		D9DC62B5C53480122FA1D1D4 = {isa = PBXFileReference; explicitFileType = file.txt; name = "UEMetadata"; path = "/Users/Shared/Epic Games/UE_5.5/Engine/Build/Mac/Resources/UEMetadata"; sourceTree = "<absolute>"; };
-		DCADF8C060D9FB51A23E90BC = {isa = PBXFileReference; explicitFileType = test.xcconfig; name = "Violett_Simphoni.xcconfig"; path = "XcconfigsMac/Violett_Simphoni.xcconfig"; sourceTree = "<group>"; };
-		7A8B75E76DAE6F9F045AC5EB = {isa = PBXFileReference; explicitFileType = test.xcconfig; name = "Violett_Simphoni_DebugGame.xcconfig"; path = "XcconfigsMac/Violett_Simphoni_DebugGame.xcconfig"; sourceTree = "<group>"; };
-		639E932B59CED1DDAECECDD1 = {isa = PBXFileReference; explicitFileType = test.xcconfig; name = "Violett_Simphoni_Development.xcconfig"; path = "XcconfigsMac/Violett_Simphoni_Development.xcconfig"; sourceTree = "<group>"; };
-		D0E404CEAD70A65E04F8DD25 = {isa = PBXFileReference; explicitFileType = test.xcconfig; name = "Violett_Simphoni_Shipping.xcconfig"; path = "XcconfigsMac/Violett_Simphoni_Shipping.xcconfig"; sourceTree = "<group>"; };
-		C1155A3BA1AB70CE927089D2 = {isa = PBXFileReference; explicitFileType = test.xcconfig; name = "Violett_Simphoni_Index.xcconfig"; path = "XcconfigsMac/Violett_Simphoni_Index.xcconfig"; sourceTree = "<group>"; };
-		03E6EE1C0AE5F286672DC88E = {isa = PBXFileReference; explicitFileType = text.plist; name = "Info-Editor.Template.plist"; path = "../../../../../../../Shared/Epic Games/UE_5.5/Engine/Intermediate/Build/Mac/Resources/Info-Editor.Template.plist"; sourceTree = "<group>"; };
-		E834FD51C1C19886F4CABB28 = {isa = PBXFileReference; explicitFileType = text.plist; name = "Info.Template.plist"; path = "../../Build/Mac/Resources/Info.Template.plist"; sourceTree = "<group>"; };
-		1F6108C9426ECDA9E763C193 = {isa = PBXFileReference; explicitFileType = text.plist; name = "Sandbox.Server.entitlements"; path = "../../Build/Mac/Resources/Sandbox.Server.entitlements"; sourceTree = "<group>"; };
+		96953502868881472A3E7A9C = {isa = PBXFileReference; explicitFileType = wrapper.application; name = "Violett_Simphoni"; path = "Violett_Simphoni"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BE3C364B68ADC05B49CAB982 = {isa = PBXFileReference; explicitFileType = folder.assetcatalog; name = "Assets.xcassets"; path = "/Users/Shared/Epic Games/UE_5.5/Engine/Build/Mac/Resources/Assets.xcassets"; sourceTree = "<absolute>"; };
+		70AC9F05044CF78DE945DD88 = {isa = PBXFileReference; explicitFileType = wrapper.storyboardc; name = "LaunchScreen.storyboardc"; path = "/Users/Shared/Epic Games/UE_5.5/Engine/Build/IOS/Resources/Interface/LaunchScreen.storyboardc"; sourceTree = "<absolute>"; };
+		07BBFAFA482645D18319111C = {isa = PBXFileReference; explicitFileType = file.txt; name = "UEMetadata"; path = "/Users/Shared/Epic Games/UE_5.5/Engine/Build/Mac/Resources/UEMetadata"; sourceTree = "<absolute>"; };
+		B0C6F00078681E80783009C5 = {isa = PBXFileReference; explicitFileType = test.xcconfig; name = "Violett_Simphoni.xcconfig"; path = "XcconfigsMac/Violett_Simphoni.xcconfig"; sourceTree = "<group>"; };
+		5B67BD2EE01AD48E369244DC = {isa = PBXFileReference; explicitFileType = test.xcconfig; name = "Violett_Simphoni_DebugGame.xcconfig"; path = "XcconfigsMac/Violett_Simphoni_DebugGame.xcconfig"; sourceTree = "<group>"; };
+		A9878EDD91563A5C1D0ADC4A = {isa = PBXFileReference; explicitFileType = test.xcconfig; name = "Violett_Simphoni_Development.xcconfig"; path = "XcconfigsMac/Violett_Simphoni_Development.xcconfig"; sourceTree = "<group>"; };
+		A350FA0D508B32CC2F488459 = {isa = PBXFileReference; explicitFileType = test.xcconfig; name = "Violett_Simphoni_Shipping.xcconfig"; path = "XcconfigsMac/Violett_Simphoni_Shipping.xcconfig"; sourceTree = "<group>"; };
+		1677B3E6DC465771E1B25249 = {isa = PBXFileReference; explicitFileType = test.xcconfig; name = "Violett_Simphoni_Index.xcconfig"; path = "XcconfigsMac/Violett_Simphoni_Index.xcconfig"; sourceTree = "<group>"; };
+		62FD8DC46300A06B4EBC9DBC = {isa = PBXFileReference; explicitFileType = text.plist; name = "Info-Editor.Template.plist"; path = "../../../../../../../Shared/Epic Games/UE_5.5/Engine/Intermediate/Build/Mac/Resources/Info-Editor.Template.plist"; sourceTree = "<group>"; };
+		093ECEA06C988B11279773E3 = {isa = PBXFileReference; explicitFileType = text.plist; name = "Info.Template.plist"; path = "../../Build/Mac/Resources/Info.Template.plist"; sourceTree = "<group>"; };
+		6096D6772DED0D9332950783 = {isa = PBXFileReference; explicitFileType = text.plist; name = "Sandbox.Server.entitlements"; path = "../../Build/Mac/Resources/Sandbox.Server.entitlements"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
-		8765B1346964BD92C9B0A96C = {
+		50FDF8FD247F874FE44FEC72 = {
 			isa = PBXGroup;
 			children = (
-				AEC8CD8A989C6DDDDB0ED679 /* Config */,
-				056ADBFC5C17CE7B6EE32191 /* Source */,
+				8413579A88F62E75EB8938C8 /* Config */,
+				58AF68CB96118119FE377458 /* Source */,
 				F519DBC82B7C343B37F88500 /* Violett_Simphoni.uproject */,
-				13F6F2F53760EF27EA5C7522 /* Products */,
-				5785CD192DC5C089C369C4E4 /* Resources */,
-				D08A0827245C126A3CFA7CAA /* Xcconfigs */,
-				F21B1DD7E916B924754F36C3 /* Metadata */,
+				3ED833F333B2AE5219E9D9A8 /* Products */,
+				6EE066CC84A7C1FF473FB42F /* Resources */,
+				C803BE97F19A9EB38AF43B00 /* Xcconfigs */,
+				55631566D4230563D57073F2 /* Metadata */,
 			);
 			sourceTree = "<group>";
 		};
-		AEC8CD8A989C6DDDDB0ED679 = {
+		8413579A88F62E75EB8938C8 = {
 			isa = PBXGroup;
 			children = (
-				6BB943E2C40AE476452D4EE3 /* DefaultEditor.ini */,
-				4E6FC01DBECF6EAFE3EBE34A /* DefaultEngine.ini */,
+				7451D3F36FE827DF64027CFE /* DefaultEditor.ini */,
+				4E6FC01DBECF6EAFE3EBE34A /* DefaultEditorPerProjectUserSettings.ini */,
+				CEDBC2E8B849B360A801E011 /* DefaultEngine.ini */,
 				5873D72E80F5FC38B15BAE4B /* DefaultGame.ini */,
-				CEDBC2E8B849B360A801E011 /* DefaultInput.ini */,
+				6BB943E2C40AE476452D4EE3 /* DefaultInput.ini */,
 			);
 			name = "Config";
 			path = "/Users/JDNelson/AI_Dev/Simphoni/Simphoni.App_0.1.1/Violett_Simphoni/Config";
 			sourceTree = "<absolute>";
 		};
-		056ADBFC5C17CE7B6EE32191 = {
+		58AF68CB96118119FE377458 = {
 			isa = PBXGroup;
 			children = (
-				916948167C0F5F4D938CD722 /* Violett_Simphoni */,
+				17BBB8D2CED2734D9EFE7E8B /* Violett_Simphoni */,
 				CF746C0FF4BEC24D1E04EB4B /* Violett_Simphoni.Target.cs */,
 			);
 			name = "Source";
 			path = "/Users/JDNelson/AI_Dev/Simphoni/Simphoni.App_0.1.1/Violett_Simphoni/Source";
 			sourceTree = "<absolute>";
 		};
-		916948167C0F5F4D938CD722 = {
+		17BBB8D2CED2734D9EFE7E8B = {
 			isa = PBXGroup;
 			children = (
-				A8B2E9B8C3A35AB92CA68E6A /* Private */,
-				6DB4EC20A61588AB2CB3A39B /* Public */,
-				C465AF2226BF9C17FB04D6BC /* Violett_Simphoni.Build.cs */,
-				DBAA4F07C28070C49F3015C2 /* Violett_Simphoni.cpp */,
-				C17814F8F889952F0D47435D /* Violett_Simphoni.h */,
+				372F60692DB5B0E792EF9A1A /* Private */,
+				8D86A6E9D1AE93EC584AE759 /* Public */,
+				855D82623BB30EE9895C84A5 /* Violett_Simphoni.Build.cs */,
+				D9BD4C63FA382A48544E7832 /* Violett_Simphoni.cpp */,
+				394405D496D7C3F1D5E1DD6C /* Violett_Simphoni.h */,
+				C17814F8F889952F0D47435D /* Violett_SimphoniCharacter.cpp */,
+				7FC697D90EBCA602287A61AD /* Violett_SimphoniCharacter.h */,
+				C465AF2226BF9C17FB04D6BC /* Violett_SimphoniGameMode.cpp */,
+				DE559463C900220FBC9A0050 /* Violett_SimphoniGameMode.h */,
 			);
 			name = "Violett_Simphoni";
 			path = "/Users/JDNelson/AI_Dev/Simphoni/Simphoni.App_0.1.1/Violett_Simphoni/Source/Violett_Simphoni";
 			sourceTree = "<absolute>";
 		};
-		A8B2E9B8C3A35AB92CA68E6A = {
+		372F60692DB5B0E792EF9A1A = {
 			isa = PBXGroup;
 			children = (
-				D9BD4C63FA382A48544E7832 /* Simphoni_MVP_Avatar.cpp */,
+				956DCCA308CB9FD8F77B3B91 /* Violetta.cpp */,
 			);
 			name = "Private";
 			path = "/Users/JDNelson/AI_Dev/Simphoni/Simphoni.App_0.1.1/Violett_Simphoni/Source/Violett_Simphoni/Private";
 			sourceTree = "<absolute>";
 		};
-		6DB4EC20A61588AB2CB3A39B = {
+		8D86A6E9D1AE93EC584AE759 = {
 			isa = PBXGroup;
 			children = (
-				7FC697D90EBCA602287A61AD /* Simphoni_MVP_Avatar.h */,
+				990530C27727F9B57D2428F7 /* Violetta.h */,
 			);
 			name = "Public";
 			path = "/Users/JDNelson/AI_Dev/Simphoni/Simphoni.App_0.1.1/Violett_Simphoni/Source/Violett_Simphoni/Public";
 			sourceTree = "<absolute>";
 		};
-		13F6F2F53760EF27EA5C7522 /* Products */ = {
+		3ED833F333B2AE5219E9D9A8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				AF488FF325DDB0303487848F /* Violett_Simphoni */,
+				96953502868881472A3E7A9C /* Violett_Simphoni */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		5785CD192DC5C089C369C4E4 /* Resources */ = {
+		6EE066CC84A7C1FF473FB42F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				AF4EDA402DF85FCCA052221C /* Assets.xcassets */,
-				D46C8F9BFCB8CAE437ABDC2A /* LaunchScreen.storyboardc */,
-				D9DC62B5C53480122FA1D1D4 /* UEMetadata */,
+				BE3C364B68ADC05B49CAB982 /* Assets.xcassets */,
+				70AC9F05044CF78DE945DD88 /* LaunchScreen.storyboardc */,
+				07BBFAFA482645D18319111C /* UEMetadata */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
 		};
-		D08A0827245C126A3CFA7CAA /* Xcconfigs */ = {
+		C803BE97F19A9EB38AF43B00 /* Xcconfigs */ = {
 			isa = PBXGroup;
 			children = (
-				DCADF8C060D9FB51A23E90BC /* Violett_Simphoni.xcconfig */,
-				7A8B75E76DAE6F9F045AC5EB /* Violett_Simphoni_DebugGame.xcconfig */,
-				639E932B59CED1DDAECECDD1 /* Violett_Simphoni_Development.xcconfig */,
-				D0E404CEAD70A65E04F8DD25 /* Violett_Simphoni_Shipping.xcconfig */,
-				C1155A3BA1AB70CE927089D2 /* Violett_Simphoni_Index.xcconfig */,
+				B0C6F00078681E80783009C5 /* Violett_Simphoni.xcconfig */,
+				5B67BD2EE01AD48E369244DC /* Violett_Simphoni_DebugGame.xcconfig */,
+				A9878EDD91563A5C1D0ADC4A /* Violett_Simphoni_Development.xcconfig */,
+				A350FA0D508B32CC2F488459 /* Violett_Simphoni_Shipping.xcconfig */,
+				1677B3E6DC465771E1B25249 /* Violett_Simphoni_Index.xcconfig */,
 			);
 			name = Xcconfigs;
 			sourceTree = "<group>";
 		};
-		F21B1DD7E916B924754F36C3 /* Metadata */ = {
+		55631566D4230563D57073F2 /* Metadata */ = {
 			isa = PBXGroup;
 			children = (
-				03E6EE1C0AE5F286672DC88E /* Info-Editor.Template.plist */,
-				E834FD51C1C19886F4CABB28 /* Info.Template.plist */,
-				1F6108C9426ECDA9E763C193 /* Sandbox.Server.entitlements */,
+				62FD8DC46300A06B4EBC9DBC /* Info-Editor.Template.plist */,
+				093ECEA06C988B11279773E3 /* Info.Template.plist */,
+				6096D6772DED0D9332950783 /* Sandbox.Server.entitlements */,
 			);
 			name = Metadata;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 /* Begin PBXProject section */
-		A25EA5DFFDC531393A352170 /* Project object */ = {
+		A913B0ED02ECC84910429C2F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 2000;
 				ORGANIZATIONNAME = "Epic Games, Inc.";
 				TargetAttributes = {
-					8DF6BC9B621413E69ADFB127 = {
+					1D984F8B8DDA8E3E20D60E9B = {
 						ProvisioningStyle = Automatic;
 					};
 				};
 			};
-			buildConfigurationList = E5FB38C0B66C7460E3EB3574 /* Build configuration list for PBXProject "Violett_Simphoni" */;
+			buildConfigurationList = E18285646502B5C806FA3941 /* Build configuration list for PBXProject "Violett_Simphoni" */;
 			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en
 			);
-			mainGroup = 8765B1346964BD92C9B0A96C;
-			productRefGroup = 13F6F2F53760EF27EA5C7522;
+			mainGroup = 50FDF8FD247F874FE44FEC72;
+			productRefGroup = 3ED833F333B2AE5219E9D9A8;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8DF6BC9B621413E69ADFB127 /* Violett_Simphoni */,
-				A1017B861623A96B8D48AB9F /* Violett_Simphoni_Index */,
-				2F055652C327546B49031CA1 /* Violett_Simphoni_Build */,
+				1D984F8B8DDA8E3E20D60E9B /* Violett_Simphoni */,
+				DB2D3471925A8EA0EB51F71B /* Violett_Simphoni_Index */,
+				D184CE781DA0DB68683CDC69 /* Violett_Simphoni_Build */,
 			);
 		};
 /* End PBXProject section */
 /* Begin Run_App section */
-		8DF6BC9B621413E69ADFB127 /* Violett_Simphoni */ = {
+		1D984F8B8DDA8E3E20D60E9B /* Violett_Simphoni */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C5C0981CCF9916CCB2CD28CA /* Build configuration list for PBXNativeTarget "Violett_Simphoni" */;
+			buildConfigurationList = 5489B265012A3AADA9ED7235 /* Build configuration list for PBXNativeTarget "Violett_Simphoni" */;
 			buildPhases = (
-				F5D1AA1F2238AB049B9FF2AB /* Resources */,
-				9D046EE0AB3C9F7CFB43329C /* Copy Executable and Staged Data into .app */,
-				D67F0385FEF12CE43E320434 /* Generate dsym for archive, and strip */,
+				9509F55181DCE31756256E9A /* Resources */,
+				3C75F3711CCD802CE83AC02B /* Copy Executable and Staged Data into .app */,
+				98FEFD726C4CAC0A05D0AEC2 /* Generate dsym for archive, and strip */,
 			);
 			dependencies = (
-				EBC80463EB2143C81ED4056F /* Violett_Simphoni_Build */,
+				F183D5ECC64B673596FF9A4C /* Violett_Simphoni_Build */,
 			);
 			name = "Violett_Simphoni";
 			passBuildSettingsInEnvironment = 1;
 			productType = "com.apple.product-type.application";
-			productReference = AF488FF325DDB0303487848F;
+			productReference = 96953502868881472A3E7A9C;
 			productName = "Violett_Simphoni";
 		};
 /* End Run_App section */
-		C5C0981CCF9916CCB2CD28CA /* Build configuration list for target Violett_Simphoni */ = {
+		5489B265012A3AADA9ED7235 /* Build configuration list for target Violett_Simphoni */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C882EA8A1DC90766958A6706 /* DebugGame */,
-				5CF5C0B410B22990FF145ADB /* Development */,
-				AE1C550E8A7E224D15EFDAD8 /* Shipping */,
+				ECC7E6AFC4DB09F91E740D09 /* DebugGame */,
+				32F5EB6279B5B9C08799AEFC /* Development */,
+				D51C46FF03CCF230251A9FC5 /* Shipping */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = "Development";
 		};
-		C882EA8A1DC90766958A6706 /* DebugGame */ = {
+		ECC7E6AFC4DB09F91E740D09 /* DebugGame */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7A8B75E76DAE6F9F045AC5EB /* Violett_Simphoni_DebugGame.xcconfig */;
+			baseConfigurationReference = 5B67BD2EE01AD48E369244DC /* Violett_Simphoni_DebugGame.xcconfig */;
 			buildSettings = {
 			};
 			name = "DebugGame";
 		};
-		5CF5C0B410B22990FF145ADB /* Development */ = {
+		32F5EB6279B5B9C08799AEFC /* Development */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 639E932B59CED1DDAECECDD1 /* Violett_Simphoni_Development.xcconfig */;
+			baseConfigurationReference = A9878EDD91563A5C1D0ADC4A /* Violett_Simphoni_Development.xcconfig */;
 			buildSettings = {
 			};
 			name = "Development";
 		};
-		AE1C550E8A7E224D15EFDAD8 /* Shipping */ = {
+		D51C46FF03CCF230251A9FC5 /* Shipping */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D0E404CEAD70A65E04F8DD25 /* Violett_Simphoni_Shipping.xcconfig */;
+			baseConfigurationReference = A350FA0D508B32CC2F488459 /* Violett_Simphoni_Shipping.xcconfig */;
 			buildSettings = {
 			};
 			name = "Shipping";
 		};
 /* Begin PBXResourcesBuildPhase section */
-		F5D1AA1F2238AB049B9FF2AB = {
+		9509F55181DCE31756256E9A = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				797F9090676930357A3DF636 /* Assets.xcassets in Resources */,
-				076886E35C8AA0043379E20A /* LaunchScreen.storyboardc in Resources */,
-				86ACF4ADB1FC1571D7DA9E00 /* UEMetadata in Resources */,
+				1F2B5F9FC51BB5196999B7BD /* Assets.xcassets in Resources */,
+				1660A1581052795572DCC055 /* LaunchScreen.storyboardc in Resources */,
+				C23B5B73B7FD7E9120115CD7 /* UEMetadata in Resources */,
 			);
 		};
 /* End PBXResourcesBuildPhase section */
 /* Begin PBXShellScriptBuildPhase section */
-		9D046EE0AB3C9F7CFB43329C = {
+		3C75F3711CCD802CE83AC02B = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -255,7 +267,7 @@
 		};
 /* End PBXShellScriptBuildPhase section */
 /* Begin PBXShellScriptBuildPhase section */
-		D67F0385FEF12CE43E320434 = {
+		98FEFD726C4CAC0A05D0AEC2 = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -273,26 +285,26 @@
 		};
 /* End PBXShellScriptBuildPhase section */
 /* Begin PBXContainerItemProxy section */
-		973672DFA311250184A8BD7F /* PBXContainerItemProxy */ = {
+		BF405795362195A82A3EF8E0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = A25EA5DFFDC531393A352170 /* Project object */;
+			containerPortal = A913B0ED02ECC84910429C2F /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 2F055652C327546B49031CA1;
+			remoteGlobalIDString = D184CE781DA0DB68683CDC69;
 			remoteInfo = "Violett_Simphoni_Build";
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXTargetDependency section */
-		EBC80463EB2143C81ED4056F /* PBXTargetDependency */ = {
+		F183D5ECC64B673596FF9A4C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 2F055652C327546B49031CA1 /* Violett_Simphoni_Build */;
-			targetProxy = 973672DFA311250184A8BD7F /* PBXContainerItemProxy */;
+			target = D184CE781DA0DB68683CDC69 /* Violett_Simphoni_Build */;
+			targetProxy = BF405795362195A82A3EF8E0 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 /* Begin Build section */
-		2F055652C327546B49031CA1 /* Violett_Simphoni_Build */ = {
+		D184CE781DA0DB68683CDC69 /* Violett_Simphoni_Build */ = {
 			isa = PBXLegacyTarget;
-			buildConfigurationList = BE5941170A954CD662D61027 /* Build configuration list for PBXLegacyTarget "Violett_Simphoni_Build" */;
+			buildConfigurationList = C9CEB52F39E5A11AAD5847C5 /* Build configuration list for PBXLegacyTarget "Violett_Simphoni_Build" */;
 			buildArgumentsString = "$(ACTION) Violett_Simphoni $(PLATFORM_NAME) $(CONFIGURATION) /Users/JDNelson/AI_Dev/Simphoni/Simphoni.App_0.1.1/Violett_Simphoni/Violett_Simphoni.uproject";
 			buildToolPath = "/Users/Shared/Epic Games/UE_5.5/Engine/Build/BatchFiles/Mac/XcodeBuild.sh";
 			buildWorkingDirectory = "/Users/Shared/Epic Games/UE_5.5";
@@ -305,45 +317,45 @@
 			productType = "com.apple.product-type.library.static";
 		};
 /* End Build section */
-		BE5941170A954CD662D61027 /* Build configuration list for target Violett_Simphoni_Build */ = {
+		C9CEB52F39E5A11AAD5847C5 /* Build configuration list for target Violett_Simphoni_Build */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				05D0FB9E858A8158E3798EC3 /* DebugGame */,
-				E1658998AD236A7EABE0D193 /* Development */,
-				DB95E9AE98EDBE26FFB03102 /* Shipping */,
+				854309463365B553E782A476 /* DebugGame */,
+				B59DC709CB21CA6D37462333 /* Development */,
+				3798102BA18181793C08F3DA /* Shipping */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = "Development";
 		};
-		05D0FB9E858A8158E3798EC3 /* DebugGame */ = {
+		854309463365B553E782A476 /* DebugGame */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 			};
 			name = "DebugGame";
 		};
-		E1658998AD236A7EABE0D193 /* Development */ = {
+		B59DC709CB21CA6D37462333 /* Development */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 			};
 			name = "Development";
 		};
-		DB95E9AE98EDBE26FFB03102 /* Shipping */ = {
+		3798102BA18181793C08F3DA /* Shipping */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 			};
 			name = "Shipping";
 		};
-		E5FB38C0B66C7460E3EB3574 /* Build configuration list for target Violett_Simphoni */ = {
+		E18285646502B5C806FA3941 /* Build configuration list for target Violett_Simphoni */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				4F44054A73BDF19A727A6EEF /* DebugGame */,
-				1416A1C1786ACF5582F0C9AF /* Development */,
-				D873197F38DE691B4914E7A6 /* Shipping */,
+				5B2C0C91D7101AD6D2409633 /* DebugGame */,
+				6C49DDD7217411F620992CCE /* Development */,
+				05CE662D92BC5391BDBB852A /* Shipping */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = "Development";
 		};
-		4F44054A73BDF19A727A6EEF /* DebugGame */ = {
+		5B2C0C91D7101AD6D2409633 /* DebugGame */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				SUPPORTED_PLATFORMS = "macosx iphonesimulator iphoneos appletvsimulator appletvos xros xrsimulator";
@@ -352,7 +364,7 @@
 			};
 			name = "DebugGame";
 		};
-		1416A1C1786ACF5582F0C9AF /* Development */ = {
+		6C49DDD7217411F620992CCE /* Development */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				SUPPORTED_PLATFORMS = "macosx iphonesimulator iphoneos appletvsimulator appletvos xros xrsimulator";
@@ -361,7 +373,7 @@
 			};
 			name = "Development";
 		};
-		D873197F38DE691B4914E7A6 /* Shipping */ = {
+		05CE662D92BC5391BDBB852A /* Shipping */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				SUPPORTED_PLATFORMS = "macosx iphonesimulator iphoneos appletvsimulator appletvos xros xrsimulator";
@@ -371,11 +383,11 @@
 			name = "Shipping";
 		};
 /* Begin Index section */
-		A1017B861623A96B8D48AB9F /* Violett_Simphoni_Index */ = {
+		DB2D3471925A8EA0EB51F71B /* Violett_Simphoni_Index */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CAB2E7791BDFF25F7B5572FF /* Build configuration list for PBXNativeTarget "Violett_Simphoni_Index" */;
+			buildConfigurationList = 24DEA692E94321C1003D8C09 /* Build configuration list for PBXNativeTarget "Violett_Simphoni_Index" */;
 			buildPhases = (
-				523DDDA6D1D4E774659A9D30 /* Sources */,
+				5CFB1700885E5314D7BEAF93 /* Sources */,
 			);
 			dependencies = (
 			);
@@ -384,47 +396,49 @@
 			productType = "com.apple.product-type.library.static";
 		};
 /* End Index section */
-		CAB2E7791BDFF25F7B5572FF /* Build configuration list for target Violett_Simphoni_Index */ = {
+		24DEA692E94321C1003D8C09 /* Build configuration list for target Violett_Simphoni_Index */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A37261941052A6002EFB1F76 /* DebugGame */,
-				EF493E5E465E2190C77AB485 /* Development */,
-				F7F0006922882A4B8F7BE3A4 /* Shipping */,
+				A9ED4316ED0475B1C4B2FCF4 /* DebugGame */,
+				3F9F63C50B8BE2B3D74A08B4 /* Development */,
+				15C1A87A99C32A9DA12BC8A5 /* Shipping */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = "Development";
 		};
-		A37261941052A6002EFB1F76 /* DebugGame */ = {
+		A9ED4316ED0475B1C4B2FCF4 /* DebugGame */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C1155A3BA1AB70CE927089D2 /* Violett_Simphoni_Index.xcconfig */;
+			baseConfigurationReference = 1677B3E6DC465771E1B25249 /* Violett_Simphoni_Index.xcconfig */;
 			buildSettings = {
 			};
 			name = "DebugGame";
 		};
-		EF493E5E465E2190C77AB485 /* Development */ = {
+		3F9F63C50B8BE2B3D74A08B4 /* Development */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C1155A3BA1AB70CE927089D2 /* Violett_Simphoni_Index.xcconfig */;
+			baseConfigurationReference = 1677B3E6DC465771E1B25249 /* Violett_Simphoni_Index.xcconfig */;
 			buildSettings = {
 			};
 			name = "Development";
 		};
-		F7F0006922882A4B8F7BE3A4 /* Shipping */ = {
+		15C1A87A99C32A9DA12BC8A5 /* Shipping */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C1155A3BA1AB70CE927089D2 /* Violett_Simphoni_Index.xcconfig */;
+			baseConfigurationReference = 1677B3E6DC465771E1B25249 /* Violett_Simphoni_Index.xcconfig */;
 			buildSettings = {
 			};
 			name = "Shipping";
 		};
 /* Begin PBXSourcesBuildPhase section */
-		523DDDA6D1D4E774659A9D30 = {
+		5CFB1700885E5314D7BEAF93 = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ABA41F726FA6AE23A3700AFC /* Simphoni_MVP_Avatar.cpp in Sources */,
-				1077844414F508C0469B6BE5 /* Violett_Simphoni.cpp in Sources */,
+				AE3952B19992D0C2E812D56C /* Violetta.cpp in Sources */,
+				ABA41F726FA6AE23A3700AFC /* Violett_Simphoni.cpp in Sources */,
+				6BE6CEDB4A769DDF61C13C34 /* Violett_SimphoniCharacter.cpp in Sources */,
+				08E0348FAC4EA2E150AC9C07 /* Violett_SimphoniGameMode.cpp in Sources */,
 			);
 		};
 /* End PBXSourcesBuildPhase section */
 	};
-	rootObject = A25EA5DFFDC531393A352170 /* Project object */;
+	rootObject = A913B0ED02ECC84910429C2F /* Project object */;
 }

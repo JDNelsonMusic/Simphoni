@@ -6,7 +6,31 @@
 			"description": "Default Uncontrolled Changelist",
 			"files": [
 				"/Users/JDNelson/AI_Dev/Simphoni/Simphoni.App_0.1.1/Violett_Simphoni/Content/StarterContent/Props/SM_PillarFrame.uasset",
-				"/Users/JDNelson/AI_Dev/Simphoni/Simphoni.App_0.1.1/Violett_Simphoni/Content/M_Violett.uasset"
+				"/Users/JDNelson/AI_Dev/Simphoni/Simphoni.App_0.1.1/Violett_Simphoni/Content/Purple.uasset",
+				"/Users/JDNelson/AI_Dev/Simphoni/Simphoni.App_0.1.1/Violett_Simphoni/Content/Mint.uasset",
+				"/Users/JDNelson/AI_Dev/Simphoni/Simphoni.App_0.1.1/Violett_Simphoni/Content/BrightPurple.uasset",
+				"/Users/JDNelson/AI_Dev/Simphoni/Simphoni.App_0.1.1/Violett_Simphoni/Content/BP_Violett.uasset",
+				"/Users/JDNelson/AI_Dev/Simphoni/Simphoni.App_0.1.1/Violett_Simphoni/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/1/LY/VIAOC5GZANBPZDD3W0TE6P.uasset",
+				"/Users/JDNelson/AI_Dev/Simphoni/Simphoni.App_0.1.1/Violett_Simphoni/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/0/KJ/D0KQW1XTAK15NYF6W3JSIH.uasset",
+				"/Users/JDNelson/AI_Dev/Simphoni/Simphoni.App_0.1.1/Violett_Simphoni/Content/ThirdPerson/Maps/ThirdPersonMap.umap",
+				"/Users/JDNelson/AI_Dev/Simphoni/Simphoni.App_0.1.1/Violett_Simphoni/Content/NewBlueprint.uasset",
+				"/Users/JDNelson/AI_Dev/Simphoni/Simphoni.App_0.1.1/Violett_Simphoni/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/3/OG/KDQDMXAXZXD8VLDDU4K3JL.uasset",
+				"/Users/JDNelson/AI_Dev/Simphoni/Simphoni.App_0.1.1/Violett_Simphoni/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/5/66/75KXV3XO38CSSEW5XWQR15.uasset",
+				"/Users/JDNelson/AI_Dev/Simphoni/Simphoni.App_0.1.1/Violett_Simphoni/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/8/KB/H2D03HG0A3ADPT1FD75298.uasset",
+				"/Users/JDNelson/AI_Dev/Simphoni/Simphoni.App_0.1.1/Violett_Simphoni/Content/GravitySphere.uasset",
+				"/Users/JDNelson/AI_Dev/Simphoni/Simphoni.App_0.1.1/Violett_Simphoni/Content/lava-planet/textures/01_-_Default_albedo.uasset",
+				"/Users/JDNelson/AI_Dev/Simphoni/Simphoni.App_0.1.1/Violett_Simphoni/Content/lava-planet/textures/01_-_Default_metallic.uasset",
+				"/Users/JDNelson/AI_Dev/Simphoni/Simphoni.App_0.1.1/Violett_Simphoni/Content/lava-planet/textures/01_-_Default_roughness.uasset",
+				"/Users/JDNelson/AI_Dev/Simphoni/Simphoni.App_0.1.1/Violett_Simphoni/Content/lava-planet/textures/01_-_Default_AO.uasset",
+				"/Users/JDNelson/AI_Dev/Simphoni/Simphoni.App_0.1.1/Violett_Simphoni/Content/lava-planet/textures/01_-_Default_emissive.uasset",
+				"/Users/JDNelson/AI_Dev/Simphoni/Simphoni.App_0.1.1/Violett_Simphoni/Content/lava-planet/textures/01_-_Default_normal.uasset",
+				"/Users/JDNelson/AI_Dev/Simphoni/Simphoni.App_0.1.1/Violett_Simphoni/Content/lava-planet/source/01_-_Default.uasset",
+				"/Users/JDNelson/AI_Dev/Simphoni/Simphoni.App_0.1.1/Violett_Simphoni/Content/lava-planet/source/Planet_PhysicsAsset.uasset",
+				"/Users/JDNelson/AI_Dev/Simphoni/Simphoni.App_0.1.1/Violett_Simphoni/Content/lava-planet/source/Planet_Skeleton.uasset",
+				"/Users/JDNelson/AI_Dev/Simphoni/Simphoni.App_0.1.1/Violett_Simphoni/Content/lava-planet/source/Planet.uasset",
+				"/Users/JDNelson/AI_Dev/Simphoni/Simphoni.App_0.1.1/Violett_Simphoni/Content/lava-planet/source/Planet_Anim.uasset",
+				"/Users/JDNelson/AI_Dev/Simphoni/Simphoni.App_0.1.1/Violett_Simphoni/Content/lava-planet/textures/01_-_Default_Mat.uasset",
+				"/Users/JDNelson/AI_Dev/Simphoni/Simphoni.App_0.1.1/Violett_Simphoni/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/D/DE/SWSI13675DVYIZ0N4NF7Y3.uasset"
 			]
 		}
 	]
